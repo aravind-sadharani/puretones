@@ -16,16 +16,16 @@ body {
 }
 
 h2, h3 {
-  padding: 2vmin;
+  padding: 2vmin 3vmin;
 }
 
 p {
-  padding: 1vmin 2vmin;
+  padding: 1vmin 3vmin;
 }
 
 .notice {
   background-color: #ffead0;
-  padding: 2vmin 2vmin 4vmin;
+  padding: 2vmin 3vmin 4vmin;
   margin: 2vmin;
   border-radius: 1vmin;
 }
