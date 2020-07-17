@@ -141,30 +141,36 @@ Copyright 2020 - Sadharani Music Works
 
     <h3>Putting it all together</h3>
 
-    <p>Now, we know that if the vibrating length changes, the pitch of the string would also change. Let us say the pitch increases and decreases by an amount f because of the changing length, giving us two close pitches \(f+\Delta f\) and \(f-\Delta f\).</p>
+    <p>We know that if the vibrating length changes, the pitch of the string would also change. Let us say, the pitch increases and decreases by an amount \(\Delta f\) because of the changing length, giving us two close pitches \(f+\Delta f\) and \(f-\Delta f\).</p>
 
-    <p>We also know that if two signals very close together in pitch are played simultaneously, we get the effect of a periodic ebb and rise of the intensity or amplitude of the signal. The rate of rise and fall is half the difference between the pitches \({f_1-f_2 \over 2}\) which is nothing but \(\Delta f\).</p>
+    <p>We also know that if these two signals which are very close together in pitch, are played simultaneously, we would hear their average pitch, which is nothing but \(f\). We would also perceive the amplitude of the signal periodically ebb and rise. The rate of rise and fall is half the difference between the pitches \({f_1-f_2 \over 2}\) which is nothing but \(\Delta f\).</p>
 
     <p>Finally, recall that in a Tanpura string (any string for that matter), there are multiple modes of vibration \(f\), \(2f\), \(3f\) and so on which occur concurrently.</p>
 
     <p>Putting it all together, the pitch \(f\) would rise and fall in intensity at the rate \(\Delta f\), the pitch \(2f\) at the rate \(2\Delta f\), the pitch \(3f\) at \(3\Delta f\) and so on.</p>
 
-    <p>This is really amazing that the timing of the ebb and rise is different for each harmonic, enabling us to hear each harmonic separately in quick succession.</p>
+    <p>This is really the amazing thing about the Tanpura in contrast with a generic string, where the fundamental \(f\) overshadows the higher harmonics. In a Tanpura, as the timing of the ebb and rise is different for each harmonic, they all peak in intensity at different times, enabling us to hear each harmonic separately in quick succession.</p>
 
-    <p>Recall that in a generic string the fundamental mode of vibration \(f\) overshadows the higher harmonics and we can only hear the higher harmonics in the form of the timbre of the string.</p>
+    <p>Thus, in a Tanpura, the clever design of the bridge and the thread, allows us to split the harmonics and hear them separately. Much like a prism splitting white light into its constituent rainbow colours, the bridge and thread of the Tanpura split apart the harmonics of each string.</p>
 
-    <p>In a Tanpura, the clever design of the bridge and the thread, allows us to split the harmonics and hear them separately. Much like a prism splitting white light into its constituent rainbow colours, the bridge and thread of the Tanpura split apart the harmonics of each string.</p>
+    <h3>Common Harmonics Audible in a Tanpura</h3>
+
+    <p>For those who are familiar with the Tanpura, it is worth pointing out that harmonics like \(3f\) and \(5f\) may be instantly relatable.</p>
+
+    <p>If \(f\) is taken to be <strong>Sa</strong>, then \(3f\) is nothing but <strong>Pa</strong> and \(5f\) is nothing but <strong>Ga</strong> (<em>Antara Gandhar</em>).</p>
+
+    <p>Similarly, if \(f\) is taken to be <strong>Pa</strong>, then \(3f\) is nothing but <strong>Re</strong> (<em>Tivra Rishabh</em>) and \(5f\) is nothing but <strong>Ni</strong> (<em>Kakali Nishad</em>).</p>
 
     <h2>How PureTones emulates the Tanpura</h2>
 
     <p>PureTones works by creating a system of virtual strings. Each virtual string produces a signal which is synthesized by adding up several component signals. Each component signal corresponds to one single harmonic from the series, \(f\), \(2f\), \(3f\), etc.</p>
 
-    <p>The component signal produces the pitch corresponding to the harmonic it represents and also rises and ebbs at a tunable rate. The sum total of all these component signals over all the virtual strings results in the overall Tanpura sound.</p>
-
     <center><img src="/story/puretones-signal-architecture.png" alt="Signal Architecture of PureTones" style="width: 56%; border-radius: 1vmin;"></center>
     <center><em>Figure 3. Signal Architecture of PureTones</em></center>
 
     <br>
+
+    <p>The component signal produces the pitch corresponding to the harmonic it represents and also rises and ebbs at a tunable rate. The sum total of all these component signals over all the virtual strings results in the overall Tanpura sound. This is depicted in Figure 3 above.</p>
 
     <p>Like a physical Tanpura, PureTones allows an expert user:
       <ul>
@@ -192,7 +198,9 @@ Copyright 2020 - Sadharani Music Works
 
     <p><em><strong>We considered, analysed and repeatedly tested all these aspects, in the design of PureTones.”</strong></em></p>
 
-    <h2>Contact Us</h2>
+    <h2>Conclusion</h2>
+
+    <p>We hope this article helped you understand how a Tanpura works, how musicians can use it and how PureTones emulates its sound.</p>
 
     <p>PureTones is still under development. But we are eager to bring these tools to the music community. We have a closed beta program to evaluate and improve PureTones with the help of expert musicians.</p>
 
