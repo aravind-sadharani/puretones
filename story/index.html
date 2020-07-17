@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<!--
+PureTones Story - Developed by Sadharani - www.sadharani.com
+Copyright 2020 - Sadharani Music Works
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>PureTones</title>
+  <link rel="stylesheet" href="/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Noto+Sans:400,700" rel="stylesheet">
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+  <header>
+    <h1><img src="/puretones-logo.svg">Story of PureTones</h1>
+  </header>
+  <section class="article">
+    <h2>Introduction</h2>
+
+    <p>PureTones is a project that started out as a musical exploration to understand and emulate the Tanpura. As of now, PureTones is at v1.0, in the form of a digital Tanpura emulator, which is available by invitation for evaluation purposes.</p>
+    
+    <p>The Tanpura (also referred to as Tambura) is a musical instrument with an interesting and important place in Indian Classical music. As you may well know, it is not a lead instrument on which a melody is played. Rather it is used as a background instrument to create a drone accompaniment through the repetitive plucking of four open strings.</p>
+    
+    <p>PureTones has been built by two major contributors: S Balachander, an Indian Classical musician and inventor and performing artist of <span class="chandraveenaspan"><a href="https://www.chandraveena.com">Chandraveena</a></span>; and myself, Aravind Iyer, a scientist and engineer from the field of Electrical and Computer engineering, under the auspices of our music company, <span class="sadharanispan"><a href="https://www.sadharani.com">Sadharani Music Works</a></span>.</p>
+    
+    <p>Being from different backgrounds, it has been a fun and enlightening journey so far to develop PureTones. But it also means that we have seen the development of PureTones from different perspectives. Through this article, we would like to share the background behind the project and a developer's and musician’s perspective of PureTones.</p>
+
+    <h2>Background</h2>
+
+    <p>The story of PureTones begins with a conversation I had with Bala (S Balachander) regarding the Tanpura. Here is what I learned.</p>
+
+    <p>By and large, musicians agree that the Tanpura has a beautiful, resonant sound and it provides the perfect backdrop to start a musical rendition. Musicians also agree that transporting and taking care of a Tanpura while traveling is quite a task. It is quite a sizable instrument and like all musical instruments requires careful handling. Where opinions start to differ is the extent to which individual musicians are willing to put up with the overheads of handling a Tanpura, so that they can get that perfect sound.</p>
+
+    <p>There have been a number of substitutes developed over the years which are easier to transport, starting from rugged radio size boxes a few decades back to smartphone applications at present. These substitutes are basically electronic instruments which attempt to emulate the sound of the Tanpura. They are widely regarded as convenient but opinions differ about how suitable or acceptable they are musically.</p>
+
+    <p>Their sonic quality aside, these substitutes come up short in not being able to provide the same kind of tuning controls which are available on a Tanpura which an expert musician can utilize to create just the right accompaniment. Since the detailed designs or source codes for existing electronic Tanpuras were not available, we were not in a position to understand how they worked, how their tonal and harmonic quality could be improved and how expert grade tuning controls could be added to them. So we started the PureTones project.</p>
+
+    <h2>Basic Working of a Tanpura</h2>
+
+    <p>Let us dig in a bit and understand how a Tanpura works a little bit more. A Tanpura has a long stem which is attached to a soundboard and a round resonating enclosure. The stem and soundboard are generally made of wood, while the resonator may be made from the shell of pumpkin or gourd or from wood. The Tanpura has four strings with their tuning pegs at the top end. They pass over a smooth round bridge and are attached to the base of the instrument. In addition to the tuning pegs at the top, each string has small fine tuning knobs below the bridge. Finally, a cotton thread is passed between the strings and their contact point on the bridge. Using the tuning pegs, the fine tuning knobs and the position of the thread on the bridge, an expert artist can finely tune the Tanpura to create just the right sound needed for their musical rendition.</p>
+
+    <center><img src="/story/tanpura-labelled.png" alt="Structure of a Tanpura" style="width: 57%;"></center>
+    <center><em>Figure 1. Structure of a Tanpura</em></center>
+    <center><em>(Picture courtesy of <a href="https://www.flickr.com/photos/91676597@N07/8325869555">Alex Lenovski</a> used under <a href="https://creativecommons.org/licenses/by/2.0/">CC BY 2.0</a>, Labels by Aravind Iyer)</em></center>
+
+    <br>
+
+    <p>To appreciate the rich and characteristic sound of a tanpura, here is a short sample.</p>    
+  
+    <div class="video-embed">
+      <iframe
+        frameBorder="0"
+        allowFullScreen=""
+        src="https://www.youtube.com/embed/E3kNTMZPELk"
+      ></iframe>
+    </div>
+    <center><em>Sample 1. A short recording of a Tanpura</em></center>
+
+    <br>
+
+    <p>As you can hear, the Tanpura has a very distinctive sound which is quite different from other string instruments you may have heard.</p>
+
+    <h2>The Sound of a String</h2>
+
+    <p>There has been a lot of research into the sound of the Tanpura, starting from C. V. Raman in 1921 till the present times. So the phenomenon of how a Tanpura string vibrates and produces sound is not so mysterious. But before we attempt to explain the Tanpura sound, we need to look at a generic string and how it vibrates. Consider a string stretched across two points of contact. If the string is plucked, then how would it vibrate? It turns out that the string vibrates in a combination of the following modes of vibration.</p>
+
+    <br>
+
+    <center><img src="/story/harmonics.png" alt="Modes of Vibration in a Vibrating String" style="width: 45%; border-radius: 1vmin;"></center>
+    <center><em>Figure 2. Modes of Vibration in a Vibrating String</em></center>
+
+    <br>
+
+    <p>It may look strange but really the string is vibrating in all of those ways at the same time. Not all of the modes vibrate with the same amount of intensity though. The most fundamental mode of vibration is the one labelled \(f\) with the single peak right in the middle. This is the most dominant mode of vibration. The intensity of vibration progressively decreases as you go to higher modes of vibration, \(2f\), \(3f\), \(4f\), etc.</p>
+
+    <p>Now each mode corresponds to a different pitch, with the mode \(2f\) at twice the frequency as \(f\), \(3f\) at thrice the frequency as \(f\) and so on as the labels indicate. What we hear is the cumulative sound of all of those pitches playing out at different intensities. Since \(f\) is the loudest, our ears perceive it as the pitch \(f\) and the higher modes of vibration lend the sound its character or what is called the timbre.</p>
+
+    <p>The timbre is how we can distinguish between two different strings even though they may be tuned to produce the same pitch. The difference in their material, thickness and other physical properties manifests itself in terms of how the energy of vibration is distributed across modes, and hence their timbre.</p>
+
+    <p>These modes of vibration are also referred to as overtones or harmonics. They play a key role in giving rise to the characteristic Tanpura sound. Listen to the sample below to hear the different harmonics of a string.</p>
+
+    <div class="video-embed">
+      <iframe
+        frameBorder="0"
+        allowFullScreen=""
+        src="https://www.youtube.com/embed/E3kNTMZPELk"
+      ></iframe>
+    </div>
+    <center><em>Sample 2. First 16 Harmonics of a String</em></center>
+  
+    <br>
+  
+    <h2>Perception of Pitch and Interactions between Pitches</h2>
+
+    <p>We need to talk about an important mathematical equation which is key to explaining the Tanpura sound.</p>
+
+    <p>\[\sin(2\pi f_1) + \sin(2\pi f_2) = 2\sin\left(2\pi\left({f_1+f_2 \over 2}\right)\right)\cos\left(2\pi\left({f_1-f_2 \over 2}\right)\right)\]</p>
+
+    <p>For the less mathematically inclined, \(\sin(2\pi f_1)\) represents a signal which is oscillating or vibrating at a frequency \(f_1\).</p>
+
+    <p>So what this equation says is that when we hear two signals vibrating at \(f_1\) and \(f_2\) at the same time, it can also be regarded as hearing the product of two signals vibrating at the average and half the difference of the two frequencies, i.e., at \({f_1+f_2 \over 2}\) and \({f_1-f_2 \over 2}\) respectively.</p>
+
+    <p>Now think about the case where the frequencies \(f_1\) and \(f_2\) are really close. In fact, consider that \(f_1\) and \(f_2\) are so close that the difference is near the limit of human capability to discriminate pitches. At this point, if I were to play a string at \(f_1\) and then a string at \(f_2\), fewer and fewer people would be able to tell them apart as different pitches, as the pitches get closer and closer.</p>
+
+    <p>In such a situation, let us use the above equation to figure out what would happen when \(f_1\) and \(f_2\) are played together. We would hear it as a signal at the average pitch \({f_1+f_2 \over 2}\) (which again is very close to \(f_1\) or \(f_2\), since they are so close together) and the intensity of this signal would be modulated by another signal which rises and ebbs very slowly at the rate \({f_1-f_2 \over 2}\).</p>
+
+    <p>Listen to the sample below to hear two close frequencies \(f_1\) and \(f_2\) played one after the other and then played together to understand this effect.</p>
+
+    <div class="video-embed">
+      <iframe
+        frameBorder="0"
+        allowFullScreen=""
+        src="https://www.youtube.com/embed/E3kNTMZPELk"
+      ></iframe>
+    </div>
+    <center><em>Sample 3. Two very close pitches played separately and then together</em></center>
+  
+    <br>
+
+    <h2>A Tanpura String</h2>
+
+    <p>We learned two concepts so far: vibrating modes of a string or harmonics; and what happens when two pitches very close together are played at the same time. We need to understand three more points and then we would be ready to put things together to explain the sound an individual Tanpura string produces.</p>
+
+    <h3>Vibrating Length and Pitch</h3>
+
+    <p>This one is easy: the length of the string determines the pitch of the string. To be a bit more precise, two strings which are stretched to the same level of tension would vibrate at pitches inversely proportional to their vibrating lengths. For example, a string which is half the length of a second string, would vibrate at twice the pitch of the second string.</p>
+
+    <h3>Rounded Bridge and Length Variation</h3>
+
+    <p>The role of the rounded bridge in a Tanpura is to spread the point of contact between the string and the bridge. This results in the vibrating length of the string changing ever so slightly as the string vibrates. This turn causes the pitch of the string to modulate slightly as it vibrates.</p>
+
+    <h3>Cotton Thread and Sharpness</h3>
+
+    <p>A side-effect of a rounded bridge is that the string grazes against the bridge more than it would with a pointier bridge. This results in a duller sound which dissipates more quickly. The role of the cotton thread is to restore the sharpness and to sustain the sound.</p>
+
+    <p>Overall, the combination of the rounded bridge and the cotton thread in the Tanpura, achieve the effect of maintaining the sharpness and sustain of a pointy bridge while also allowing the vibrating length to change subtly as the string vibrates.</p>
+
+    <h3>Putting it all together</h3>
+
+    <p>Now, we know that if the vibrating length changes, the pitch of the string would also change. Let us say the pitch increases and decreases by an amount f because of the changing length, giving us two close pitches \(f+\Delta f\) and \(f-\Delta f\).</p>
+
+    <p>We also know that if two signals very close together in pitch are played simultaneously, we get the effect of a periodic ebb and rise of the intensity or amplitude of the signal. The rate of rise and fall is half the difference between the pitches \({f_1-f_2 \over 2}\) which is nothing but \(\Delta f\).</p>
+
+    <p>Finally, recall that in a Tanpura string (any string for that matter), there are multiple modes of vibration \(f\), \(2f\), \(3f\) and so on which occur concurrently.</p>
+
+    <p>Putting it all together, the pitch \(f\) would rise and fall in intensity at the rate \(\Delta f\), the pitch \(2f\) at the rate \(2\Delta f\), the pitch \(3f\) at \(3\Delta f\) and so on.</p>
+
+    <p>This is really amazing that the timing of the ebb and rise is different for each harmonic, enabling us to hear each harmonic separately in quick succession.</p>
+
+    <p>Recall that in a generic string the fundamental mode of vibration \(f\) overshadows the higher harmonics and we can only hear the higher harmonics in the form of the timbre of the string.</p>
+
+    <p>In a Tanpura, the clever design of the bridge and the thread, allows us to split the harmonics and hear them separately. Much like a prism splitting white light into its constituent rainbow colours, the bridge and thread of the Tanpura split apart the harmonics of each string.</p>
+
+    <h2>How PureTones emulates the Tanpura</h2>
+
+    <p>PureTones works by creating a system of virtual strings. Each virtual string produces a signal which is synthesized by adding up several component signals. Each component signal corresponds to one single harmonic from the series, \(f\), \(2f\), \(3f\), etc.</p>
+
+    <p>The component signal produces the pitch corresponding to the harmonic it represents and also rises and ebbs at a tunable rate. The sum total of all these component signals over all the virtual strings results in the overall Tanpura sound.</p>
+
+    <center><img src="/story/puretones-signal-architecture.png" alt="Signal Architecture of PureTones" style="width: 56%; border-radius: 1vmin;"></center>
+    <center><em>Figure 3. Signal Architecture of PureTones</em></center>
+
+    <br>
+
+    <p>Like a physical Tanpura, PureTones allows an expert user:
+      <ul>
+        <li>to finely adjust the pitches of each virtual string,</li>
+        <li>to control the timbre of the string (which harmonic vibrates at what intensity),</li>
+        <li>to control the rate of rise and ebb of the harmonics (mimicking moving the cotton thread)</li>
+      </ul>
+    </p>
+
+    <h2>PureTones - a Musician’s Perspective</h2>
+
+    <p>Here is S Balachander narrating his perspective on the development and value of PureTones.</p>
+
+    <p><em><strong>“As an Indian classical musician, I look to the tanpura for inspiration and guidance in deciding a Raga. How so?</strong></em></p>
+
+    <p>A Tanpura by its structure and design produces a rich envelope of harmonics. This comes from the fundamental notes to which the four strings are tuned, their interactions, and the positioning of the cotton thread which can accentuate or mask certain harmonics.</p>
+
+    <p>Sometimes, I have a Raga in mind with certain shades of specific notes. For this Raga, the tuning of the tanpura strings needs to be manipulated, along with the thread positions, to create the harmonics which support those shades of those notes. At other times, as I tune a Tanpura, I listen to the harmonics it generates, and let that guide me to choose a Raga based on the shades of notes emphasized by those harmonics.</p>
+
+    <p>An acoustic Tanpura is generally made of a well seasoned wood. Even so, due to the changes in behavior of wood and metal strings, it responds differently at different times of day, at different seasons, etc. This naturally creates variations in the harmonic content.</p>
+
+    <p>A well-tuned tanpura fills in the musical space, and provides the perfect <em>Samvad</em> (consonance) to an appropriately chosen Raga scale.</p>
+
+    <p>What I desired in a digital Tanpura was the ability to fine tune every string, and the ability to vary the <em>Jawari</em> for each string. These capabilities are critical to creating a drone background consistent with the ratios of the Raga scale. The term <em>Jawari</em> refers to the timbre and quality of a string sound and the way in which the harmonics of a string are split apart and played out in time (like we referred to earlier how a prism splits white light).</p>
+
+    <p><em><strong>We considered, analysed and repeatedly tested all these aspects, in the design of PureTones.”</strong></em></p>
+
+    <h2>Contact Us</h2>
+
+    <p>PureTones is still under development. But we are eager to bring these tools to the music community. We have a closed beta program to evaluate and improve PureTones with the help of expert musicians.</p>
+
+    <p class="notice center">
+      If you would like to be part of this program, please write to us at <a href="mailto:puretones@sadharani.com">puretones@sadharani.com</a>.
+    <br><br>
+    <a class="button action" href="mailto:puretones@sadharani.com">Get in Touch</a>
+    </p>
+
+  </section>
+  <footer>
+    <p>Developed by <a href="https://www.sadharani.com">Sadharani</a></p>
+  </footer>
+</body>

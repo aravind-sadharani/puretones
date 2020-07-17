@@ -23,6 +23,10 @@ p {
   padding: 1vmin 3vmin;
 }
 
+ul {
+  padding: 1vmin 3vmin 1vmin 6vmin;
+}
+
 .notice {
   background-color: #ffead0;
   padding: 2vmin 3vmin 4vmin;
@@ -92,13 +96,19 @@ a {
   color: #859e6b;
 }
 
+.sadharanispan a {
+  font-weight: 700;
+  text-decoration: none;
+  color: #174444;
+}
+
 .video-embed {
   margin: 3vmin 2vmin;
   padding-bottom: 56.25%;
   position: relative;
   height: 0px;
   overflow: hidden;
-  border-radius: 0.3rem;
+  border-radius: 1vmin;
 }
 
 .video-embed iframe {
