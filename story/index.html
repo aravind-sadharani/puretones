@@ -21,7 +21,7 @@ Copyright 2020 - Sadharani Music Works
   <section class="article">
     <h2>Introduction</h2>
 
-    <p>PureTones is a project that started out as a musical exploration to understand and emulate the Tanpura. As of now, PureTones is at v1.0, in the form of a digital Tanpura emulator, which is available by invitation for evaluation purposes.</p>
+    <p><a href="/">PureTones</a> is a project that started out as a musical exploration to understand and emulate the Tanpura. As of now, PureTones is at v1.0, in the form of a digital Tanpura emulator, which is available by invitation for evaluation purposes.</p>
     
     <p>The Tanpura (also referred to as Tambura) is a musical instrument with an interesting and important place in Indian Classical music. As you may well know, it is not a lead instrument on which a melody is played. Rather it is used as a background instrument to create a drone accompaniment through the repetitive plucking of four open strings.</p>
     
@@ -49,15 +49,11 @@ Copyright 2020 - Sadharani Music Works
 
     <br>
 
-    <p>To appreciate the rich and characteristic sound of a tanpura, here is a short sample.</p>    
+    <p>To appreciate the rich and characteristic sound of a tanpura, here is a short sample.</p>
+
+    <br>
   
-    <div class="video-embed">
-      <iframe
-        frameBorder="0"
-        allowFullScreen=""
-        src="https://www.youtube.com/embed/E3kNTMZPELk"
-      ></iframe>
-    </div>
+    <center><audio src="/story/01-Tanpura-Sample.mp3" controls loop></audio></center>
     <center><em>Sample 1. A short recording of a Tanpura</em></center>
 
     <br>
@@ -81,15 +77,11 @@ Copyright 2020 - Sadharani Music Works
 
     <p>The timbre is how we can distinguish between two different strings even though they may be tuned to produce the same pitch. The difference in their material, thickness and other physical properties manifests itself in terms of how the energy of vibration is distributed across modes, and hence their timbre.</p>
 
-    <p>These modes of vibration are also referred to as overtones or harmonics. They play a key role in giving rise to the characteristic Tanpura sound. Listen to the sample below to hear the different harmonics of a string.</p>
+    <p>These modes of vibration are also referred to as overtones or harmonics. They play a key role in giving rise to the characteristic Tanpura sound. Listen to the sample below to hear the different harmonics of a string. The sample plays the harmonics in sequence from \(f\) all the way to \(16f\) and then back again.</p>
 
-    <div class="video-embed">
-      <iframe
-        frameBorder="0"
-        allowFullScreen=""
-        src="https://www.youtube.com/embed/E3kNTMZPELk"
-      ></iframe>
-    </div>
+    <br>
+
+    <center><audio src="/story/02-First-16-Harmonics.mp3" controls loop></audio></center>
     <center><em>Sample 2. First 16 Harmonics of a String</em></center>
   
     <br>
@@ -98,7 +90,7 @@ Copyright 2020 - Sadharani Music Works
 
     <p>We need to talk about an important mathematical equation which is key to explaining the Tanpura sound.</p>
 
-    <p>\[\sin(2\pi f_1) + \sin(2\pi f_2) = 2\sin\left(2\pi\left({f_1+f_2 \over 2}\right)\right)\cos\left(2\pi\left({f_1-f_2 \over 2}\right)\right)\]</p>
+    <center><p><small>\(\sin(2\pi f_1) + \sin(2\pi f_2) = 2\sin\left(2\pi{f_1+f_2 \over 2}\right)\cos\left(2\pi{f_1-f_2 \over 2}\right)\)</small></p></center>
 
     <p>For the less mathematically inclined, \(\sin(2\pi f_1)\) represents a signal which is oscillating or vibrating at a frequency \(f_1\).</p>
 
@@ -108,19 +100,46 @@ Copyright 2020 - Sadharani Music Works
 
     <p>In such a situation, let us use the above equation to figure out what would happen when \(f_1\) and \(f_2\) are played together. We would hear it as a signal at the average pitch \({f_1+f_2 \over 2}\) (which again is very close to \(f_1\) or \(f_2\), since they are so close together) and the intensity of this signal would be modulated by another signal which rises and ebbs very slowly at the rate \({f_1-f_2 \over 2}\).</p>
 
-    <p>Listen to the sample below to hear two close frequencies \(f_1\) and \(f_2\) played one after the other and then played together to understand this effect.</p>
+    <p>Listen to the samples below to hear two close frequencies \(f_1\) and \(f_2\) played separately and together to understand this effect. Can you tell the pitches \(f_1\) and \(f_2\) apart? When they are played together, notice how you hear the intensity rise and fall repeatedly as the signal dies out.</p>
 
-    <div class="video-embed">
-      <iframe
-        frameBorder="0"
-        allowFullScreen=""
-        src="https://www.youtube.com/embed/E3kNTMZPELk"
-      ></iframe>
-    </div>
-    <center><em>Sample 3. Two very close pitches played separately and then together</em></center>
+    <br>
+
+    <center><audio src="/story/03-1-Left-Tone.mp3" controls loop></audio></center>
+    <center><em>Sample 3. Tone \(f_1\) on the left channel.</em></center>
   
     <br>
 
+    <center><audio src="/story/03-2-Right-Tone.mp3" controls loop></audio></center>
+    <center><em>Sample 4. Tone \(f_2\) on the right channel.</em></center>
+  
+    <br>
+    
+    <center><audio src="/story/03-3-Both-Tones.mp3" controls loop></audio></center>
+    <center><em>Sample 5. Tones \(f_1\) and \(f_2\) together.</em></center>
+  
+    <br>
+
+    <p>Here is another set of samples of two close frequencies \(f_1\) and \(f_2\) played separately and together. Unlike the previous case where the samples consisted of tones, here you can hear a richer string-like sound. Again, can you tell the pitches \(f_1\) and \(f_2\) apart? This time, when the signals are played together, what do you hear in addition to the intensity fluctuations you heard previously?</p>
+
+    <br>
+
+    <center><audio src="/story/03-4-Left-String.mp3" controls loop></audio></center>
+    <center><em>Sample 6. String \(f_1\) on the left channel.</em></center>
+  
+    <br>
+
+    <center><audio src="/story/03-5-Right-String.mp3" controls loop></audio></center>
+    <center><em>Sample 7. String \(f_2\) on the right channel.</em></center>
+  
+    <br>
+    
+    <center><audio src="/story/03-6-Both-Strings.mp3" controls loop></audio></center>
+    <center><em>Sample 8. Strings \(f_1\) and \(f_2\) together.</em></center>
+  
+    <br>
+
+    <p>Sample 8 is a precursor of the PureTones sound. The next section should hopefully help to explain the characteristics of the sound you noted.</p>
+ 
     <h2>A Tanpura String</h2>
 
     <p>We learned two concepts so far: vibrating modes of a string or harmonics; and what happens when two pitches very close together are played at the same time. We need to understand three more points and then we would be ready to put things together to explain the sound an individual Tanpura string produces.</p>
@@ -179,6 +198,15 @@ Copyright 2020 - Sadharani Music Works
         <li>to control the rate of rise and ebb of the harmonics (mimicking moving the cotton thread)</li>
       </ul>
     </p>
+
+    <p>Here is a short sample of a PureTones drone track.</p>
+
+    <br>
+    
+    <center><audio src="/story/04-Puretones-Sample.mp3" controls loop></audio></center>
+    <center><em>Sample 9. A short sample of a PureTones Drone Track</em></center>
+  
+    <br>
 
     <h2>PureTones - a Musician’s Perspective</h2>
 
