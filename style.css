@@ -119,6 +119,10 @@ a {
   height: 100%;
 }
 
+.audio-embed {
+  margin: 0 2vmin;
+}
+
 .action {
   background-color: #333366;
   border-radius: 1vmin;
