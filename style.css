@@ -119,16 +119,6 @@ a {
   height: 100%;
 }
 
-.audio-embed {
-  margin: 0 2vmin;
-}
-
-.audio-embed iframe {
-  border: 0;
-  width: 100%;
-  height: 75px;
-}
-
 .action {
   background-color: #333366;
   border-radius: 1vmin;
