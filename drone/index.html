@@ -16,9 +16,10 @@ Copyright 2020 - Sadharani Music Works
 </head>
 <body>
   <header>
-    <h1><img src="/puretones-logo.svg">Story of PureTones</h1>
+    <a href="/"><h1><img src="/puretones-logo.svg">PureTones</h1></a>
   </header>
   <section class="article">
+    <h1>Story of the PureTones Drone</h1>
     <h2>Introduction</h2>
 
     <p><a href="/">PureTones</a> is a project that started out as a musical exploration to understand and emulate the Tanpura. We have now developed the PureTones Drone (a digital Tanpura emulator), which is available by invitation for evaluation purposes.</p>
@@ -33,17 +34,19 @@ Copyright 2020 - Sadharani Music Works
 
     <p>The story of PureTones begins with a conversation I had with Bala (S Balachander) regarding the Tanpura. Here is what I learned.</p>
 
-    <p>By and large, musicians agree that the Tanpura has a beautiful, resonant sound and it provides the perfect backdrop to start a musical rendition. Musicians also agree that transporting and taking care of a Tanpura while traveling is quite a task. It is quite a sizable instrument and like all musical instruments requires careful handling. Where opinions start to differ is the extent to which individual musicians are willing to put up with the overheads of handling a Tanpura, so that they can get that perfect sound.</p>
+    <p>By and large, Indian Classical musicians agree that the Tanpura has a beautiful, resonant sound and it provides the perfect backdrop to start a musical rendition. Musicians also agree that transporting and taking care of a Tanpura while traveling, is quite a task. It is a sizable instrument and like all musical instruments requires careful handling. Where opinions start to differ is the extent to which individual musicians are willing to put up with the overheads of handling a Tanpura, so that they can get that perfect sound.</p>
 
-    <p>There have been a number of substitutes developed over the years which are easier to transport, starting from rugged radio size boxes a few decades back to smartphone applications at present. These substitutes are basically electronic instruments which attempt to emulate the sound of the Tanpura. They are widely regarded as convenient but opinions differ about how suitable or acceptable they are musically.</p>
+    <p>There have been a number of substitutes developed over the years which are easier to transport, starting from rugged radio size boxes a few decades back to smartphone applications at present. These substitutes are basically electronic instruments which attempt to emulate the sound of the Tanpura. They are widely regarded as convenient but musicians do not seem to agree on how suitable or acceptable they are musically.</p>
 
-    <p>Their sonic quality aside, these substitutes come up short in not being able to provide the same kind of tuning controls which are available on a Tanpura which an expert musician can utilize to create just the right accompaniment. Since the detailed designs or source codes for existing electronic Tanpuras were not available, we were not in a position to understand how they worked, how their tonal and harmonic quality could be improved and how expert grade tuning controls could be added to them. So we started the PureTones project.</p>
+    <p>Their sonic quality aside, these substitutes come up short in not being able to provide the same kind of tuning controls which are available on a Tanpura which an expert musician can utilize to create just the right tuning. Since detailed design documents or source codes for existing electronic Tanpuras were not available, we were not in a position to understand how they worked, how their tonal and harmonic quality could be improved and how expert grade tuning controls could be added to them.</p>
+    
+    <p>So we started the PureTones project.</p>
 
     <h2>Basic Working of a Tanpura</h2>
 
-    <p>Let us dig in a bit and understand how a Tanpura works a little bit more. A Tanpura has a long stem which is attached to a soundboard and a round resonating enclosure. The stem and soundboard are generally made of wood, while the resonator may be made from the shell of pumpkin or gourd or from wood. The Tanpura has four strings with their tuning pegs at the top end. They pass over a smooth round bridge and are attached to the base of the instrument. In addition to the tuning pegs at the top, each string has small fine tuning knobs below the bridge. Finally, a cotton thread is passed between the strings and their contact point on the bridge. Using the tuning pegs, the fine tuning knobs and the position of the thread on the bridge, an expert artist can finely tune the Tanpura to create just the right sound needed for their musical rendition.</p>
+    <p>Let us dig in a bit and understand how a Tanpura works. A Tanpura (see Figure 1) has a long stem which is attached to a soundboard and a round resonating enclosure. The stem and soundboard are generally made of wood, while the resonator may be made from the shell of a pumpkin or gourd, or from wood. The Tanpura has four strings with their tuning pegs at the top end. They pass over a smooth round bridge and are attached to the base of the instrument. In addition to the tuning pegs at the top, each string has small fine tuning beads below the bridge. Finally, a cotton thread is passed between the strings and their contact point on the bridge. Using the tuning pegs, the fine tuning beads and the position of the thread on the bridge, an expert artist can finely tune the Tanpura to create just the right sound needed for their musical rendition.</p>
 
-    <center><img src="/story/tanpura-labelled.png" alt="Structure of a Tanpura" style="width: 57%;"></center>
+    <center><img src="/drone/tanpura-labelled.png" alt="Structure of a Tanpura" style="width: 57%;"></center>
     <center><em>Figure 1. Structure of a Tanpura</em></center>
     <center><em>(Picture courtesy of <a href="https://www.flickr.com/photos/91676597@N07/8325869555">Alex Lenovski</a> used under <a href="https://creativecommons.org/licenses/by/2.0/">CC BY 2.0</a>, Labels by Aravind Iyer)</em></center>
 
@@ -53,7 +56,7 @@ Copyright 2020 - Sadharani Music Works
 
     <br>
 
-    <center><audio src="/story/01-Tanpura-Sample.mp3" controls preload="none">This browser does not support audio.</audio></center>
+    <center><audio src="/drone/01-Tanpura-Sample.mp3" controls preload="none">This browser does not support audio.</audio></center>
     <center><em>Sample 1. A short recording of a Tanpura</em></center>
 
     <br>
@@ -62,26 +65,26 @@ Copyright 2020 - Sadharani Music Works
 
     <h2>The Sound of a String</h2>
 
-    <p>There has been a lot of research into the sound of the Tanpura, starting from C. V. Raman in 1921 till the present times. So the phenomenon of how a Tanpura string vibrates and produces sound is not so mysterious. But before we attempt to explain the Tanpura sound, we need to look at a generic string and how it vibrates. Consider a string stretched across two points of contact. If the string is plucked, then how would it vibrate? It turns out that the string vibrates in a combination of the following modes of vibration.</p>
+    <p>There has been a lot of research into the sound of the Tanpura, starting from C. V. Raman in 1921 till the present times. Subsequently, there have been a number of works which have investigated the phenomenon of how a Tanpura string vibrates and produces sound. But before we attempt to explain the Tanpura sound, we need to look at a generic string and how it vibrates. Consider a string stretched across two points of contact. If the string is plucked, then how would it vibrate? It turns out that the string vibrates in a combination of the following modes of vibration.</p>
 
     <br>
 
-    <center><img src="/story/harmonics.png" alt="Modes of Vibration in a Vibrating String" style="width: 45%; border-radius: 1vmin;"></center>
+    <center><img src="/drone/harmonics.png" alt="Modes of Vibration in a Vibrating String" style="width: 45%; border-radius: 1vmin;"></center>
     <center><em>Figure 2. Modes of Vibration in a Vibrating String</em></center>
 
     <br>
 
-    <p>It may look strange but really the string is vibrating in all of those ways at the same time. Not all of the modes vibrate with the same amount of intensity though. The most fundamental mode of vibration is the one labelled \(f\) with the single peak right in the middle. This is the most dominant mode of vibration. The intensity of vibration progressively decreases as you go to higher modes of vibration, \(2f\), \(3f\), \(4f\), etc.</p>
+    <p>It may look strange but really the string is vibrating in all of those ways at the same time. If you have look at the vibrating string side on, what you see visually is the string vibrate in a combination of these modes of vibration. Not all of the modes vibrate with the same amount of intensity though. The most fundamental mode of vibration is the one labelled \(f\) with the single peak right in the middle. This is the most dominant mode of vibration. The intensity of vibration progressively decreases as you go to higher modes of vibration, \(2f\), \(3f\), \(4f\), etc.</p>
 
-    <p>Now each mode corresponds to a different pitch, with the mode \(2f\) at twice the frequency as \(f\), \(3f\) at thrice the frequency as \(f\) and so on as the labels indicate. What we hear is the cumulative sound of all of those pitches playing out at different intensities. Since \(f\) is the loudest, our ears perceive it as the pitch \(f\) and the higher modes of vibration lend the sound its character or what is called the timbre.</p>
+    <p>Now each mode corresponds to a different pitch, with the mode \(2f\) at twice the frequency as \(f\), \(3f\) at thrice the frequency as \(f\) and so on as the labels indicate. What we hear is the cumulative sound of all of those pitches playing out at different intensities. Since \(f\) is the loudest (or most dominant), our ears perceive the overall pitch to be \(f\) and the higher modes of vibration lend the string sound its character or what is called the timbre.</p>
 
     <p>The timbre is how we can distinguish between two different strings even though they may be tuned to produce the same pitch. The difference in their material, thickness and other physical properties manifests itself in terms of how the energy of vibration is distributed across modes, and hence their timbre.</p>
 
-    <p>These modes of vibration are also referred to as overtones or harmonics. They play a key role in giving rise to the characteristic Tanpura sound. Listen to the sample below to hear the different harmonics of a string. The sample plays the harmonics in sequence from \(f\) all the way to \(16f\) and then back again.</p>
+    <p>These modes of vibration are also referred to as overtones or harmonics. They play a key role in giving rise to the characteristic Tanpura sound. Listen to the sample below to hear the different harmonics of a string. The sample plays the harmonics in sequence from \(f\) all the way to \(16f\) and then back again. If we take \(f\) to be the note <strong>Sa</strong>, then can you identify which note each harmonic corresponds to?</p>
 
     <br>
 
-    <center><audio src="/story/02-First-16-Harmonics.mp3" controls preload="none">This browser does not support audio.</audio></center>
+    <center><audio src="/drone/02-First-16-Harmonics.mp3" controls preload="none">This browser does not support audio.</audio></center>
     <center><em>Sample 2. First 16 Harmonics of a String</em></center>
 
     <br>
@@ -92,7 +95,7 @@ Copyright 2020 - Sadharani Music Works
 
     <center><p><small>\(\sin(2\pi f_1) + \sin(2\pi f_2) = 2\sin\left(2\pi{f_1+f_2 \over 2}\right)\cos\left(2\pi{f_1-f_2 \over 2}\right)\)</small></p></center>
 
-    <p>For the less mathematically inclined, \(\sin(2\pi f_1)\) represents a signal which is oscillating or vibrating at a frequency \(f_1\).</p>
+    <p>For the less mathematically inclined, \(\sin(2\pi f_1)\) represents a signal which is oscillating or vibrating at a frequency \(f_1\). For those who know their mathematics, this is just a basic identity in Trigonometry.</p>
 
     <p>So what this equation says is that when we hear two signals vibrating at \(f_1\) and \(f_2\) at the same time, it can also be regarded as hearing the product of two signals vibrating at the average and half the difference of the two frequencies, i.e., at \({f_1+f_2 \over 2}\) and \({f_1-f_2 \over 2}\) respectively.</p>
 
@@ -104,17 +107,17 @@ Copyright 2020 - Sadharani Music Works
 
     <br>
 
-    <center><audio src="/story/03-1-Left-Tone.mp3" controls loop preload="none">This browser does not support audio.</audio></center>
+    <center><audio src="/drone/03-1-Left-Tone.mp3" controls loop preload="none">This browser does not support audio.</audio></center>
     <center><em>Sample 3. Tone \(f_1\) on the left channel.</em></center>
   
     <br>
 
-    <center><audio src="/story/03-2-Right-Tone.mp3" controls loop preload="none">This browser does not support audio.</audio></center>
+    <center><audio src="/drone/03-2-Right-Tone.mp3" controls loop preload="none">This browser does not support audio.</audio></center>
     <center><em>Sample 4. Tone \(f_2\) on the right channel.</em></center>
   
     <br>
     
-    <center><audio src="/story/03-3-Both-Tones.mp3" controls loop preload="none">This browser does not support audio.</audio></center>
+    <center><audio src="/drone/03-3-Both-Tones.mp3" controls loop preload="none">This browser does not support audio.</audio></center>
     <center><em>Sample 5. Tones \(f_1\) and \(f_2\) together.</em></center>
   
     <br>
@@ -123,17 +126,17 @@ Copyright 2020 - Sadharani Music Works
 
     <br>
 
-    <center><audio src="/story/03-4-Left-String.mp3" controls loop preload="none">This browser does not support audio.</audio></center>
+    <center><audio src="/drone/03-4-Left-String.mp3" controls loop preload="none">This browser does not support audio.</audio></center>
     <center><em>Sample 6. String \(f_1\) on the left channel.</em></center>
   
     <br>
 
-    <center><audio src="/story/03-5-Right-String.mp3" controls loop preload="none">This browser does not support audio.</audio></center>
+    <center><audio src="/drone/03-5-Right-String.mp3" controls loop preload="none">This browser does not support audio.</audio></center>
     <center><em>Sample 7. String \(f_2\) on the right channel.</em></center>
   
     <br>
     
-    <center><audio src="/story/03-6-Both-Strings.mp3" controls loop preload="none">This browser does not support audio.</audio></center>
+    <center><audio src="/drone/03-6-Both-Strings.mp3" controls loop preload="none">This browser does not support audio.</audio></center>
     <center><em>Sample 8. Strings \(f_1\) and \(f_2\) together.</em></center>
   
     <br>
@@ -162,7 +165,7 @@ Copyright 2020 - Sadharani Music Works
 
     <p>We know that if the vibrating length changes, the pitch of the string would also change. Let us say, the pitch increases and decreases by an amount \(\Delta f\) because of the changing length, giving us two close pitches \(f+\Delta f\) and \(f-\Delta f\).</p>
 
-    <p>We also know that if these two signals which are very close together in pitch, are played simultaneously, we would hear their average pitch, which is nothing but \(f\). We would also perceive the amplitude of the signal periodically ebb and rise. The rate of rise and fall is half the difference between the pitches \({f_1-f_2 \over 2}\) which is nothing but \(\Delta f\).</p>
+    <p>We also know that if these two signals which are very close together in pitch, are played simultaneously, we would hear their average pitch, which is nothing but \(f\). We would also perceive the amplitude of the signal periodically ebb and rise. The rate of rise and fall is half the difference between the pitches \({f_1-f_2 \over 2}\) which is \(\Delta f\).</p>
 
     <p>Finally, recall that in a Tanpura string (any string for that matter), there are multiple modes of vibration \(f\), \(2f\), \(3f\) and so on which occur concurrently.</p>
 
@@ -172,24 +175,26 @@ Copyright 2020 - Sadharani Music Works
 
     <p>Thus, in a Tanpura, the clever design of the bridge and the thread, allows us to split the harmonics and hear them separately. Much like a prism splitting white light into its constituent rainbow colours, the bridge and thread of the Tanpura split apart the harmonics of each string.</p>
 
+    <p>Recall the first 16 harmonics from Sample 2. According to our explanation, we should be able to hear all those harmonics play one after the other in a single Tanpura string. We previewed this effect already in Sample 8. It is a good time now to go back and listen to Sample 2 and Sample 8 again with this explanation in mind.</p>
+
     <h3>Common Harmonics Audible in a Tanpura</h3>
 
     <p>For those who are familiar with the Tanpura, it is worth pointing out that harmonics like \(3f\) and \(5f\) may be instantly relatable.</p>
 
-    <p>If \(f\) is taken to be <strong>Sa</strong>, then \(3f\) is nothing but <strong>Pa</strong> and \(5f\) is nothing but <strong>Ga</strong> (<em>Antara Gandhar</em>).</p>
+    <p>If \(f\) is taken to be <strong>Sa</strong>, then \(3f\) is nothing but <strong>Pa</strong> and \(5f\) is nothing but <strong>Ga</strong> (<em>Antara Gandhar</em>). Did you hear these notes in Sample 2 and Sample 8?</p>
 
     <p>Similarly, if \(f\) is taken to be <strong>Pa</strong>, then \(3f\) is nothing but <strong>Re</strong> (<em>Tivra Rishabh</em>) and \(5f\) is nothing but <strong>Ni</strong> (<em>Kakali Nishad</em>).</p>
 
     <h2>How PureTones emulates the Tanpura</h2>
 
-    <p>PureTones works by creating a system of virtual strings. Each virtual string produces a signal which is synthesized by adding up several component signals. Each component signal corresponds to one single harmonic from the series, \(f\), \(2f\), \(3f\), etc.</p>
+    <p>PureTones works by creating a system of four virtual strings representing a string each from a real Tanpura (see Figure 3). Each virtual string produces a signal which is synthesized by adding up several component signals. Each component signal corresponds to one single harmonic from the series, \(f\), \(2f\), \(3f\), etc.</p>
 
-    <center><img src="/story/puretones-signal-architecture.png" alt="Signal Architecture of PureTones" style="width: 56%; border-radius: 1vmin;"></center>
+    <center><img src="/drone/puretones-signal-architecture.png" alt="Signal Architecture of PureTones" style="width: 56%; border-radius: 1vmin;"></center>
     <center><em>Figure 3. Signal Architecture of PureTones</em></center>
 
     <br>
 
-    <p>The component signal produces the pitch corresponding to the harmonic it represents and also rises and ebbs at a tunable rate. The sum total of all these component signals over all the virtual strings results in the overall Tanpura sound. This is depicted in Figure 3 above.</p>
+    <p>The component signal produces the pitch corresponding to the harmonic it represents and also rises and ebbs at a tunable rate. The sum total of all these component signals over all the virtual strings results in the overall Tanpura sound. To tie things up, Sample 8 represents a single virtual string. Putting four of them together creates the PureTones drone.</p>
 
     <p>Like a physical Tanpura, PureTones allows an expert user:
       <ul>
@@ -203,14 +208,14 @@ Copyright 2020 - Sadharani Music Works
 
     <br>
     
-    <center><audio src="/story/04-Puretones-Sample.mp3" controls preload="none">This browser does not support audio.</audio></center>
+    <center><audio src="/drone/04-Puretones-Sample.mp3" controls preload="none">This browser does not support audio.</audio></center>
     <center><em>Sample 9. A short sample of a PureTones Drone Track</em></center>
   
     <br>
 
     <h2>PureTones - a Musician’s Perspective</h2>
 
-    <p>Here is S Balachander narrating his perspective on the development and value of PureTones.</p>
+    <p>So far, we have looked at PureTones from the perspective of sound analysis and synthesis. What about the musical perspective? Here is S Balachander narrating his perspective on the development and value of PureTones.</p>
 
     <p><em><strong>“As an Indian classical musician, I look to the tanpura for inspiration and guidance in deciding a Raga. How so?</strong></em></p>
 
