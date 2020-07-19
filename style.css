@@ -1,5 +1,5 @@
 /*
-PureTones Introduction - Developed by Sadharani - www.sadharani.com
+PureTones - Developed by Sadharani - www.sadharani.com
 Copyright 2020 Sadharani Music Works
 */
 * {
@@ -23,6 +23,10 @@ p {
   padding: 1vmin 3vmin;
 }
 
+ul {
+  padding: 1vmin 3vmin 1vmin 6vmin;
+}
+
 .notice {
   background-color: #ffead0;
   padding: 2vmin 3vmin 4vmin;
@@ -40,6 +44,13 @@ h1 {
   color: #F76F8E;
   font-size: 3em;
   line-height: 1.5;
+}
+
+.article h1 {
+  font-size: 2.5em;
+  color: #404047;
+  padding: 2vmin 3vmin;
+  text-align: center;
 }
 
 header {
@@ -92,13 +103,19 @@ a {
   color: #859e6b;
 }
 
+.sadharanispan a {
+  font-weight: 700;
+  text-decoration: none;
+  color: #174444;
+}
+
 .video-embed {
   margin: 3vmin 2vmin;
   padding-bottom: 56.25%;
   position: relative;
   height: 0px;
   overflow: hidden;
-  border-radius: 0.3rem;
+  border-radius: 1vmin;
 }
 
 .video-embed iframe {
@@ -115,4 +132,16 @@ a {
   color: #e6e6eb;
   font-size: 1.1em;
   padding: 1vmin 4vmin;
+}
+
+.work-item-container {
+  margin: 1rem 0;
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+}
+
+@media (max-width: 37.5em) {
+  .work-item-container {
+    grid-template-columns: 1fr;
+  }
 }
