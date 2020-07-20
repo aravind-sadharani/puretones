@@ -61,6 +61,8 @@ Copyright 2020 - Sadharani Music Works
 
     <br>
 
+    <p class="notice "><strong>Note:</strong> This article features several audio samples which are an integral part of the narrative. Please try and use a pair of headphones or good quality speakers to listen to the samples with maximum clarity.</p>
+
     <p>As you can hear, the Tanpura has a very distinctive sound which is quite different from other string instruments you may have heard.</p>
 
     <h2>The Sound of a String</h2>
@@ -187,14 +189,16 @@ Copyright 2020 - Sadharani Music Works
 
     <h2>How PureTones emulates the Tanpura</h2>
 
-    <p>PureTones works by creating a system of four virtual strings representing a string each from a real Tanpura (see Figure 3). Each virtual string produces a signal which is synthesized by adding up several component signals. Each component signal corresponds to one single harmonic from the series, \(f\), \(2f\), \(3f\), etc.</p>
+    <p>PureTones is currently implemented in <a href="https://faust.grame.fr/">Faust</a>, a functional programming language for sound synthesis and audio processing.</p>
+
+    <p>PureTones works by creating a system of four virtual strings representing each physical string from a real Tanpura (see Figure 3). Each virtual string produces a signal which is synthesized by adding up several component signals. Each component signal corresponds to one single harmonic from the series, \(f, 2f,...,kf,...\)</p>
 
     <center><img src="/drone/puretones-signal-architecture.png" alt="Signal Architecture of PureTones" style="width: 56%; border-radius: 1vmin;"></center>
     <center><em>Figure 3. Signal Architecture of PureTones</em></center>
 
     <br>
 
-    <p>The component signal produces the pitch corresponding to the harmonic it represents and also rises and ebbs at a tunable rate. The sum total of all these component signals over all the virtual strings results in the overall Tanpura sound. To tie things up, Sample 8 represents a single virtual string. Putting four of them together creates the PureTones drone.</p>
+    <p>The \(k-\)th component signal produces the pitch \(kf\) such that its intensity rises and ebbs at a tunable rate \(k\Delta f\). The sum total of all these component signals over all the virtual strings results in the overall Tanpura sound. To relate this explanation to an actual sample you heard earlier, Sample 8 represents an individual virtual string. Putting four of them together creates the PureTones drone.</p>
 
     <p>Like a physical Tanpura, PureTones allows an expert user:
       <ul>
