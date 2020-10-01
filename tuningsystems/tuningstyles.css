@@ -52,8 +52,8 @@ li {
 
 .key {
     position: relative;
-    width: 11vw;
-    height: 33vw;
+    width: 11vmin;
+    height: 33vmin;
     border: 1px solid black;
     background: #fefef0;
     border-radius: 5px;
@@ -62,16 +62,16 @@ li {
     display: flex;
     justify-content: center;
     align-items: flex-end;
-    padding-bottom: 2vw;
+    padding-bottom: 2vmin;
     font-weight: bold;
 }
 
 .blackkey {
     position: absolute;
     top: -1px;
-    left: 6.875vw;
-    width: 8.25vw;
-    height: 22vw;
+    left: 6.875vmin;
+    width: 8.25vmin;
+    height: 22vmin;
     background: black;
     border-radius: 5px;
     box-shadow: 0px 3px 5px #666666;
@@ -80,7 +80,7 @@ li {
     display: flex;
     justify-content: center;
     align-items: flex-end;
-    padding-bottom: 2vw;
+    padding-bottom: 2vmin;
     color: white;
 }
 
@@ -91,9 +91,9 @@ li {
 .graykeyleft {
     position: absolute;
     top: -1px;
-    left: -1.833vw;
-    width: 9.167vw;
-    height: 25.667vw;
+    left: -1.833vmin;
+    width: 9.167vmin;
+    height: 25.667vmin;
     background: #c2c2b0;
     border: 1px solid black;
     border-radius: 5px;
@@ -103,16 +103,16 @@ li {
     display: flex;
     justify-content: center;
     align-items: flex-end;
-    padding-bottom: 2vw;
+    padding-bottom: 2vmin;
     font-weight: bold;
 }
 
 .graykeyright {
     position: absolute;
     top: -1px;
-    left: 3.667vw;
-    width: 9.167vw;
-    height: 25.667vw;
+    left: 3.667vmin;
+    width: 9.167vmin;
+    height: 25.667vmin;
     background: #c2c2b0;
     border: 1px solid black;
     border-radius: 5px;
@@ -122,16 +122,16 @@ li {
     display: flex;
     justify-content: center;
     align-items: flex-end;
-    padding-bottom: 2vw;
+    padding-bottom: 2vmin;
     font-weight: bold;
 }
 
 .dgraykeyright {
     position: absolute;
     top: -1px;
-    left: 5.5vw;
-    width: 7.333vw;
-    height: 18.333vw;
+    left: 5.5vmin;
+    width: 7.333vmin;
+    height: 18.333vmin;
     background: #303030;
     border-radius: 5px;
     box-shadow: 0px 3px 5px #666666;
@@ -140,16 +140,16 @@ li {
     display: flex;
     justify-content: center;
     align-items: flex-end;
-    padding-bottom: 2vw;
+    padding-bottom: 2vmin;
     color: white;
 }
 
 .dblackkey {
     position: absolute;
     top: -1px;
-    left: 3.667vw;
-    width: 7.333vw;
-    height: 11vw;
+    left: 3.667vmin;
+    width: 7.333vmin;
+    height: 11vmin;
     background: black;
     border-radius: 5px;
     box-shadow: 0px 3px 5px #303030;
@@ -158,6 +158,6 @@ li {
     display: flex;
     justify-content: center;
     align-items: flex-end;
-    padding-bottom: 2vw;
+    padding-bottom: 2vmin;
     color: white;
 }
