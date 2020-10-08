@@ -12,6 +12,8 @@ Copyright 2020 - Sadharani Music Works
     <link rel="stylesheet" href="./tuningstyles.css">
     <link href="https://fonts.googleapis.com/css?family=Noto+Sans:400,700" rel="stylesheet">
     <script src="./tuningscripts.js"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-svg.js"></script>
 </head>
 <body>
     <header>
@@ -19,10 +21,72 @@ Copyright 2020 - Sadharani Music Works
     </header>
     <section class="article">
     <h1>Indian Tuning Systems</h1>
+    
+    <p>To understand the role of harmonics, microtones and consonance in Indian Classical music and musical scales, it is necessary to understand the tuning systems which underpin Indian musical scales.</p>
+    
+    <p>In this article, we will reconstruct two significant tuning systems used in Indian Classical music:</p>
+    
+    <ol>
+        <li>The first is a 22 note scale whose earliest reference is due to <strong>Bharat</strong> in <strong>Natya Shastra</strong> and which was later documented by <strong>Sarang Dev</strong> in <strong>Sangeet Ratnakar</strong>.</li>
+        <li>The second is a 12 note scale first devised by <strong>Ramamatya</strong> in <strong>Svaramelakalanidhi</strong> and which was later documented by <strong>Venkatamakhin</strong> in <strong>Chaturdanda Prakasika</strong>.</p></li>
+    </ol>
+    
+    <h2>Basic Intervals and Ratios</h2>
+    <p>Before we begin reconstructing any tuning system, it is useful to familiarize ourselves with the four basic intervals of <em>Dviguna</em> (octave), <em>Pancham</em> (fifth), <em>Madhyam</em> (fourth) and <em>Gandhar</em> (major third). You can play and check these intervals using the keyboard below (just click or tap a key to play). Here <strong>Sa</strong> denotes the fundamental and <strong>Ga, ma, Pa</strong> and <strong>SA</strong> denote the Gandhar, Madhyam, Pancham and Dviguna respectively.</p>
+
+    <br />
+    <ul id="basicintervals" class="keyboard">
+        <li>
+            <div class="key" onmousedown="keyplay('Sa')">Sa</div>
+            <div class="blackkey keyfaint"></div>
+        </li>
+        <li>
+            <div class="key keyfaint"></div>
+            <div class="blackkey keyfaint"></div>
+        </li>
+        <li>
+            <div class="key" onmousedown="keyplay('Ga-b')">Ga</div>
+            <audio id="Ga-b" src="./05-Ga-b.mp3"></audio>
+        </li>
+        <li>
+            <div class="key" onmousedown="keyplay('ma')">ma</div>
+            <div class="blackkey keyfaint"></div>
+        </li>
+        <li>
+            <div class="key" onmousedown="keyplay('Pa')">Pa</div>
+            <div class="blackkey keyfaint"></div>
+        </li>
+        <li>
+            <div class="key keyfaint"></div>
+            <div class="blackkey keyfaint"></div>
+        </li>
+        <li>
+            <div class="key keyfaint"></div>
+        </li>
+        <li>
+            <div class="key" onmousedown="keyplay('SA')">SA</div>
+        </li>
+    </ul>
+    <br />
+    <center><em>Demo 1. Basic Intervals</em></center>
+
+    <p class="notice "><strong>Note:</strong> This article features several audio samples which are an integral part of the narrative. For ease of understanding, these samples have been presented in the form of a musical keyboard which many would recognize. Simply click or tap a key to play. Please try and use a pair of headphones or good quality speakers to listen to the samples with maximum clarity. Note that <strong>Sa</strong> is taken to be the pitch <strong>C</strong>.</p>
+
+    <p>As you can hear from Demo 1, Pancham, Madhyam and Gandhar are recognisable intervals. For the musically inclined, they are easy to recognise by ear. It is also possible to determine their frequency ratios in relation to the fundamental.</p>
+        
+    <p>One way in which this can be done is by comparing lengths. Firstly, we can observe that the pitch of a string is inversely proportional to its vibrating length. Secondly, taking a certain string length to represent the fundamental, we can observe that if we touch the string at a third of its length from one end and pluck the remaining two-thirds, it results in the string sounding the fifth. Similarly, touching it at a fourth of its length from one end results in the remaining three-fourths to sound the fourth, touching it at a fifth of its length results in the major third, and touching it at the midpoint results in either half to sound the octave.</p>
+    
+    <p>So by inverting these string lengths, let us start by pointing out that with <strong>Sa = 1</strong>, we have <strong>SA = 2, Pa = 3/2, ma = 4/3</strong> and <strong>Ga = 5/4</strong>.</p>
+
     <h2>Sama Gana Scale</h2>
-    <p>Pancham and Madhyam bhav are recognisable intervals. They are easy to recognise by ear. It is also easy to determine their frequency ratios in relation to the fundamental, by comparing lengths. So, let us start by pointing out that with Sa = 1 and SA = 2, Pa = 3/2 and ma = 4/3.</p> 
-    <p>Knowing these two, it is possible to derive the ma-Pa interval. This can be learned by people to recognise by ear. The size of the interval can be calculated as 3/2 divided by 4/3 = 9/8.</p>
-    <p>Using this, the following Sama Gana scale can be derived. The method of derivation is given in the remarks column.</p>
+
+    <p>The first scale we will examine is the <em>Sama Gana</em> scale which was used to sing passages from the <em>Sama Veda</em>. Folk music or informal music was always around in India. But Indian music started to get formalized as the chants of <em>Rig Veda</em> evolved into a more sing-song way of rendering passages from Sama Veda.</p>
+        
+    <p>Sama Gana is the act of singing the Sama Veda. A typical arrangement employed three groups of singers with one group singing at the pitch <strong>Sa</strong>, the second at <strong>ma</strong> and the third at <strong>Pa</strong>. Each group used three notes, a center note, a low note and a high note. The center note was whichever pitch they were singing, <em>i.e.,</em> Sa, ma or Pa. The high note was higher than the center note by a tone and the low note was lower than the center note by a tone.</p>
+
+    <p>Knowing the Pa and ma intervals, it is possible to derive the <strong>ma-Pa</strong> interval. For the musically inclined, you may be able to recognise it by ear. The size of the ma-Pa interval can be calculated as <strong>3/2 &divide; 4/3 = 9/8</strong>. This ma-Pa interval was used as the tone to derive the high and low notes from the center note. Note that the ma-Pa interval is different from the <a href="https://en.wikipedia.org/wiki/Major_second">whole tone</a> used in today's standard <a href="https://en.wikipedia.org/wiki/12_equal_temperament">12 tone equally tempered scale</a>. The whole tone is 200 <a href="https://en.wikipedia.org/wiki/Cent_(music)">cents</a> wide, while the ma-Pa interval is a bit wider at 203.9 cents.</p>
+
+    <p>Using this, the Sama Gana scale as depicted in Table 1 can be derived. The method of derivation is given in the remarks column.</p>
     
     <div class="tablecontainer">
         <center>
@@ -66,12 +130,16 @@ Copyright 2020 - Sadharani Music Works
         </center>
     </div>
 
+    <br />
+
+    <p>The Sama Gana scale can also be represented by showing the relevant pitches in a circle (see Figure 1). Here Sa is at 12 O'clock and you get higher pitches as you move clockwise with a 360&deg; rotation representing an octave. By rotating an amount corresponding to the ma-Pa interval of 9/8 from Sa, ma and Pa, we can determine the positions of the other notes in the scale.</p>
+
     <p>
     <center><img src="Sama-Gana.png" alt="Sama Gana Scale" style="width:80%;"></center>
     <center><em>Figure 1. Illustration of Sama Gana Scale</em></center>
     </p>
 
-    <p>In this scale, the intervals Re-ga and Dha-ni were regarded as Vivadi. The size of these intervals can be calculated to be 256/243 = 1.053497942. This scale may have been appropriate for chanting, but as a musical scale, these gaps needed to be "fixed".</p>
+    <p>You can play and check how the Sama Gana scale sounds using Demo 2 below.</p>
 
     <br />
 
@@ -112,278 +180,33 @@ Copyright 2020 - Sadharani Music Works
         </li>
     </ul>
     <br />
-    <center><em>Demo 1. Sama Gana Scale</em></center>
+    <center><em>Demo 2. Sama Gana Scale</em></center>
 
     <br />
-    <h2>Circle of Fifths</h2>
-    <p>Using the Pancham and Madhyam bhavs, we can also form two scales called the circle of fifths and the circle of fourths. In the circle of fifths, starting from the note Sa, you derive the next note in the scale by taking the fifth of the previously derived note. So, Pa follows from Sa. Then Re follows from Pa. And so on. Here they are (see below). Indian music scholars of old knew these two scales (at least, conceptually and mathematically, if not being able to make a harp practically)</p>
+
+    <p>In this scale, the intervals Re-ga and Dha-ni were regarded as <em>Vivadi</em> (dissonant). The size of these intervals can be calculated to be <strong>32/27 &divide; 9/8 = 256/243 = 1.053497942</strong>. This interval \(\frac{256}{243}\) was recognized and known as <strong>Purna Shruti</strong>. Note that the Purna Shruti is roughly comparable to the <a href="https://en.wikipedia.org/wiki/Semitone">semi-tone</a> used in today's standard 12 tone equally tempered scale. The standard semi-tone is 100 cents wide, while the Re-ga interval is a bit narrower at 90.2 cents. This scale may have been appropriate for chanting, but as a musical scale, it was not considered appropriate. In order to make it musical, the musical scholars of the day felt that the Re-ga and Dha-ni intervals needed to be slightly increased.</p>
+
+    <h2>Shadaj Gram (from Sama Gana Scale)</h2>
+
+    <p>The Shadaj Gram scale is cited as a 7 note scale and also as a 22 note scale (which includes the original 7 notes). Let us reconstruct the 7 note scale first.</p>
+
+    <p>There are two ways in which Shadaj Gram can be understood. The first is to understand it as an adjustment of the Sama Gana scale, to make it more musical by adjusting the Vivadi intervals of Re-ga and Dha-ni. The second is to understand it in terms of <strong>Shruti Intervals</strong> as specified by Bharat and Sharang Dev. Let us look at both explanations and see how they are mutually consistent.</p>
+
+    <p>First, we have to re-trace the line of reasoning that might have been employed by the musical scholars of the day to derive the Shadaj Gram scale from the Sama Gana scale. There are two options to fix the dissonant Re-ga and Dha-ni intervals:</p>
     
-    <div class="tablecontainer">
-    <center>
-        <em>Table 2. Illustration of Circle of Fifths</em>
-        <table border="1" cellpadding="2" cellspacing="0">
-            <tbody>
-                <tr class="trheader">
-                    <td colspan="5"><center>Circle of Fifths</center></td>
-                    </tr>
-                <tr class="trheader">
-            <td>Note</td><td>Ratio</td><td>Symbolic Ratio</td><td>Sequence #</td><td>Remarks</td>
-            </tr>
-            <tr class="tremph">
-            <td>Sa</td><td align="right">1</td><td>1</td><td align="right">1</td><td>Fundamental</td>
-            </tr>
-            <tr class="tralt">
-            <td>re</td><td align="right">1.067871094</td><td>2187/2048</td><td align="right">8</td><td>Fifth of Ma</td>
-            </tr>
-            <tr class="tremph">
-            <td>Re</td><td align="right">1.125</td><td>9/8</td><td align="right">3</td><td>Fifth of Pa</td>
-            </tr>
-            <tr class="tralt">
-            <td>ga</td><td align="right">1.20135498</td><td>19683/16384</td><td align="right">10</td><td>Fifth of dha</td>
-            </tr>
-            <tr class="tremph">
-            <td>Ga</td><td align="right">1.265625</td><td>81/64</td><td align="right">5</td><td>Fifth of Dha</td>
-            </tr>
-            <tr class="tralt">
-            <td>ma</td><td align="right">1.351524353</td><td>177147/131072</td><td align="right">12</td><td>Fifth of ni</td>
-            </tr>
-            <tr class="tremph">
-            <td>Ma</td><td align="right">1.423828125</td><td>729/512</td><td align="right">7</td><td>Fifth of Ni</td>
-            </tr>
-            <tr class="tralt">
-            <td>Pa</td><td align="right">1.5</td><td>3/2</td><td align="right">2</td><td>Fifth of Sa</td>
-            </tr>
-            <tr class="tremph">
-            <td>dha</td><td align="right">1.601806641</td><td>6561/4096</td><td align="right">9</td><td>Fifth of re</td>
-            </tr>
-            <tr class="tralt">
-            <td>Dha</td><td align="right">1.6875</td><td>27/16</td><td align="right">4</td><td>Fifth of Re</td>
-            </tr>
-            <tr class="tremph">
-            <td>ni</td><td align="right">1.802032471</td><td>59049/32768</td><td align="right">11</td><td>Fifth of ga</td>
-            </tr>
-            <tr class="tralt">
-            <td>Ni</td><td align="right">1.8984375</td><td>243/128</td><td align="right">6</td><td>Fifth of Ga</td>
-            </tr>
-            </tbody></table>
-    </center>
-    </div>
+    <ol>
+        <li>Increase the pitch of ga and ni slightly.</li>
+        <li>Decrease the pitch of Re and Dha slightly.</li>
+    </ol>
 
-    <br />
+    <p>The first option would result in losing the consonance between ma and ni (ni is the fourth of ma in Sama Gana scale), while the second option would result in losing the consonance between Re and Pa (Pa is the fourth of Re). We know that they chose the second option since Bharat and Sharang Dev point out that Re and Pa are not consonant in Shadaj Gram.</p>
 
-    <p>
-        <center><img src="Circle-fifths.png" alt="Circle of Fifths" style="width:80%;"></center>
-        <center><em>Figure 2. Illustration of Circle of Fifths</em></center>
-    </p>
-
-    <ul id="circlefifth" class="keyboard">
-        <li>
-            <div class="key" onmousedown="keyplay('Sa')">1</div>
-            <div class="blackkey" onmousedown="keyplay('re-s')">8</div>
-            <audio id="re-s" src="./02-re-s.mp3"></audio>
-        </li>
-        <li>
-            <div class="key" onmousedown="keyplay('Re')">3</div>
-            <div class="blackkey" onmousedown="keyplay('ga-s')">10</div>
-            <audio id="ga-s" src="./04-ga-s.mp3"></audio>
-        </li>
-        <li>
-            <div class="key" onmousedown="keyplay('Ga')">5</div>
-            <audio id="Ga" src="./05-Ga.mp3"></audio>
-        </li>
-        <li>
-            <div class="key" onmousedown="keyplay('ma-s')">12</div>
-            <audio id="ma-s" src="./06-ma-s.mp3"></audio>
-            <div class="blackkey" onmousedown="keyplay('Ma')">7</div>
-            <audio id="Ma" src="./07-Ma.mp3"></audio>
-        </li>
-        <li>
-            <div class="key" onmousedown="keyplay('Pa')">2</div>
-            <div class="blackkey" onmousedown="keyplay('dha-s')">9</div>
-            <audio id="dha-s" src="./09-dha-s.mp3"></audio>
-        </li>
-        <li>
-            <div class="key" onmousedown="keyplay('Dha')">4</div>
-            <div class="blackkey" onmousedown="keyplay('ni-s')">11</div>
-            <audio id="ni-s" src="./11-ni-s.mp3"></audio>
-        </li>
-        <li>
-            <div class="key" onmousedown="keyplay('Ni')">6</div>
-            <audio id="Ni" src="./12-Ni.mp3"></audio>
-        </li>
-        <li>
-            <div class="key" onmousedown="keyplay('SA')">1</div>
-            <div class="graykeyright" onmousedown="keyplay('SA-s')">13=1&sharp;</div>
-            <audio id="SA-s" src="./13-SA-s.mp3"></audio>
-        </li>
-    </ul>
-    <br />
-    <center><em>Demo 2. Circle of Fifths</em></center>
-    <br />
-    <h2>Circle of Fourths</h2>
-    <p>The circle of fourths is similar except it uses fourths to derive the next note.</p>
+    <p>Let us try and determine specifically by how much Re and Dha were reduced in pitch. Look at the notes from ma to SA in Sama Gana scale (Demo 2). Look at the relationship between ma and Dha and note that the interval ma-Dha is a bit wider than the Gandhar (major third) interval (Demo 1). The ma-Dha interval consists of the ma-Pa interval (whole tone) applied twice. You may be aware that two whole tones are bigger than a major third.</p>
+        
+    <p>In Shadaj Gram, the note Dha from Sama Gana scale was reduced in pitch to Dha<strong>&flat;</strong> to maintain the Gandhar interval with respect to ma. The note Re from Sama Gana scale was reduced by a similar amount in pitch to Re<strong>&flat;</strong> so that the Re<strong>&flat;</strong>-Dha<strong>&flat;</strong> interval was maintained to be the Pancham.</p>
     
-    <div class="tablecontainer">
-    <center>
-        <em>Table 3. Illustration of Circle of Fourths</em>
-        <table border="1" cellpadding="2" cellspacing="0">
-            <tbody>
-                <tr class="trheader">
-                    <td colspan="5"><center>Circle of Fourths</center></td>
-                    </tr>
-                <tr class="trheader">
-            <td>Circle of Fourths Note</td><td>Ratio</td><td>Symbolic Ratio</td><td>Sequence #</td><td>Remarks</td>
-            </tr>
-            <tr class="tremph">
-            <td>Sa</td><td align="right">1</td><td>1</td><td align="right">1</td><td>Fundamental</td>
-            </tr>
-            <tr class="tralt">
-            <td>re</td><td align="right">1.053497942</td><td>256/243</td><td align="right">6</td><td>Fourth of dha</td>
-            </tr>
-            <tr class="tremph">
-            <td>Re</td><td align="right">1.109857915</td><td>65536/59049</td><td align="right">11</td><td>Fourth of Dha</td>
-            </tr>
-            <tr class="tralt">
-            <td>ga</td><td align="right">1.185185185</td><td>32/27</td><td align="right">4</td><td>Fourth of ni</td>
-            </tr>
-            <tr class="tremph">
-            <td>Ga</td><td align="right">1.248590154</td><td>8192/6561</td><td align="right">9</td><td>Fourth of Ni</td>
-            </tr>
-            <tr class="tralt">
-            <td>ma</td><td align="right">1.333333333</td><td>4/3</td><td align="right">2</td><td>Fourth of Sa</td>
-            </tr>
-            <tr class="tremph">
-            <td>Ma</td><td align="right">1.404663923</td><td>1024/729</td><td align="right">7</td><td>Fourth of re</td>
-            </tr>
-            <tr class="tralt">
-            <td>Pa</td><td align="right">1.479810553</td><td>262144/177147</td><td align="right">12</td><td>Fourth of Re</td>
-            </tr>
-            <tr class="tremph">
-            <td>dha</td><td align="right">1.580246914</td><td>128/81</td><td align="right">5</td><td>Fourth of ga</td>
-            </tr>
-            <tr class="tralt">
-            <td>Dha</td><td align="right">1.664786872</td><td>32768/19683</td><td align="right">10</td><td>Fourth of Ga</td>
-            </tr>
-            <tr class="tremph">
-            <td>ni</td><td align="right">1.777777778</td><td>16/9</td><td align="right">3</td><td>Fourth of ma</td>
-            </tr>
-            <tr class="tralt">
-            <td>Ni</td><td align="right">1.872885231</td><td>4096/2187</td><td align="right">8</td><td>Fourth of Ma</td>
-            </tr>
-            </tbody></table>
-    </center>
-    </div>
+    <p>Before we analyse this any further, hear for yourself what this scale sounds like using Demo 3 below. The keyboard may look a bit unusual, particularly the keys for Re<strong>&flat;</strong> and Dha<strong>&flat;</strong>. But it has been depicted this way to contrast it from the Sama Gana scale in Demo 2 above.</p>
 
-    <p>
-        <center><img src="Circle-fourths.png" alt="Circle of Fourths" style="width:80%;"></center>
-        <center><em>Figure 3. Illustration of Circle of Fourths</em></center>
-    </p>
-
-    <p>Anyone who is familiar with the circle of fifths and fourths would notice that the after the 12th note is derived (respectively, the ma and the Pa), if you take a fifth or fourth for a 13th time, you would get a ratio which is very close to Sa = 1, but not exactly 1. This gap by which the 13th note, exceeds or falls short respectively, in the circles of fifths and fourths, is called the Pythagorean comma. Its value can be calculated as 531441/524288 = 1.013643265. The ancient Indian music scholars were aware of this phenomenon and aware of the value of the Pythagorean comma</p>
-
-    <br />
-
-    <ul id="circlefourth" class="keyboard">
-        <li>
-            <div class="key" onmousedown="keyplay('Sa')">1</div>
-            <div class="blackkey" onmousedown="keyplay('re')">6</div>
-            <audio id="re" src="./02-re.mp3"></audio>
-        </li>
-        <li>
-            <div class="key" onmousedown="keyplay('Re-b')">11</div>
-            <audio id="Re-b" src="./03-Re-b.mp3"></audio>
-            <div class="blackkey" onmousedown="keyplay('ga')">4</div>
-        </li>
-        <li>
-            <div class="key" onmousedown="keyplay('Ga-b')">9</div>
-            <audio id="Ga-b" src="./05-Ga-b.mp3"></audio>
-        </li>
-        <li>
-            <div class="key" onmousedown="keyplay('ma')">2</div>
-            <div class="blackkey" onmousedown="keyplay('Ma-b')">7</div>
-            <audio id="Ma-b" src="./07-Ma-b.mp3"></audio>
-        </li>
-        <li>
-            <div class="key" onmousedown="keyplay('Pa-b')">12</div>
-            <audio id="Pa-b" src="./08-Pa-b.mp3"></audio>
-            <div class="blackkey" onmousedown="keyplay('dha')">5</div>
-            <audio id="dha" src="./09-dha.mp3"></audio>
-        </li>
-        <li>
-            <div class="key" onmousedown="keyplay('Dha-b')">10</div>
-            <audio id="Dha-b" src="./10-Dha-b.mp3"></audio>
-            <div class="blackkey" onmousedown="keyplay('ni')">3</div>
-        </li>
-        <li>
-            <div class="key" onmousedown="keyplay('Ni-b')">8</div>
-            <audio id="Ni-b" src="./12-Ni-b.mp3"></audio>
-        </li>
-        <li>
-            <div class="graykeyleft" onmousedown="keyplay('SA-b')">13=1&flat;</div>
-            <audio id="SA-b" src="./13-SA-b.mp3"></audio>
-            <div class="key" onmousedown="keyplay('SA')">1</div>
-        </li>
-    </ul>
-    <br />
-    <center><em>Demo 3. Circle of Fourths</em></center>
-    <br />
-    <h2>Shadaj Gram Scale</h2>
-    <p>Knowing the Pythagorean comma, it is possible to "fix" the Sama Gana scale and derive the first real scale of Indian Classical music, the Shadaj Gram scale. This can be done by tuning the Re and Dha down in pitch by an amount equal to the Pythagorean comma. Here is the scale (see below). </p>
-
-    <div class="tablecontainer">
-    <center>
-        <em>Table 4. Illustration of Shadaj Gram Scale</em>
-        <table border="1" cellpadding="2" cellspacing="0">
-            <tbody>
-                <tr class="trheader">
-                    <td colspan="4"><center>Shadaj Gram Scale</center></td>
-                    </tr>
-            <tr class="tremph">
-            <td>Pythagorean Comma</td><td align="right">1.013643265</td><td>531441/524288</td><td>Gap at the end of circle of fifths</td>
-            </tr>
-                <tr class="trheader">
-            <td>Note</td><td align="right">&nbsp;</td><td>Symbolic Ratio</td><td>Remarks</td>
-            </tr>
-            <tr class="tremph">
-            <td>Sa</td><td align="right">1</td><td>1</td><td>&nbsp;</td>
-            </tr>
-            <tr class="tralt">
-            <td>Re</td><td align="right">1.109857915</td><td>65536/59049</td><td>Comma below Sama Gana Re</td>
-            </tr>
-            <tr class="tremph">
-            <td>Re</td><td align="right">1.125</td><td>9/8</td><td>9/8 above Sa</td>
-            </tr>
-            <tr class="tralt">
-            <td>ga</td><td align="right">1.185185185</td><td>32/27</td><td>9/8 below ma</td>
-            </tr>
-            <tr class="tremph">
-            <td>ma</td><td align="right">1.333333333</td><td>4/3</td><td>Fourth</td>
-            </tr>
-            <tr class="tralt">
-            <td>Pa</td><td align="right">1.5</td><td>3/2</td><td>Fifth</td>
-            </tr>
-            <tr class="tremph">
-            <td>Dha</td><td align="right">1.664786872</td><td>32768/19683</td><td>Comma below Sama Gana Dha</td>
-            </tr>
-            <tr class="tralt">
-            <td>Dha</td><td align="right">1.6875</td><td>27/16</td><td>9/8 above Pa</td>
-            </tr>
-            <tr class="tremph">
-            <td>ni</td><td align="right">1.777777778</td><td>16/9</td><td>9/8 below SA</td>
-            </tr>
-            <tr class="tralt">
-            <td>SA</td><td align="right">2</td><td>2</td><td>Octave</td>
-            </tr>
-            </tbody></table>
-    </center>
-    </div>
-
-    <p>
-        <center><img src="Shadaj-gram.png" alt="Shadaj Gram Scale" style="width:80%;"></center>
-        <center><em>Figure 4. Illustration of Shadaj Gram Scale</em></center>
-    </p>
-
-    <p>If this Shadaj Gram scale is accepted, then one can attach meaningful interpretations to 1 shruti, 2 shruti, 3 shruti and 4 shruti intervals. ma-Pa interval is defined as a 4 shruti interval. Sa-Re interval is defined as a 3 shruti interval. Re-ga interval is defined as a 2 shruti interval. The Re-ga gap in the Sama Gana scale is defined as a 1 shruti interval (1.053497942), while the Pythagorean Comma is also called a 1 shruti interval (1.013643265). Clearly these two 1 shruti intervals are different despite their classification, and so they had different names. </p>
     <br />
 
     <ul id="shadajgram" class="keyboard">
@@ -392,6 +215,7 @@ Copyright 2020 - Sadharani Music Works
         </li>
         <li>
             <div class="graykeyleft" onmousedown="keyplay('Re-b')">Re&flat;</div>
+            <audio id="Re-b" src="./03-Re-b.mp3"></audio>
             <div class="key keyhidden">Re</div>
             <div class="blackkey" onmousedown="keyplay('ga')">ga</div>
         </li>
@@ -406,6 +230,7 @@ Copyright 2020 - Sadharani Music Works
         </li>
         <li>
             <div class="graykeyleft" onmousedown="keyplay('Dha-b')">Dha&flat;</div>
+            <audio id="Dha-b" src="./10-Dha-b.mp3"></audio>
             <div class="key keyhidden">Dha</div>
             <div class="blackkey" onmousedown="keyplay('ni')">ni</div>
         </li>
@@ -417,95 +242,58 @@ Copyright 2020 - Sadharani Music Works
         </li>
     </ul>
     <br />
-    <center><em>Demo 4. Shadaj Gram Scale</em></center>
+    <center><em>Demo 3. Shadaj Gram Scale</em></center>
     <br />
-    <h2>Shadaj Gram (22 Shruti Scale)</h2>
-    <p>Also, with this Shadaj Gram scale, we can perform the Bharat-Sharang Dev harp experiment and derive the 22 shruti scale mathematically. This is given below.</p>
     
+    <p></p>
+
+    <p>Let us calculate the precise amount by which Re and Dha were reduced in pitch to obtain Re<strong>&flat;</strong> and Dha<strong>&flat;</strong> respectively. The ma-Dha interval consists of the ma-Pa interval applied twice, which is <strong>(9/8)<sup>2</sup> = 81/64</strong>. Since the Gandhar interval is 5/4, the gap between the Gandhar and the ma-Dha interval can be calculated to be <strong>81/64 &divide; 5/4 = 81/80</strong>. This interval \(\frac{81}{80}\) was recognized and known as <strong>Pramana Shruti</strong>.</p>
+
+    <p>Knowing the Pramana Shruti, the dissonance in the Sama Gana scale can be removed and the Shadaj Gram scale can be derived by tuning the Re and Dha down in pitch by an amount equal to the Pramana Shruti. Here is the scale (see Table 2).</p>
+
     <div class="tablecontainer">
     <center>
-        <em>Table 5. Illustration of Shadaj Gram Scale (22 Shrutis)</em>
+        <em>Table 2. Illustration of Shadaj Gram Scale</em>
         <table border="1" cellpadding="2" cellspacing="0">
-            <tbody><tr class="trheader">
-            <td>Shruti</td><td>Note</td><td>Achal Veena</td><td>Round 1</td><td>Round 2</td><td>Round 3</td><td>Round 4</td><td>All 22 Ratios</td>
+            <tbody>
+                <tr class="trheader">
+                    <td colspan="4"><center>Shadaj Gram Scale</center></td>
+                    </tr>
+            <tr class="tremph">
+            <td>Pramana Shruti</td><td align="right">1.0125</td><td>81/80</td><td></td>
+            </tr>
+                <tr class="trheader">
+            <td>Note</td><td align="right">&nbsp;</td><td>Symbolic Ratio</td><td>Remarks</td>
             </tr>
             <tr class="tremph">
-            <td align="right">1</td><td>&nbsp;</td><td align="right">&nbsp;</td><td align="right">&nbsp;</td><td align="right">&nbsp;</td><td align="right">0.9010162354</td><td align="right">&nbsp;</td><td align="right">0.9010162354</td>
+            <td>Sa</td><td align="right">1</td><td>1</td><td>&nbsp;</td>
             </tr>
             <tr class="tralt">
-            <td align="right">2</td><td>&nbsp;</td><td align="right">&nbsp;</td><td align="right">&nbsp;</td><td align="right">0.9364426155</td><td align="right">&nbsp;</td><td align="right">&nbsp;</td><td align="right">0.9364426155</td>
+            <td>Re<strong>&flat;</strong></td><td align="right">1.111111111</td><td>10/9</td><td>81/80 below Re</td>
             </tr>
             <tr class="tremph">
-            <td align="right">3</td><td>&nbsp;</td><td align="right">&nbsp;</td><td align="right">0.9865403685</td><td align="right">&nbsp;</td><td align="right">&nbsp;</td><td align="right">0.9865403685</td><td align="right">0.9865403685</td>
+            <td><del>Re</del></td><td align="right"><del>1.125</del></td><td><del>9/8</del></td><td><del>9/8 above Sa</del></td>
             </tr>
             <tr class="tralt">
-            <td align="right">4</td><td>Sa</td><td align="right">1</td><td align="right">&nbsp;</td><td align="right">&nbsp;</td><td align="right">1</td><td align="right">&nbsp;</td><td align="right">1</td>
+            <td>ga</td><td align="right">1.185185185</td><td>32/27</td><td>9/8 below ma</td>
             </tr>
             <tr class="tremph">
-            <td align="right">5</td><td>&nbsp;</td><td align="right">&nbsp;</td><td align="right">&nbsp;</td><td align="right">1.039318248</td><td align="right">&nbsp;</td><td align="right">&nbsp;</td><td align="right">1.039318248</td>
+            <td>ma</td><td align="right">1.333333333</td><td>4/3</td><td>Fourth</td>
             </tr>
             <tr class="tralt">
-            <td align="right">6</td><td>&nbsp;</td><td align="right">&nbsp;</td><td align="right">1.094919636</td><td align="right">&nbsp;</td><td align="right">&nbsp;</td><td align="right">&nbsp;</td><td align="right">1.094919636</td>
+            <td>Pa</td><td align="right">1.5</td><td>3/2</td><td>Fifth</td>
             </tr>
             <tr class="tremph">
-            <td align="right">7</td><td>Re</td><td align="right">1.109857915</td><td align="right">&nbsp;</td><td align="right">1.109857915</td><td align="right">&nbsp;</td><td align="right">&nbsp;</td><td align="right">1.109857915</td>
+            <td>Dha<strong>&flat;</strong></td><td align="right">1.666666667</td><td>5/3</td><td>81/80 below Dha</td>
             </tr>
             <tr class="tralt">
-            <td align="right">8</td><td>&nbsp;</td><td align="right">&nbsp;</td><td align="right">1.169233029</td><td align="right">&nbsp;</td><td align="right">&nbsp;</td><td align="right">&nbsp;</td><td align="right">1.169233029</td>
+            <td><del>Dha</del></td><td align="right"><del>1.6875</del></td><td><del>27/16</del></td><td><del>9/8 above Pa</del></td>
             </tr>
             <tr class="tremph">
-            <td align="right">9</td><td>ga</td><td align="right">1.185185185</td><td align="right">&nbsp;</td><td align="right">&nbsp;</td><td align="right">&nbsp;</td><td align="right">1.185185185</td><td align="right">1.185185185</td>
+            <td>ni</td><td align="right">1.777777778</td><td>16/9</td><td>9/8 below SA</td>
             </tr>
             <tr class="tralt">
-            <td align="right">10</td><td>&nbsp;</td><td align="right">&nbsp;</td><td align="right">&nbsp;</td><td align="right">&nbsp;</td><td align="right">1.20135498</td><td align="right">&nbsp;</td><td align="right">1.20135498</td>
-            </tr>
-            <tr class="tremph">
-            <td align="right">11</td><td>&nbsp;</td><td align="right">&nbsp;</td><td align="right">&nbsp;</td><td align="right">1.248590154</td><td align="right">&nbsp;</td><td align="right">&nbsp;</td><td align="right">1.248590154</td>
-            </tr>
-            <tr class="tralt">
-            <td align="right">12</td><td>&nbsp;</td><td align="right">&nbsp;</td><td align="right">1.315387158</td><td align="right">&nbsp;</td><td align="right">&nbsp;</td><td align="right">&nbsp;</td><td align="right">1.315387158</td>
-            </tr>
-            <tr class="tremph">
-            <td align="right">13</td><td>ma</td><td align="right">1.333333333</td><td align="right">&nbsp;</td><td align="right">&nbsp;</td><td align="right">&nbsp;</td><td align="right">1.333333333</td><td align="right">1.333333333</td>
-            </tr>
-            <tr class="tralt">
-            <td align="right">14</td><td>&nbsp;</td><td align="right">&nbsp;</td><td align="right">&nbsp;</td><td align="right">&nbsp;</td><td align="right">1.351524353</td><td align="right">&nbsp;</td><td align="right">1.351524353</td>
-            </tr>
-            <tr class="tremph">
-            <td align="right">15</td><td>&nbsp;</td><td align="right">&nbsp;</td><td align="right">&nbsp;</td><td align="right">1.404663923</td><td align="right">&nbsp;</td><td align="right">&nbsp;</td><td align="right">1.404663923</td>
-            </tr>
-            <tr class="tralt">
-            <td align="right">16</td><td>&nbsp;</td><td align="right">&nbsp;</td><td align="right">1.479810553</td><td align="right">&nbsp;</td><td align="right">&nbsp;</td><td align="right">1.479810553</td><td align="right">1.479810553</td>
-            </tr>
-            <tr class="tremph">
-            <td align="right">17</td><td>Pa</td><td align="right">1.5</td><td align="right">&nbsp;</td><td align="right">&nbsp;</td><td align="right">1.5</td><td align="right">&nbsp;</td><td align="right">1.5</td>
-            </tr>
-            <tr class="tralt">
-            <td align="right">18</td><td>&nbsp;</td><td align="right">&nbsp;</td><td align="right">&nbsp;</td><td align="right">1.558977373</td><td align="right">&nbsp;</td><td align="right">&nbsp;</td><td align="right">1.558977373</td>
-            </tr>
-            <tr class="tremph">
-            <td align="right">19</td><td>&nbsp;</td><td align="right">&nbsp;</td><td align="right">1.642379454</td><td align="right">&nbsp;</td><td align="right">&nbsp;</td><td align="right">&nbsp;</td><td align="right">1.642379454</td>
-            </tr>
-            <tr class="tralt">
-            <td align="right">20</td><td>Dha</td><td align="right">1.664786872</td><td align="right">&nbsp;</td><td align="right">1.664786872</td><td align="right">&nbsp;</td><td align="right">&nbsp;</td><td align="right">1.664786872</td>
-            </tr>
-            <tr class="tremph">
-            <td align="right">21</td><td>&nbsp;</td><td align="right">&nbsp;</td><td align="right">1.753849544</td><td align="right">&nbsp;</td><td align="right">&nbsp;</td><td align="right">&nbsp;</td><td align="right">1.753849544</td>
-            </tr>
-            <tr class="tralt">
-            <td align="right">22</td><td>ni</td><td align="right">1.777777778</td><td align="right">&nbsp;</td><td align="right">&nbsp;</td><td align="right">&nbsp;</td><td align="right">1.777777778</td><td align="right">1.777777778</td>
-            </tr>
-            <tr class="tremph">
-            <td align="right">1</td><td>&nbsp;</td><td align="right">&nbsp;</td><td align="right">&nbsp;</td><td align="right">&nbsp;</td><td align="right">1.802032471</td><td align="right">&nbsp;</td><td align="right">1.802032471</td>
-            </tr>
-            <tr class="tralt">
-            <td align="right">2</td><td>&nbsp;</td><td align="right">&nbsp;</td><td align="right">&nbsp;</td><td align="right">1.872885231</td><td align="right">&nbsp;</td><td align="right">&nbsp;</td><td align="right">1.872885231</td>
-            </tr>
-            <tr class="tremph">
-            <td align="right">3</td><td>&nbsp;</td><td align="right">&nbsp;</td><td align="right">1.973080737</td><td align="right">&nbsp;</td><td align="right">&nbsp;</td><td align="right">&nbsp;</td><td align="right">1.973080737</td>
-            </tr>
-            <tr class="tralt">
-            <td align="right">4</td><td>SA</td><td align="right">2</td><td align="right">&nbsp;</td><td align="right">&nbsp;</td><td align="right">&nbsp;</td><td align="right">&nbsp;</td><td align="right">2</td>
+            <td>SA</td><td align="right">2</td><td>2</td><td>Octave</td>
             </tr>
             </tbody></table>
     </center>
@@ -513,10 +301,117 @@ Copyright 2020 - Sadharani Music Works
 
     <br />
 
+    <p>The Shadaj Gram scale can also be represented by showing the relevant pitches in a circle (see Figure 2). By rotating an amount corresponding to the Pramana Shruti interval of 81/80 from Re and Dha, we can determine the positions of Re<strong>&flat;</strong> and Dha<strong>&flat;</strong> in the scale.</p>
+
     <p>
-        <center><img src="Shadaj-gram-1.png" alt="Shadaj Gram Scale (22 Shrutis)" style="width:80%;"></center>
-        <center><em>Figure 5. Illustration of Shadaj Gram Scale (22 Shrutis)</em></center>
+        <center><img src="Shadaj-gram.png" alt="Shadaj Gram Scale" style="width:80%;"></center>
+        <center><em>Figure 2. Illustration of Shadaj Gram Scale</em></center>
     </p>
+
+    <h2>Shadaj Gram (from Shruti Intervals)</h2>
+    <p>Bharat in Natyashastra and Sharang Dev in Sangeet Ratnakar describe an experiment using an <strong>Achal veena</strong>, an instrument with a fixed tuning, and a <strong>Chal veena</strong>, an instrument whose tuning is varied through the course of the experiment. Although the term <em>veena</em> is used in their literature, it is likely that these instruments were constructed in the form of a harp rather than like present day veenas.</p> 
+
+    <p>These experiments require the Achal veena to be tuned according to a scale called Shadaj gram. The scale itself is described in terms of intervals between notes. Each interval is described in terms of the number of Shrutis it spans. Shadaj Gram is described as follows with the Sa beginning at the Shruti position of 4.</p>
+
+    <div class="tablecontainer">
+    <center>
+        <em>Table 3. Shadaj Gram scale defined by Shruti Intervals</em>  
+        <table border="1" cellpadding="2" cellspacing="0">
+            <tbody>
+                <tr class="trheader">
+                    <td>Shruti</td><td>String</td><td>Note</td><td>Shruti Interval</td>
+                </tr>
+                <tr class="tremph">
+                    <td>4</td><td>First</td><td>Sa</td><td></td>
+                </tr>
+                <tr class="tralt">
+                    <td>7</td><td>Second</td><td>Re<strong>&flat;</strong></td><td>Sa-Re<strong>&flat;</strong> spans 3 Shrutis</td>
+                </tr>
+                <tr class="tremph">
+                    <td>9</td><td>Third</td><td>ga</td><td>Re<strong>&flat;</strong>-ga spans 2 Shrutis</td>
+                </tr>
+                <tr class="tralt">
+                    <td>13</td><td>Fourth</td><td>ma</td><td>ga-ma spans 4 Shrutis</td>
+                </tr>
+                <tr class="tremph">
+                    <td>17</td><td>Fifth</td><td>Pa</td><td>ma-Pa spans 4 Shrutis</td>
+                </tr>
+                <tr class="tralt">
+                    <td>20</td><td>Sixth</td><td>Dha<strong>&flat;</strong></td><td>Pa-Dha<strong>&flat;</strong> spans 3 Shrutis</td>
+                </tr>
+                <tr class="tremph">
+                    <td>22</td><td>Seventh</td><td>ni</td><td>Dha<strong>&flat;</strong>-ni spans 2 Shrutis</td>
+                </tr>
+                <tr class="tralt">
+                    <td>4</td><td>Eighth</td><td>SA</td><td>ni-SA spans 4 Shrutis</td>
+                </tr>
+            </tbody>
+        </table>  
+    </center>
+    </div>
+
+    <br />
+
+    <p>Without understanding what these Shruti intervals meant, it is difficult to understand what really Shadaj Gram was. But it is possible to derive the precise meaning of these Shruti intervals.</p>
+
+    <p>Let us start with some observations from the above description of Shadaj Gram.</p>
+
+    <ol>
+        <li>An octave spans 22 Shrutis. This can be checked by adding up the number of Srutis from Sa to SA.</li>
+        <li>Pancham spans 13 Shrutis. This can be checked by adding up the number of Srutis from Sa to Pa.</li>
+        <li>Madhyam spans 9 Shrutis. This can be checked similarly.</li>
+        <li>Gandhar spans 7 Shrutis. This does not follow from the above description. However, we know that Bharat defined two <em>Vikrit</em> (altered) notes in Shadaj Gram: <strong>Antara Gandhar</strong> and <strong>Kakali Nishad</strong> which had the Gandhar (major third) relationship with respect to Sa and Pa, respectively. Since, these were known to be situated at Shruti positions 11 and 2, we can deduce that Gandhar spans 7 Shrutis.</li>
+    </ol>
+
+    <p>Using these observations, we can calculate the size of the 2, 3 and 4 Shruti intervals as follows. For ease of explanation, let us refer to these intervals as \(r_2\), \(r_3\) and \(r_4\), respectively.</p>
+
+    <ol>
+        <li>A 4 Shruti interval can be determined as the gap between a 9 Shruti and a 13 Shruti interval. In other words, \(r_4 = \frac{3/2}{4/3} = \frac{9}{8}\).</li>
+        <li>A 3 Shruti interval can be determined as the gap between a 7 Shruti and a 4 Shruti interval. In other words, \(r_3 = \frac{5/4}{9/8} = \frac{10}{9}\).</li>   
+        <li>A 2 Shruti interval can be determined as the gap between a 9 Shruti and a 7 Shruti interval. In other words, \(r_2 = \frac{4/3}{5/4} = \frac{16}{15}\).</li> 
+    </ol>
+
+    <p>Now, it is easy to verify that the Shadaj Gram scales defined by Table 2 and Table 3 are identical.</p>
+
+    <h2>Shadaj Gram (22 Shruti Scale)</h2>
+    
+    <p>Now, we can perform the Bharat-Sharang Dev harp experiment and derive the 22 shruti scale mathematically. This steps followed in the experiment are given below.</p>
+
+    <h3>Round 1</h3>
+
+    <ul>
+        <li>In Round 1, the Pa (fifth) string of the Chal Veena is set to Shruti #16 which is Madhyam (9 Shrutis) above Shruti #7.</li>
+        <li>Then, each of the other strings are lowered by the ratio of Shruti #17 to Shruti #16. This ratio of Shruti #17 to Shruti #16 is called Pramana Shruti.</li>
+        <li>We can check that this is consistent with the earlier derivation of Pramana Shruti. This is because Shruti #16 is \(\frac{10}{9}\times\frac{4}{3}=\frac{40}{27}\). So, Pramana Shruti is \(\frac{3/2}{40/27}=\frac{81}{80}\) as before.</li>
+    </ul>
+
+    <h3>Round 2</h3>
+
+    <ul>
+        <li>In Round 2, the ga (third) string of the Chal Veena is set to Shruti #7.</li>
+        <li>Then, each of the other strings are lowered by the ratio of Shruti #8 to Shruti #7. This ratio of Shruti #8 to Shruti #7 is called Purna Shruti.</li>
+        <li>We can check that this is consistent with the earlier derivation of Purna Shruti. This is because Shruti #8 is Shruti #9 divided by Pramana Shruti which is \(\frac{32/27}{81/80}=\frac{2560}{2187}\). So, Purna Shruti is \(\frac{2560/2187}{10/9}=\frac{256}{243}\) as before.</li>
+    </ul>
+
+    <h3>Round 3</h3>
+
+    <ul>
+        <li>In Round 3, the re (second) string of the Chal Veena is set to Shruti #4.</li>
+        <li>Then, each of the other strings are lowered by the ratio of Shruti #5 to Shruti #4. This ratio of Shruti #5 to Shruti #4 is called <strong>Nyuna Shruti</strong>.</li>
+        <li>Note that in Round 3, the ga (third) and ni (seventh) string of the Chal Veena are ignored.</li>
+        <li>We can compute the value of Nyuna Shruti as follows. Shruti #5 is Shruti #6 divided by Purna Shruti which itself is Shruti #7 divided by Pramana Shruti. Thus, Shruti #5 is \(\left(\frac{10}{9} \div \frac{81}{80}\right) \div \frac{256}{243} = \frac{25}{24}\). Since, Shruti #4 is just 1, Nyuna Shruti is \(\frac{25}{24}\).</li>
+    </ul>
+
+    <h3>Round 4</h3>
+
+    <ul>
+        <li>In Round 4, the Pa (fifth) string of the Chal Veena is set to Shruti #13.</li>
+        <li>Then, each of the other strings are lowered by the ratio of Shruti #14 to Shruti #13. This ratio of Shruti #14 to Shruti #13 is also equal to Pramana Shruti.</li>
+        <li>Note that in Round 4, the ga (third) and ni (seventh) string of the Chal Veena are ignored, like in Round 3.</li>
+        <li>We can check that this is consistent with the earlier derivation of Pramana Shruti. This is because Shruti #14 is Shruti #17 divided by Pramana Shruti, then by Purna Shruti and then by Nyuna Shruti. So, Shruti #14 is \(\left(\left(\frac{3}{2} \div \frac{81}{80}\right) \div \frac{256}{243}\right) \div \frac{25}{24} = \frac{27}{20}\). So, Pramana Shruti is \(\frac{27/20}{4/3}=\frac{81}{80}\) as before.</li>
+    </ul>
+
+    <p>You can play and hear each of these notes in Demo 4 below. If you are interested in the actual values for each of the 22 shrutis, refer to Table 4 which summarizes the result of all these steps.</p>
 
     <ul id="shadajgram22" class="keyboard">
         <li>
@@ -534,6 +429,7 @@ Copyright 2020 - Sadharani Music Works
             <audio id="ga-b" src="./04-ga-b.mp3"></audio>
             <div class="key" onmousedown="keyplay('ga')">9</div>
             <div class="dblackkey" onmousedown="keyplay('ga-s')">10</div>
+            <audio id="ga-s" src="./04-ga-s.mp3"></audio>
             <div class="dgraykeyright" onmousedown="keyplay('Ga-b')">11</div>
         </li>
         <li>
@@ -541,10 +437,13 @@ Copyright 2020 - Sadharani Music Works
             <audio id="ma-b" src="./06-ma-b.mp3"></audio>
             <div class="key" onmousedown="keyplay('ma')">13</div>
             <div class="dblackkey" onmousedown="keyplay('ma-s')">14</div>
+            <audio id="ma-s" src="./06-ma-s.mp3"></audio>
             <div class="dgraykeyright" onmousedown="keyplay('Ma-b')">15</div>
+            <audio id="Ma-b" src="./07-Ma-b.mp3"></audio>
         </li>
         <li>
             <div class="graykeyleft" onmousedown="keyplay('Pa-b')">16</div>
+            <audio id="Pa-b" src="./08-Pa-b.mp3"></audio>
             <div class="key" onmousedown="keyplay('Pa')">17</div>
             <div class="dgraykeyright" onmousedown="keyplay('dha-b')">18</div>
             <audio id="dha-b" src="./09-dha-b.mp3"></audio>
@@ -559,22 +458,203 @@ Copyright 2020 - Sadharani Music Works
             <audio id="ni-b" src="./11-ni-b.mp3"></audio>
             <div class="key" onmousedown="keyplay('ni')">22</div>
             <div class="dblackkey" onmousedown="keyplay('ni-s')">1</div>
+            <audio id="ni-s" src="./11-ni-s.mp3"></audio>
             <div class="dgraykeyright" onmousedown="keyplay('Ni-b')">2</div>
+            <audio id="Ni-b" src="./12-Ni-b.mp3"></audio>
         </li>
         <li>
             <div class="graykeyleft" onmousedown="keyplay('SA-b')">3</div>
+            <audio id="SA-b" src="./13-SA-b.mp3"></audio>
             <div class="key" onmousedown="keyplay('SA')">4</div>
         </li>
     </ul>
     <br />
-    <center><em>Demo 5. Shadaj Gram Scale (22 Shrutis)</em></center>
+    <center><em>Demo 4. Shadaj Gram Scale (22 Shrutis)</em></center>
+
     <br />
-    <h2>Venkatamakhin-Ramamatya Scale (Pythagorean Tuning)</h2>
-    <p>Using the ma-Pa interval (via tuning a Veena as Sa-Pa-Sa"-ma"), we can follow Ramamatya's experiment and also Venkatamakhin's calculations to derive the following 12 note scale.</p>
     
     <div class="tablecontainer">
     <center>
-        <em>Table 6. Illustration of Venkatamakhin-Ramamatya Scale</em>
+        <em>Table 4. Illustration of Shadaj Gram Scale (22 Shrutis)</em>
+        <table border="1" cellpadding="2" cellspacing="0">
+            <tbody><tr class="trheader">
+            <td>Shruti</td><td>Note</td><td>Achal Veena</td><td>Round 1</td><td>Round 2</td><td>Round 3</td><td>Round 4</td><td>All 22 Ratios</td>
+            </tr>
+            <tr class="tremph">
+            <td align="right">1</td><td>&nbsp;</td><td align="right">&nbsp;</td><td align="right">&nbsp;</td><td align="right">&nbsp;</td><td align="right">0.9</td><td align="right">&nbsp;</td><td align="right">0.9</td>
+            </tr>
+            <tr class="tralt">
+            <td align="right">2</td><td>&nbsp;</td><td align="right">&nbsp;</td><td align="right">&nbsp;</td><td align="right">0.9375</td><td align="right">&nbsp;</td><td align="right">&nbsp;</td><td align="right">0.9375</td>
+            </tr>
+            <tr class="tremph">
+            <td align="right">3</td><td>&nbsp;</td><td align="right">&nbsp;</td><td align="right">0.987654321</td><td align="right">&nbsp;</td><td align="right">&nbsp;</td><td align="right">0.987654321</td><td align="right">0.987654321</td>
+            </tr>
+            <tr class="tralt">
+            <td align="right">4</td><td>Sa</td><td align="right">1</td><td align="right">&nbsp;</td><td align="right">&nbsp;</td><td align="right">1</td><td align="right">&nbsp;</td><td align="right">1</td>
+            </tr>
+            <tr class="tremph">
+            <td align="right">5</td><td>&nbsp;</td><td align="right">&nbsp;</td><td align="right">&nbsp;</td><td align="right">1.041666667</td><td align="right">&nbsp;</td><td align="right">&nbsp;</td><td align="right">1.041666667</td>
+            </tr>
+            <tr class="tralt">
+            <td align="right">6</td><td>&nbsp;</td><td align="right">&nbsp;</td><td align="right">1.097393689</td><td align="right">&nbsp;</td><td align="right">&nbsp;</td><td align="right">&nbsp;</td><td align="right">1.097393689</td>
+            </tr>
+            <tr class="tremph">
+            <td align="right">7</td><td>Re</td><td align="right">1.111111111</td><td align="right">&nbsp;</td><td align="right">1.111111111</td><td align="right">&nbsp;</td><td align="right">&nbsp;</td><td align="right">1.111111111</td>
+            </tr>
+            <tr class="tralt">
+            <td align="right">8</td><td>&nbsp;</td><td align="right">&nbsp;</td><td align="right">1.170553269</td><td align="right">&nbsp;</td><td align="right">&nbsp;</td><td align="right">&nbsp;</td><td align="right">1.170553269</td>
+            </tr>
+            <tr class="tremph">
+            <td align="right">9</td><td>ga</td><td align="right">1.185185185</td><td align="right">&nbsp;</td><td align="right">&nbsp;</td><td align="right">&nbsp;</td><td align="right">1.185185185</td><td align="right">1.185185185</td>
+            </tr>
+            <tr class="tralt">
+            <td align="right">10</td><td>&nbsp;</td><td align="right">&nbsp;</td><td align="right">&nbsp;</td><td align="right">&nbsp;</td><td align="right">1.2</td><td align="right">&nbsp;</td><td align="right">1.2</td>
+            </tr>
+            <tr class="tremph">
+            <td align="right">11</td><td>&nbsp;</td><td align="right">&nbsp;</td><td align="right">&nbsp;</td><td align="right">1.25</td><td align="right">&nbsp;</td><td align="right">&nbsp;</td><td align="right">1.25</td>
+            </tr>
+            <tr class="tralt">
+            <td align="right">12</td><td>&nbsp;</td><td align="right">&nbsp;</td><td align="right">1.316872428</td><td align="right">&nbsp;</td><td align="right">&nbsp;</td><td align="right">&nbsp;</td><td align="right">1.316872428</td>
+            </tr>
+            <tr class="tremph">
+            <td align="right">13</td><td>ma</td><td align="right">1.333333333</td><td align="right">&nbsp;</td><td align="right">&nbsp;</td><td align="right">&nbsp;</td><td align="right">1.333333333</td><td align="right">1.333333333</td>
+            </tr>
+            <tr class="tralt">
+            <td align="right">14</td><td>&nbsp;</td><td align="right">&nbsp;</td><td align="right">&nbsp;</td><td align="right">&nbsp;</td><td align="right">1.35</td><td align="right">&nbsp;</td><td align="right">1.35</td>
+            </tr>
+            <tr class="tremph">
+            <td align="right">15</td><td>&nbsp;</td><td align="right">&nbsp;</td><td align="right">&nbsp;</td><td align="right">1.40625</td><td align="right">&nbsp;</td><td align="right">&nbsp;</td><td align="right">1.40625</td>
+            </tr>
+            <tr class="tralt">
+            <td align="right">16</td><td>&nbsp;</td><td align="right">&nbsp;</td><td align="right">1.481481481</td><td align="right">&nbsp;</td><td align="right">&nbsp;</td><td align="right">1.481481481</td><td align="right">1.481481481</td>
+            </tr>
+            <tr class="tremph">
+            <td align="right">17</td><td>Pa</td><td align="right">1.5</td><td align="right">&nbsp;</td><td align="right">&nbsp;</td><td align="right">1.5</td><td align="right">&nbsp;</td><td align="right">1.5</td>
+            </tr>
+            <tr class="tralt">
+            <td align="right">18</td><td>&nbsp;</td><td align="right">&nbsp;</td><td align="right">&nbsp;</td><td align="right">1.5625</td><td align="right">&nbsp;</td><td align="right">&nbsp;</td><td align="right">1.5625</td>
+            </tr>
+            <tr class="tremph">
+            <td align="right">19</td><td>&nbsp;</td><td align="right">&nbsp;</td><td align="right">1.646090535</td><td align="right">&nbsp;</td><td align="right">&nbsp;</td><td align="right">&nbsp;</td><td align="right">1.646090535</td>
+            </tr>
+            <tr class="tralt">
+            <td align="right">20</td><td>Dha</td><td align="right">1.666666667</td><td align="right">&nbsp;</td><td align="right">1.666666667</td><td align="right">&nbsp;</td><td align="right">&nbsp;</td><td align="right">1.666666667</td>
+            </tr>
+            <tr class="tremph">
+            <td align="right">21</td><td>&nbsp;</td><td align="right">&nbsp;</td><td align="right">1.755829904</td><td align="right">&nbsp;</td><td align="right">&nbsp;</td><td align="right">&nbsp;</td><td align="right">1.755829904</td>
+            </tr>
+            <tr class="tralt">
+            <td align="right">22</td><td>ni</td><td align="right">1.777777778</td><td align="right">&nbsp;</td><td align="right">&nbsp;</td><td align="right">&nbsp;</td><td align="right">1.777777778</td><td align="right">1.777777778</td>
+            </tr>
+            <tr class="tremph">
+            <td align="right">1</td><td>&nbsp;</td><td align="right">&nbsp;</td><td align="right">&nbsp;</td><td align="right">&nbsp;</td><td align="right">1.8</td><td align="right">&nbsp;</td><td align="right">1.8</td>
+            </tr>
+            <tr class="tralt">
+            <td align="right">2</td><td>&nbsp;</td><td align="right">&nbsp;</td><td align="right">&nbsp;</td><td align="right">1.875</td><td align="right">&nbsp;</td><td align="right">&nbsp;</td><td align="right">1.875</td>
+            </tr>
+            <tr class="tremph">
+            <td align="right">3</td><td>&nbsp;</td><td align="right">&nbsp;</td><td align="right">1.975308642</td><td align="right">&nbsp;</td><td align="right">&nbsp;</td><td align="right">&nbsp;</td><td align="right">1.975308642</td>
+            </tr>
+            <tr class="tralt">
+            <td align="right">4</td><td>SA</td><td align="right">2</td><td align="right">&nbsp;</td><td align="right">&nbsp;</td><td align="right">&nbsp;</td><td align="right">&nbsp;</td><td align="right">2</td>
+            </tr>
+            </tbody></table>
+    </center>
+    </div>
+
+    <br />
+
+    <p>The Shadaj Gram scale can also be represented by showing the relevant pitches in a circle (see Figure 3). The figure depicts how the Chal veena is depressed by the different shruti intervals in each round.</p>
+
+    <p>
+        <center><img src="Shadaj-gram-1.png" alt="Shadaj Gram Scale (22 Shrutis)" style="width:80%;"></center>
+        <center><em>Figure 3. Illustration of Shadaj Gram Scale (22 Shrutis)</em></center>
+    </p>
+
+    <h2>Venkatamakhin-Ramamatya Scale</h2>
+
+    <p>Ramamatya laid down a practical procedure for setting the frets on a Veena, and in the process dividing an octave into 12 notes. Venkatamakhin documented the 12 note divisions of the octave and calculated numerical ratios for each of the 12 notes. Taken together Ramamatya and Venkatamakhin created a tuning system for Indian Classical music which was both practically and theoretically well defined. The tuning system defined by Venkatamakhin and Ramamatya is equivalent to the <a href="https://en.wikipedia.org/wiki/Pythagorean_tuning">Pythagorean Tuning</a> system.</p>
+
+    <h3>Ramamatya's procedure for setting Veena frets</h3>
+
+    <p>Ramamatya's procedure starts with using a four string Veena with its notes tuned as Sa, Pa, Sa" and ma" from the lowest to the highest. Here, Sa denotes the fundamental, Pa the fifth and ma the fourth, as before. But, we denote notes in the upper octave with a <strong>"</strong>. Thus, Sa" denotes the octave and ma" the octave of the fourth. The tuning of the four strings is prescribed to be done by ear, and it is expected that a veena tuner can accurately set the octave, Pancham (fifth) and Madhyam (fourth) intervals.</p>
+
+    <p>Then the following procedure is prescribed:</p>
+
+    <ol>
+        <li>Set the second fret at a position so that the ma" string produces Pa". As a consequence, you get Re on the Sa string, Dha on the Pa string and Re" on the Sa" string.</li>
+        <li>Set the fourth fret at a position so that the ma" string produces Dha" (which is the octave of Dha we obtained earlier, on the second fret on the Pa string). As a consequence, you get Ga on the Sa string, Ni on the Pa string and Ga" on the Sa" string.</li>
+        <li>Set the sixth fret at a position so that the ma" string produces Ni" (which is the octave of Ni we obtained earlier, on the fourth fret on the Pa string). As a consequence, you get Ma on the Sa string, re" on the Pa string and Ma" on the Sa" string.</li>
+        <li>Set the fifth fret at a position so that the Pa string produces Sa". As a consequence, you get ma on the Sa string, ma" on the Sa" string and ni" on the ma" string.</li>
+        <li>Set the third fret at a position so that the Pa string produces ni (which is an octave lower than ni" we obtained earlier, on the fifth fret on the ma" string). As a consequence, you get ga on the Sa string, ga" on the Sa" string and dha" on the ma" string.</li>
+        <li>Finally, set the first fret at a position so that the Pa string produces dha (which is an octave lower than Dha" we obtained earlier, on the third fret on the ma" string). As a consequence, you get re on the Sa string, re" on the Sa" string and Ma" on the ma" string.</li>
+    </ol>
+
+    <p>Ramamatya's procedure is so clearly defined that it is used even today by veena makers to set the frets on the instruments they produce.</p>
+
+    <h3>Venkatamakhin’s documentation of the 12 note tuning system</h3>
+
+    <p>Starting with the fact that Pancham is \(\frac{3}{2}\) and Madhyam is \(\frac{4}{3}\), it is possible to derive the ratios for each note of the 12 notes which would result from Ramamatya's procedure. This documentation is credited to Venkatamakhin.</p>
+
+    <ol>
+        <li>At the second fret, Re is \(\frac{3/2}{4/3}=\frac{9}{8}\) and Dha is \(\frac{9}{8}*\frac{3}{2}=\frac{27}{16}\).</li>
+        <li>At the fourth fret, Ga is \(\frac{9}{8}*\frac{9}{8}=\frac{81}{64}\) and Ni is \(\frac{243}{128}\).</li>
+        <li>At the sixth fret, Ma is \(\frac{729}{512}\) and re is \(\frac{2187}{2048}\).</li>
+        <li>At the fifth fret, ni is \(\frac{16}{9}\).</li>
+        <li>At the third fret, ga is \(\frac{32}{27}\) and dha is \(\frac{128}{81}\).</li>
+        <li>At the first fret, re is \(\frac{256}{243}\) and Ma is \(\frac{1024}{729}\).</li>
+    </ol>
+    
+    <p>You may have noticed that ratios for Ma and re at the first and sixth fret are different. It is not documented whether Ramamatya was aware of this discrepancy, but Venkatamakhin was definitely aware. He prescribes that Ma is taken as \(\frac{729}{512}\) (defined by the sixth fret) but that re is taken as \(\frac{256}{243}\) (defined by the first fret).</p>
+
+    <p>You can hear the Venkatamakhin-Ramamatya scale in Demo 5 below. The calculations for deriving the ratios for each note are summarized in Table 5.</p>
+
+    <br />
+
+    <ul id="vr12notes" class="keyboard">
+        <li>
+            <div class="key" onmousedown="keyplay('Sa')">Sa</div>
+            <div class="blackkey" onmousedown="keyplay('re')">re</div>
+            <audio id="re" src="./02-re.mp3"></audio>
+        </li>
+        <li>
+            <div class="key" onmousedown="keyplay('Re')">Re</div>
+            <div class="blackkey" onmousedown="keyplay('ga')">ga</div>
+        </li>
+        <li>
+            <div class="key" onmousedown="keyplay('Ga')">Ga</div>
+            <audio id="Ga" src="./05-Ga.mp3"></audio>
+        </li>
+        <li>
+            <div class="key" onmousedown="keyplay('ma')">ma</div>
+            <div class="blackkey" onmousedown="keyplay('Ma')">Ma</div>
+            <audio id="Ma" src="./07-Ma.mp3"></audio>
+        </li>
+        <li>
+            <div class="key" onmousedown="keyplay('Pa')">Pa</div>
+            <div class="blackkey" onmousedown="keyplay('dha')">dha</div>
+            <audio id="dha" src="./09-dha.mp3"></audio>
+        </li>
+        <li>
+            <div class="key" onmousedown="keyplay('Dha')">Dha</div>
+            <div class="blackkey" onmousedown="keyplay('ni')">ni</div>
+        </li>
+        <li>
+            <div class="key" onmousedown="keyplay('Ni')">Ni</div>
+            <audio id="Ni" src="./12-Ni.mp3"></audio>
+        </li>
+        <li>
+            <div class="key" onmousedown="keyplay('SA')">SA</div>
+        </li>
+    </ul>
+    <br />
+    <center><em>Demo 5. Venkatamakhin-Ramamatya Scale</em></center>
+
+    <br />
+
+    <div class="tablecontainer">
+    <center>
+        <em>Table 5. Illustration of Venkatamakhin-Ramamatya Scale</em>
         <table border="1" cellpadding="2" cellspacing="0">
             <tbody>
                 <tr class="trheader">
@@ -628,44 +708,27 @@ Copyright 2020 - Sadharani Music Works
 
     <br />
 
+    <p>The Venkatamakhin-Ramamatya scale can also be represented by showing the relevant pitches in a circle (see Figure 4). The figure depicts how the addition of each new fret results in new ratios getting defined.</p>
+
     <p>
         <center><img src="VR-Scale.png" alt="Venkatamakhin-Ramamatya Scale" style="width:80%;"></center>
-        <center><em>Figure 6. Illustration of Venkatamakhin-Ramamatya Scale</em></center>
+        <center><em>Figure 4. Illustration of Venkatamakhin-Ramamatya Scale</em></center>
     </p>
 
-    <ul id="vr12notes" class="keyboard">
-        <li>
-            <div class="key" onmousedown="keyplay('Sa')">Sa</div>
-            <div class="blackkey" onmousedown="keyplay('re')">re</div>
-        </li>
-        <li>
-            <div class="key" onmousedown="keyplay('Re')">Re</div>
-            <div class="blackkey" onmousedown="keyplay('ga')">ga</div>
-        </li>
-        <li>
-            <div class="key" onmousedown="keyplay('Ga')">Ga</div>
-        </li>
-        <li>
-            <div class="key" onmousedown="keyplay('ma')">ma</div>
-            <div class="blackkey" onmousedown="keyplay('Ma')">Ma</div>
-        </li>
-        <li>
-            <div class="key" onmousedown="keyplay('Pa')">Pa</div>
-            <div class="blackkey" onmousedown="keyplay('dha')">dha</div>
-        </li>
-        <li>
-            <div class="key" onmousedown="keyplay('Dha')">Dha</div>
-            <div class="blackkey" onmousedown="keyplay('ni')">ni</div>
-        </li>
-        <li>
-            <div class="key" onmousedown="keyplay('Ni')">Ni</div>
-        </li>
-        <li>
-            <div class="key" onmousedown="keyplay('SA')">SA</div>
-        </li>
-    </ul>
-    <br />
-    <center><em>Demo 6. Venkatamakhin-Ramamatya Scale</em></center>
+    <h2>Summary</h2>
+    <p>This has been quite a long and technical article through which we reconstructed the two significant tuning systems used in Indian Classical music. The Shadaj Gram scale gave rise to musical structures called <em>Jatis</em> from which many modern day Indian Ragas have evolved. Similarly, the Venkatamakhin-Ramamatya scale gave rise to a classification system for Indian Ragas called <em>Melakarta</em> system which has again given rise to many modern day Indian Ragas. It is necessary to understand and define these tuning systems, to understand the role of harmonics, microtones and consonance in Indian Classical music and musical scales.</p>
+
+    <h2>References</h2>
+    <ol>
+        <li>Sangitratnakara of Sarangdev Vol 1 and 2 by R.K. Shringy and Prem Lata Sharma.</li>
+        <li>Dattilam of Dattil by Dr. Mukund Lath.</li>
+        <li>Chaturdanda Prakasika of Venkatmakhin by R.Satyanarayana.</li>
+        <li>Svaramelakalanidhi by Ramamatya.</li>
+        <li>South Indian Music by Prof.P.Sambamurthy.</li>
+        <li>Lakshanagrandhas in Music by Dr.S.Bhagyalekshmy</li>
+        <li>Discussions on theory and practice of music with Ustad Zia Fariduddin Dagar.</li>
+    </ol>
+
 </section>
     <footer>
         <p>Developed by <a href="https://www.sadharani.com">Sadharani</a></p>

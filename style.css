@@ -27,6 +27,10 @@ ul {
   padding: 1vmin 3vmin 1vmin 6vmin;
 }
 
+ol {
+  padding: 1vmin 3vmin 1vmin 6vmin;
+}
+
 .notice {
   background-color: #ffead0;
   padding: 2vmin 3vmin 4vmin;

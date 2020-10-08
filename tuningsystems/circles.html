@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<!--
+Indian Tuning Systems - Demos - Developed by Sadharani - www.sadharani.com
+Copyright 2020 - Sadharani Music Works
+-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indian Tuning Systems</title>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="./tuningstyles.css">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans:400,700" rel="stylesheet">
+    <script src="./tuningscripts.js"></script>
+</head>
+<body>
+    <header>
+        <a href="/"><h1><img src="/puretones-logo.svg">PureTones</h1></a>
+    </header>
+    <section class="article">
+    <h1>Indian Tuning Systems</h1>
+    <h2>Circle of Fifths</h2>
+    <p>Using the Pancham and Madhyam bhavs, we can also form two scales called the circle of fifths and the circle of fourths. In the circle of fifths, starting from the note Sa, you derive the next note in the scale by taking the fifth of the previously derived note. So, Pa follows from Sa. Then Re follows from Pa. And so on. Here they are (see below). Indian music scholars of old knew these two scales (at least, conceptually and mathematically, if not being able to make a harp practically)</p>
+    
+    <div class="tablecontainer">
+    <center>
+        <em>Table 2. Illustration of Circle of Fifths</em>
+        <table border="1" cellpadding="2" cellspacing="0">
+            <tbody>
+                <tr class="trheader">
+                    <td colspan="5"><center>Circle of Fifths</center></td>
+                    </tr>
+                <tr class="trheader">
+            <td>Note</td><td>Ratio</td><td>Symbolic Ratio</td><td>Sequence #</td><td>Remarks</td>
+            </tr>
+            <tr class="tremph">
+            <td>Sa</td><td align="right">1</td><td>1</td><td align="right">1</td><td>Fundamental</td>
+            </tr>
+            <tr class="tralt">
+            <td>re</td><td align="right">1.067871094</td><td>2187/2048</td><td align="right">8</td><td>Fifth of Ma</td>
+            </tr>
+            <tr class="tremph">
+            <td>Re</td><td align="right">1.125</td><td>9/8</td><td align="right">3</td><td>Fifth of Pa</td>
+            </tr>
+            <tr class="tralt">
+            <td>ga</td><td align="right">1.20135498</td><td>19683/16384</td><td align="right">10</td><td>Fifth of dha</td>
+            </tr>
+            <tr class="tremph">
+            <td>Ga</td><td align="right">1.265625</td><td>81/64</td><td align="right">5</td><td>Fifth of Dha</td>
+            </tr>
+            <tr class="tralt">
+            <td>ma</td><td align="right">1.351524353</td><td>177147/131072</td><td align="right">12</td><td>Fifth of ni</td>
+            </tr>
+            <tr class="tremph">
+            <td>Ma</td><td align="right">1.423828125</td><td>729/512</td><td align="right">7</td><td>Fifth of Ni</td>
+            </tr>
+            <tr class="tralt">
+            <td>Pa</td><td align="right">1.5</td><td>3/2</td><td align="right">2</td><td>Fifth of Sa</td>
+            </tr>
+            <tr class="tremph">
+            <td>dha</td><td align="right">1.601806641</td><td>6561/4096</td><td align="right">9</td><td>Fifth of re</td>
+            </tr>
+            <tr class="tralt">
+            <td>Dha</td><td align="right">1.6875</td><td>27/16</td><td align="right">4</td><td>Fifth of Re</td>
+            </tr>
+            <tr class="tremph">
+            <td>ni</td><td align="right">1.802032471</td><td>59049/32768</td><td align="right">11</td><td>Fifth of ga</td>
+            </tr>
+            <tr class="tralt">
+            <td>Ni</td><td align="right">1.8984375</td><td>243/128</td><td align="right">6</td><td>Fifth of Ga</td>
+            </tr>
+            </tbody></table>
+    </center>
+    </div>
+
+    <br />
+
+    <p>
+        <center><img src="Circle-fifths.png" alt="Circle of Fifths" style="width:80%;"></center>
+        <center><em>Figure 2. Illustration of Circle of Fifths</em></center>
+    </p>
+
+    <ul id="circlefifth" class="keyboard">
+        <li>
+            <div class="key" onmousedown="keyplay('Sa')">1</div>
+            <div class="blackkey" onmousedown="keyplay('re-s')">8</div>
+            <audio id="re-s" src="./02-re-s.mp3"></audio>
+        </li>
+        <li>
+            <div class="key" onmousedown="keyplay('Re')">3</div>
+            <div class="blackkey" onmousedown="keyplay('ga-s')">10</div>
+            <audio id="ga-s" src="./04-ga-s.mp3"></audio>
+        </li>
+        <li>
+            <div class="key" onmousedown="keyplay('Ga')">5</div>
+            <audio id="Ga" src="./05-Ga.mp3"></audio>
+        </li>
+        <li>
+            <div class="key" onmousedown="keyplay('ma-s')">12</div>
+            <audio id="ma-s" src="./06-ma-s.mp3"></audio>
+            <div class="blackkey" onmousedown="keyplay('Ma')">7</div>
+            <audio id="Ma" src="./07-Ma.mp3"></audio>
+        </li>
+        <li>
+            <div class="key" onmousedown="keyplay('Pa')">2</div>
+            <div class="blackkey" onmousedown="keyplay('dha-s')">9</div>
+            <audio id="dha-s" src="./09-dha-s.mp3"></audio>
+        </li>
+        <li>
+            <div class="key" onmousedown="keyplay('Dha')">4</div>
+            <div class="blackkey" onmousedown="keyplay('ni-s')">11</div>
+            <audio id="ni-s" src="./11-ni-s.mp3"></audio>
+        </li>
+        <li>
+            <div class="key" onmousedown="keyplay('Ni')">6</div>
+            <audio id="Ni" src="./12-Ni.mp3"></audio>
+        </li>
+        <li>
+            <div class="key" onmousedown="keyplay('SA')">1</div>
+            <div class="graykeyright" onmousedown="keyplay('SA-s')">13=1&sharp;</div>
+            <audio id="SA-s" src="./13-SA-s.mp3"></audio>
+        </li>
+    </ul>
+    <br />
+    <center><em>Demo 2. Circle of Fifths</em></center>
+    <br />
+    <h2>Circle of Fourths</h2>
+    <p>The circle of fourths is similar except it uses fourths to derive the next note.</p>
+    
+    <div class="tablecontainer">
+    <center>
+        <em>Table 3. Illustration of Circle of Fourths</em>
+        <table border="1" cellpadding="2" cellspacing="0">
+            <tbody>
+                <tr class="trheader">
+                    <td colspan="5"><center>Circle of Fourths</center></td>
+                    </tr>
+                <tr class="trheader">
+            <td>Circle of Fourths Note</td><td>Ratio</td><td>Symbolic Ratio</td><td>Sequence #</td><td>Remarks</td>
+            </tr>
+            <tr class="tremph">
+            <td>Sa</td><td align="right">1</td><td>1</td><td align="right">1</td><td>Fundamental</td>
+            </tr>
+            <tr class="tralt">
+            <td>re</td><td align="right">1.053497942</td><td>256/243</td><td align="right">6</td><td>Fourth of dha</td>
+            </tr>
+            <tr class="tremph">
+            <td>Re</td><td align="right">1.109857915</td><td>65536/59049</td><td align="right">11</td><td>Fourth of Dha</td>
+            </tr>
+            <tr class="tralt">
+            <td>ga</td><td align="right">1.185185185</td><td>32/27</td><td align="right">4</td><td>Fourth of ni</td>
+            </tr>
+            <tr class="tremph">
+            <td>Ga</td><td align="right">1.248590154</td><td>8192/6561</td><td align="right">9</td><td>Fourth of Ni</td>
+            </tr>
+            <tr class="tralt">
+            <td>ma</td><td align="right">1.333333333</td><td>4/3</td><td align="right">2</td><td>Fourth of Sa</td>
+            </tr>
+            <tr class="tremph">
+            <td>Ma</td><td align="right">1.404663923</td><td>1024/729</td><td align="right">7</td><td>Fourth of re</td>
+            </tr>
+            <tr class="tralt">
+            <td>Pa</td><td align="right">1.479810553</td><td>262144/177147</td><td align="right">12</td><td>Fourth of Re</td>
+            </tr>
+            <tr class="tremph">
+            <td>dha</td><td align="right">1.580246914</td><td>128/81</td><td align="right">5</td><td>Fourth of ga</td>
+            </tr>
+            <tr class="tralt">
+            <td>Dha</td><td align="right">1.664786872</td><td>32768/19683</td><td align="right">10</td><td>Fourth of Ga</td>
+            </tr>
+            <tr class="tremph">
+            <td>ni</td><td align="right">1.777777778</td><td>16/9</td><td align="right">3</td><td>Fourth of ma</td>
+            </tr>
+            <tr class="tralt">
+            <td>Ni</td><td align="right">1.872885231</td><td>4096/2187</td><td align="right">8</td><td>Fourth of Ma</td>
+            </tr>
+            </tbody></table>
+    </center>
+    </div>
+
+    <p>
+        <center><img src="Circle-fourths.png" alt="Circle of Fourths" style="width:80%;"></center>
+        <center><em>Figure 3. Illustration of Circle of Fourths</em></center>
+    </p>
+
+    <p>Anyone who is familiar with the circle of fifths and fourths would notice that the after the 12th note is derived (respectively, the ma and the Pa), if you take a fifth or fourth for a 13th time, you would get a ratio which is very close to Sa = 1, but not exactly 1. This gap by which the 13th note, exceeds or falls short respectively, in the circles of fifths and fourths, is called the Pythagorean comma. Its value can be calculated as 531441/524288 = 1.013643265. The ancient Indian music scholars were aware of this phenomenon and aware of the value of the Pythagorean comma</p>
+
+    <br />
+
+    <ul id="circlefourth" class="keyboard">
+        <li>
+            <div class="key" onmousedown="keyplay('Sa')">1</div>
+            <div class="blackkey" onmousedown="keyplay('re')">6</div>
+            <audio id="re" src="./02-re.mp3"></audio>
+        </li>
+        <li>
+            <div class="key" onmousedown="keyplay('Re-b')">11</div>
+            <audio id="Re-b" src="./03-Re-b.mp3"></audio>
+            <div class="blackkey" onmousedown="keyplay('ga')">4</div>
+        </li>
+        <li>
+            <div class="key" onmousedown="keyplay('Ga-b')">9</div>
+            <audio id="Ga-b" src="./05-Ga-b.mp3"></audio>
+        </li>
+        <li>
+            <div class="key" onmousedown="keyplay('ma')">2</div>
+            <div class="blackkey" onmousedown="keyplay('Ma-b')">7</div>
+            <audio id="Ma-b" src="./07-Ma-b.mp3"></audio>
+        </li>
+        <li>
+            <div class="key" onmousedown="keyplay('Pa-b')">12</div>
+            <audio id="Pa-b" src="./08-Pa-b.mp3"></audio>
+            <div class="blackkey" onmousedown="keyplay('dha')">5</div>
+            <audio id="dha" src="./09-dha.mp3"></audio>
+        </li>
+        <li>
+            <div class="key" onmousedown="keyplay('Dha-b')">10</div>
+            <audio id="Dha-b" src="./10-Dha-b.mp3"></audio>
+            <div class="blackkey" onmousedown="keyplay('ni')">3</div>
+        </li>
+        <li>
+            <div class="key" onmousedown="keyplay('Ni-b')">8</div>
+            <audio id="Ni-b" src="./12-Ni-b.mp3"></audio>
+        </li>
+        <li>
+            <div class="graykeyleft" onmousedown="keyplay('SA-b')">13=1&flat;</div>
+            <audio id="SA-b" src="./13-SA-b.mp3"></audio>
+            <div class="key" onmousedown="keyplay('SA')">1</div>
+        </li>
+    </ul>
+    <br />
+    <center><em>Demo 3. Circle of Fourths</em></center>
+    <br />
+    <h2>Shadaj Gram Scale</h2>
+    <p>Knowing the Pythagorean comma, it is possible to "fix" the Sama Gana scale and derive the first real scale of Indian Classical music, the Shadaj Gram scale. This can be done by tuning the Re and Dha down in pitch by an amount equal to the Pythagorean comma. Here is the scale (see below). </p>
+
+    <div class="tablecontainer">
+    <center>
+        <em>Table 4. Illustration of Shadaj Gram Scale</em>
+        <table border="1" cellpadding="2" cellspacing="0">
+            <tbody>
+                <tr class="trheader">
+                    <td colspan="4"><center>Shadaj Gram Scale</center></td>
+                    </tr>
+            <tr class="tremph">
+            <td>Pythagorean Comma</td><td align="right">1.013643265</td><td>531441/524288</td><td>Gap at the end of circle of fifths</td>
+            </tr>
+                <tr class="trheader">
+            <td>Note</td><td align="right">&nbsp;</td><td>Symbolic Ratio</td><td>Remarks</td>
+            </tr>
+            <tr class="tremph">
+            <td>Sa</td><td align="right">1</td><td>1</td><td>&nbsp;</td>
+            </tr>
+            <tr class="tralt">
+            <td>Re</td><td align="right">1.109857915</td><td>65536/59049</td><td>Comma below Sama Gana Re</td>
+            </tr>
+            <tr class="tremph">
+            <td>Re</td><td align="right">1.125</td><td>9/8</td><td>9/8 above Sa</td>
+            </tr>
+            <tr class="tralt">
+            <td>ga</td><td align="right">1.185185185</td><td>32/27</td><td>9/8 below ma</td>
+            </tr>
+            <tr class="tremph">
+            <td>ma</td><td align="right">1.333333333</td><td>4/3</td><td>Fourth</td>
+            </tr>
+            <tr class="tralt">
+            <td>Pa</td><td align="right">1.5</td><td>3/2</td><td>Fifth</td>
+            </tr>
+            <tr class="tremph">
+            <td>Dha</td><td align="right">1.664786872</td><td>32768/19683</td><td>Comma below Sama Gana Dha</td>
+            </tr>
+            <tr class="tralt">
+            <td>Dha</td><td align="right">1.6875</td><td>27/16</td><td>9/8 above Pa</td>
+            </tr>
+            <tr class="tremph">
+            <td>ni</td><td align="right">1.777777778</td><td>16/9</td><td>9/8 below SA</td>
+            </tr>
+            <tr class="tralt">
+            <td>SA</td><td align="right">2</td><td>2</td><td>Octave</td>
+            </tr>
+            </tbody></table>
+    </center>
+    </div>
+
+    <p>
+        <center><img src="Shadaj-gram.png" alt="Shadaj Gram Scale" style="width:80%;"></center>
+        <center><em>Figure 4. Illustration of Shadaj Gram Scale</em></center>
+    </p>
+
+    <p>If this Shadaj Gram scale is accepted, then one can attach meaningful interpretations to 1 shruti, 2 shruti, 3 shruti and 4 shruti intervals. ma-Pa interval is defined as a 4 shruti interval. Sa-Re interval is defined as a 3 shruti interval. Re-ga interval is defined as a 2 shruti interval. The Re-ga gap in the Sama Gana scale is defined as a 1 shruti interval (1.053497942), while the Pythagorean Comma is also called a 1 shruti interval (1.013643265). Clearly these two 1 shruti intervals are different despite their classification, and so they had different names. </p>
+    <br />
+
+    <ul id="shadajgram" class="keyboard">
+        <li>
+            <div class="key" onmousedown="keyplay('Sa')">Sa</div>
+        </li>
+        <li>
+            <div class="graykeyleft" onmousedown="keyplay('Re-b')">Re&flat;</div>
+            <div class="key keyhidden">Re</div>
+            <div class="blackkey" onmousedown="keyplay('ga')">ga</div>
+        </li>
+        <li>
+            <div class="key keyhidden">Ga</div>
+        </li>
+        <li>
+            <div class="key" onmousedown="keyplay('ma')">ma</div>
+        </li>
+        <li>
+            <div class="key" onmousedown="keyplay('Pa')">Pa</div>
+        </li>
+        <li>
+            <div class="graykeyleft" onmousedown="keyplay('Dha-b')">Dha&flat;</div>
+            <div class="key keyhidden">Dha</div>
+            <div class="blackkey" onmousedown="keyplay('ni')">ni</div>
+        </li>
+        <li>
+            <div class="key keyhidden">Ni</div>
+        </li>
+        <li>
+            <div class="key" onmousedown="keyplay('SA')">SA</div>
+        </li>
+    </ul>
+    <br />
+    <center><em>Demo 4. Shadaj Gram Scale</em></center>
+    <br />
+    <h2>Shadaj Gram (22 Shruti Scale)</h2>
+    <p>Also, with this Shadaj Gram scale, we can perform the Bharat-Sharang Dev harp experiment and derive the 22 shruti scale mathematically. This is given below.</p>
+    
+    <div class="tablecontainer">
+    <center>
+        <em>Table 5. Illustration of Shadaj Gram Scale (22 Shrutis)</em>
+        <table border="1" cellpadding="2" cellspacing="0">
+            <tbody><tr class="trheader">
+            <td>Shruti</td><td>Note</td><td>Achal Veena</td><td>Round 1</td><td>Round 2</td><td>Round 3</td><td>Round 4</td><td>All 22 Ratios</td>
+            </tr>
+            <tr class="tremph">
+            <td align="right">1</td><td>&nbsp;</td><td align="right">&nbsp;</td><td align="right">&nbsp;</td><td align="right">&nbsp;</td><td align="right">0.9010162354</td><td align="right">&nbsp;</td><td align="right">0.9010162354</td>
+            </tr>
+            <tr class="tralt">
+            <td align="right">2</td><td>&nbsp;</td><td align="right">&nbsp;</td><td align="right">&nbsp;</td><td align="right">0.9364426155</td><td align="right">&nbsp;</td><td align="right">&nbsp;</td><td align="right">0.9364426155</td>
+            </tr>
+            <tr class="tremph">
+            <td align="right">3</td><td>&nbsp;</td><td align="right">&nbsp;</td><td align="right">0.9865403685</td><td align="right">&nbsp;</td><td align="right">&nbsp;</td><td align="right">0.9865403685</td><td align="right">0.9865403685</td>
+            </tr>
+            <tr class="tralt">
+            <td align="right">4</td><td>Sa</td><td align="right">1</td><td align="right">&nbsp;</td><td align="right">&nbsp;</td><td align="right">1</td><td align="right">&nbsp;</td><td align="right">1</td>
+            </tr>
+            <tr class="tremph">
+            <td align="right">5</td><td>&nbsp;</td><td align="right">&nbsp;</td><td align="right">&nbsp;</td><td align="right">1.039318248</td><td align="right">&nbsp;</td><td align="right">&nbsp;</td><td align="right">1.039318248</td>
+            </tr>
+            <tr class="tralt">
+            <td align="right">6</td><td>&nbsp;</td><td align="right">&nbsp;</td><td align="right">1.094919636</td><td align="right">&nbsp;</td><td align="right">&nbsp;</td><td align="right">&nbsp;</td><td align="right">1.094919636</td>
+            </tr>
+            <tr class="tremph">
+            <td align="right">7</td><td>Re</td><td align="right">1.109857915</td><td align="right">&nbsp;</td><td align="right">1.109857915</td><td align="right">&nbsp;</td><td align="right">&nbsp;</td><td align="right">1.109857915</td>
+            </tr>
+            <tr class="tralt">
+            <td align="right">8</td><td>&nbsp;</td><td align="right">&nbsp;</td><td align="right">1.169233029</td><td align="right">&nbsp;</td><td align="right">&nbsp;</td><td align="right">&nbsp;</td><td align="right">1.169233029</td>
+            </tr>
+            <tr class="tremph">
+            <td align="right">9</td><td>ga</td><td align="right">1.185185185</td><td align="right">&nbsp;</td><td align="right">&nbsp;</td><td align="right">&nbsp;</td><td align="right">1.185185185</td><td align="right">1.185185185</td>
+            </tr>
+            <tr class="tralt">
+            <td align="right">10</td><td>&nbsp;</td><td align="right">&nbsp;</td><td align="right">&nbsp;</td><td align="right">&nbsp;</td><td align="right">1.20135498</td><td align="right">&nbsp;</td><td align="right">1.20135498</td>
+            </tr>
+            <tr class="tremph">
+            <td align="right">11</td><td>&nbsp;</td><td align="right">&nbsp;</td><td align="right">&nbsp;</td><td align="right">1.248590154</td><td align="right">&nbsp;</td><td align="right">&nbsp;</td><td align="right">1.248590154</td>
+            </tr>
+            <tr class="tralt">
+            <td align="right">12</td><td>&nbsp;</td><td align="right">&nbsp;</td><td align="right">1.315387158</td><td align="right">&nbsp;</td><td align="right">&nbsp;</td><td align="right">&nbsp;</td><td align="right">1.315387158</td>
+            </tr>
+            <tr class="tremph">
+            <td align="right">13</td><td>ma</td><td align="right">1.333333333</td><td align="right">&nbsp;</td><td align="right">&nbsp;</td><td align="right">&nbsp;</td><td align="right">1.333333333</td><td align="right">1.333333333</td>
+            </tr>
+            <tr class="tralt">
+            <td align="right">14</td><td>&nbsp;</td><td align="right">&nbsp;</td><td align="right">&nbsp;</td><td align="right">&nbsp;</td><td align="right">1.351524353</td><td align="right">&nbsp;</td><td align="right">1.351524353</td>
+            </tr>
+            <tr class="tremph">
+            <td align="right">15</td><td>&nbsp;</td><td align="right">&nbsp;</td><td align="right">&nbsp;</td><td align="right">1.404663923</td><td align="right">&nbsp;</td><td align="right">&nbsp;</td><td align="right">1.404663923</td>
+            </tr>
+            <tr class="tralt">
+            <td align="right">16</td><td>&nbsp;</td><td align="right">&nbsp;</td><td align="right">1.479810553</td><td align="right">&nbsp;</td><td align="right">&nbsp;</td><td align="right">1.479810553</td><td align="right">1.479810553</td>
+            </tr>
+            <tr class="tremph">
+            <td align="right">17</td><td>Pa</td><td align="right">1.5</td><td align="right">&nbsp;</td><td align="right">&nbsp;</td><td align="right">1.5</td><td align="right">&nbsp;</td><td align="right">1.5</td>
+            </tr>
+            <tr class="tralt">
+            <td align="right">18</td><td>&nbsp;</td><td align="right">&nbsp;</td><td align="right">&nbsp;</td><td align="right">1.558977373</td><td align="right">&nbsp;</td><td align="right">&nbsp;</td><td align="right">1.558977373</td>
+            </tr>
+            <tr class="tremph">
+            <td align="right">19</td><td>&nbsp;</td><td align="right">&nbsp;</td><td align="right">1.642379454</td><td align="right">&nbsp;</td><td align="right">&nbsp;</td><td align="right">&nbsp;</td><td align="right">1.642379454</td>
+            </tr>
+            <tr class="tralt">
+            <td align="right">20</td><td>Dha</td><td align="right">1.664786872</td><td align="right">&nbsp;</td><td align="right">1.664786872</td><td align="right">&nbsp;</td><td align="right">&nbsp;</td><td align="right">1.664786872</td>
+            </tr>
+            <tr class="tremph">
+            <td align="right">21</td><td>&nbsp;</td><td align="right">&nbsp;</td><td align="right">1.753849544</td><td align="right">&nbsp;</td><td align="right">&nbsp;</td><td align="right">&nbsp;</td><td align="right">1.753849544</td>
+            </tr>
+            <tr class="tralt">
+            <td align="right">22</td><td>ni</td><td align="right">1.777777778</td><td align="right">&nbsp;</td><td align="right">&nbsp;</td><td align="right">&nbsp;</td><td align="right">1.777777778</td><td align="right">1.777777778</td>
+            </tr>
+            <tr class="tremph">
+            <td align="right">1</td><td>&nbsp;</td><td align="right">&nbsp;</td><td align="right">&nbsp;</td><td align="right">&nbsp;</td><td align="right">1.802032471</td><td align="right">&nbsp;</td><td align="right">1.802032471</td>
+            </tr>
+            <tr class="tralt">
+            <td align="right">2</td><td>&nbsp;</td><td align="right">&nbsp;</td><td align="right">&nbsp;</td><td align="right">1.872885231</td><td align="right">&nbsp;</td><td align="right">&nbsp;</td><td align="right">1.872885231</td>
+            </tr>
+            <tr class="tremph">
+            <td align="right">3</td><td>&nbsp;</td><td align="right">&nbsp;</td><td align="right">1.973080737</td><td align="right">&nbsp;</td><td align="right">&nbsp;</td><td align="right">&nbsp;</td><td align="right">1.973080737</td>
+            </tr>
+            <tr class="tralt">
+            <td align="right">4</td><td>SA</td><td align="right">2</td><td align="right">&nbsp;</td><td align="right">&nbsp;</td><td align="right">&nbsp;</td><td align="right">&nbsp;</td><td align="right">2</td>
+            </tr>
+            </tbody></table>
+    </center>
+    </div>
+
+    <br />
+
+    <p>
+        <center><img src="Shadaj-gram-1.png" alt="Shadaj Gram Scale (22 Shrutis)" style="width:80%;"></center>
+        <center><em>Figure 5. Illustration of Shadaj Gram Scale (22 Shrutis)</em></center>
+    </p>
+
+    <ul id="shadajgram22" class="keyboard">
+        <li>
+            <div class="key" onmousedown="keyplay('Sa')">4</div>
+            <div class="dgraykeyright" onmousedown="keyplay('re-b')">5</div>
+            <audio id="re-b" src="./02-re-b.mp3"></audio>
+        </li>
+        <li>
+            <div class="graykeyleft" onmousedown="keyplay('Re-bb')">6</div>
+            <audio id="Re-bb" src="./03-Re-bb.mp3"></audio>
+            <div class="key" onmousedown="keyplay('Re-b')">7</div>
+        </li>
+        <li>
+            <div class="graykeyleft" onmousedown="keyplay('ga-b')">8</div>
+            <audio id="ga-b" src="./04-ga-b.mp3"></audio>
+            <div class="key" onmousedown="keyplay('ga')">9</div>
+            <div class="dblackkey" onmousedown="keyplay('ga-s')">10</div>
+            <div class="dgraykeyright" onmousedown="keyplay('Ga-b')">11</div>
+        </li>
+        <li>
+            <div class="graykeyleft" onmousedown="keyplay('ma-b')">12</div>
+            <audio id="ma-b" src="./06-ma-b.mp3"></audio>
+            <div class="key" onmousedown="keyplay('ma')">13</div>
+            <div class="dblackkey" onmousedown="keyplay('ma-s')">14</div>
+            <div class="dgraykeyright" onmousedown="keyplay('Ma-b')">15</div>
+        </li>
+        <li>
+            <div class="graykeyleft" onmousedown="keyplay('Pa-b')">16</div>
+            <div class="key" onmousedown="keyplay('Pa')">17</div>
+            <div class="dgraykeyright" onmousedown="keyplay('dha-b')">18</div>
+            <audio id="dha-b" src="./09-dha-b.mp3"></audio>
+        </li>
+        <li>
+            <div class="graykeyleft" onmousedown="keyplay('Dha-bb')">19</div>
+            <audio id="Dha-bb" src="./10-Dha-bb.mp3"></audio>
+            <div class="key" onmousedown="keyplay('Dha-b')">20</div>
+        </li>
+        <li>
+            <div class="graykeyleft" onmousedown="keyplay('ni-b')">21</div>
+            <audio id="ni-b" src="./11-ni-b.mp3"></audio>
+            <div class="key" onmousedown="keyplay('ni')">22</div>
+            <div class="dblackkey" onmousedown="keyplay('ni-s')">1</div>
+            <div class="dgraykeyright" onmousedown="keyplay('Ni-b')">2</div>
+        </li>
+        <li>
+            <div class="graykeyleft" onmousedown="keyplay('SA-b')">3</div>
+            <div class="key" onmousedown="keyplay('SA')">4</div>
+        </li>
+    </ul>
+    <br />
+    <center><em>Demo 5. Shadaj Gram Scale (22 Shrutis)</em></center>
+    <br />
+</section>
+    <footer>
+        <p>Developed by <a href="https://www.sadharani.com">Sadharani</a></p>
+    </footer>
+</body>
+</html>
