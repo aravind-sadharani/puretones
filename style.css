@@ -31,6 +31,10 @@ ol {
   padding: 1vmin 3vmin 1vmin 6vmin;
 }
 
+.textlist li {
+  padding-bottom: 2vmin;
+}
+
 .notice {
   background-color: #ffead0;
   padding: 2vmin 3vmin 4vmin;
