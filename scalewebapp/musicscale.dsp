@@ -17,10 +17,10 @@ finecent = vslider("[002]Fine Tune",0,-100,100,1);
 fineratio = 2^(finecent/1200);
 commonfreq = coarse*fineratio*(2^octaveselector);
 period = 2^(vslider("[003]Period",2,0,3,0.1));
-attack = 10^(vslider("[007]Attack",-4,-5,0,0.01));
-hold = vslider("[008]Hold",0.6,0,1,0.01);
-decay = vslider("[009]Decay",0.8,0,1,0.01);
-release = vslider("[010]Release",0.5,0,1,0.01);
+attack = 10^(-4);
+hold = 0.6;
+decay = 0.8;
+release = 0.5;
 gate(p) = os.lf_pulsetrainpos(1/p,0.3);
 env = en.adsr(attack,period*hold,decay,period*release,gate(period));
 
