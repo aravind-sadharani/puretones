@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="./sequencer.js"></script>
+        <title>PureTones Sequencer</title>
+        <link rel="stylesheet" href="./styles.css"></link>
+        <link rel="stylesheet" href="/style.css">
+        <link href="https://fonts.googleapis.com/css?family=Noto+Sans:400,700" rel="stylesheet">
+    </head>
+    <body>
+        <header>
+            <a href="/"><h1><img src="/puretones-logo.svg">PureTones Sequencer</h1></a>
+        </header>
+        <section class="article">
+            <h2>Select Your Pitch</h2>
+            <div class="grid-container">
+                <strong>Pitch</strong> <span class="right">Key</span>
+                <select name="pitch" id="cpitch">
+                    <option value="2">B</option>
+                    <option value="1">A#</option>
+                    <option value="0">A</option>
+                    <option value="-1" selected>G#</option>
+                    <option value="-2">G</option>
+                    <option value="-3">F#</option>
+                    <option value="-4">F</option>
+                    <option value="-5">E</option>
+                    <option value="-6">D#</option>
+                    <option value="-7">D</option>
+                    <option value="-8">C#</option>
+                    <option value="-9">C</option>
+                    </select>
+                <span class="right">Cents</span> <input type="number" id="finetune" value=0>
+            </div>
+            <br />
+            <br />
+            <h2>Fine Tune Your Scale</h2>
+            <div class="grid-container">
+                <strong>Sa</strong> <span class="right">Cents</span> <input type="number" id="Sa-C" value=0> <span class="right">0.01 ¢</span> <input type="number" id="Sa-F" value=0>
+                <strong>re</strong> <span class="right">Cents</span> <input type="number" id="re-C" value=0> <span class="right">0.01 ¢</span> <input type="number" id="re-F" value=0>
+                <strong>Re</strong> <span class="right">Cents</span> <input type="number" id="Re-C" value=0> <span class="right">0.01 ¢</span> <input type="number" id="Re-F" value=0>
+                <strong>ga</strong> <span class="right">Cents</span> <input type="number" id="ga-C" value=0> <span class="right">0.01 ¢</span> <input type="number" id="ga-F" value=0>
+                <strong>Ga</strong> <span class="right">Cents</span> <input type="number" id="Ga-C" value=0> <span class="right">0.01 ¢</span> <input type="number" id="Ga-F" value=0>
+                <strong>ma</strong> <span class="right">Cents</span> <input type="number" id="ma-C" value=0> <span class="right">0.01 ¢</span> <input type="number" id="ma-F" value=0>
+                <strong>Ma</strong> <span class="right">Cents</span> <input type="number" id="Ma-C" value=0> <span class="right">0.01 ¢</span> <input type="number" id="Ma-F" value=0>
+                <strong>Pa</strong> <span class="right">Cents</span> <input type="number" id="Pa-C" value=0> <span class="right">0.01 ¢</span> <input type="number" id="Pa-F" value=0>
+                <strong>dha</strong> <span class="right">Cents</span> <input type="number" id="dha-C" value=0> <span class="right">0.01 ¢</span> <input type="number" id="dha-F" value=0>
+                <strong>Dha</strong> <span class="right">Cents</span> <input type="number" id="Dha-C" value=0> <span class="right">0.01 ¢</span> <input type="number" id="Dha-F" value=0>
+                <strong>ni</strong> <span class="right">Cents</span> <input type="number" id="ni-C" value=0> <span class="right">0.01 ¢</span> <input type="number" id="ni-F" value=0>
+                <strong>Ni</strong> <span class="right">Cents</span> <input type="number" id="Ni-C" value=0> <span class="right">0.01 ¢</span> <input type="number" id="Ni-F" value=0>
+                <strong>SA</strong> <span class="right">Cents</span> <input type="number" id="SA_C" value=0> <span class="right">0.01 ¢</span> <input type="number" id="SA_F" value=0>
+            </div>
+            <br />
+            <br />
+            <h2>Compose Your Motif</h2>
+            <center>
+                <textarea name="MotifComposer" id="motifComposer" cols="20" rows="10" placeholder="Type your motif here..."></textarea>
+                <br />
+                <button class="action" onclick=sequenceit()>Generate DSP Code</button>
+            </center>
+            <br />
+            <br />
+            <h2>Your DSP Code</h2>
+            <center>
+                <textarea name="NoteSpecification" id="noteSpec" cols="20" rows="10"></textarea>
+                <br />
+                <button class="action" onclick=downloadit()>Download DSP File</button>
+            </center>
+            <br />
+        </section>
+        <footer>
+            <p>Developed by <a href="https://www.sadharani.com">Sadharani</a></p>
+        </footer>
+    </body>
+</html>

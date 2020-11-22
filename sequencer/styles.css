@@ -1,0 +1,44 @@
+textarea {
+    width: 80%;
+    max-width: 600px;
+    border-radius: 5px;
+    border-color: #c2c2c2;
+    font-family: monospace;
+    padding: 0.5em;
+}
+
+.grid-container {
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr repeat(4,2fr);
+    width: 80%;
+    max-width: 600px;
+    text-align: left;
+    grid-column-gap: 5px;
+    color: #424242;
+}
+
+.grid-container input {
+    width: 80%;
+    margin: 0 0 3px auto;
+    border-radius: 5px;
+    border-color: #c2c2c2;
+    border-width: 1px;
+}
+
+.grid-container select {
+    width: 85%;
+    margin: 0 0 3px auto;
+    border-radius: 5px;
+    border-color: #c2c2c2;
+}
+
+.right {
+    text-align: right;
+}
+
+button {
+    font-weight: 700;
+    cursor: pointer;
+    outline: none;
+}
