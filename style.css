@@ -169,4 +169,5 @@ pre {
   margin: 2vmin;
   padding: 1vmin;
   border-radius: 1vmin;
+  overflow-x: auto;
 }
