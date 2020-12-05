@@ -12,12 +12,11 @@ const playit = () => {
             faust.getNode(code, { audioCtx, useWorklet: false, args: { "-I": "libraries/" } }).then(node => {
                 window.node = node;
                 node.connect(audioCtx.destination);
-            
-            playState = true;
-            document.getElementById("playStop").disabled = false;
-            document.getElementById("playStop").classList.remove("disabled");
-            document.getElementById("playStop").innerHTML = "Stop";
-        });
+                playState = true;
+                document.getElementById("playStop").disabled = false;
+                document.getElementById("playStop").classList.remove("disabled");
+                document.getElementById("playStop").innerHTML = "Stop";
+            });
         });
     } else {
         let dspNode = window.node;
