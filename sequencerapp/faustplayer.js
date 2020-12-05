@@ -8,6 +8,7 @@ const playit = () => {
     if(!playState) {
         document.getElementById("playStop").disabled = true;
         document.getElementById("playStop").classList.add("disabled");
+        document.getElementById("playStop").innerHTML = "Compiling...";
         faust.ready.then(() => {
             let code = document.getElementById("noteSpec").value;
             faust.getNode(code, { audioCtx, useWorklet: false, bufferSize: 8192, args: { "-I": "libraries/" } }).then(node => {
