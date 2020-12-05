@@ -3,6 +3,8 @@ const faust = new Faust2WebAudio.Faust({ debug: true, wasmLocation: "./faustwasm
 window.faust = faust;
 var playState = false;
 const playit = () => {
+    if(audioCtx.state === "suspended")
+        audioCtx.resume();
     if(!playState) {
         document.getElementById("playStop").disabled = true;
         document.getElementById("playStop").classList.add("disabled");
@@ -11,7 +13,6 @@ const playit = () => {
             faust.getNode(code, { audioCtx, useWorklet: false, bufferSize: 8192, args: { "-I": "libraries/" } }).then(node => {
                 window.node = node;
                 node.connect(audioCtx.destination);
-                unlockAudioContext(audioCtx);
                 playState = true;
                 document.getElementById("playStop").disabled = false;
                 document.getElementById("playStop").classList.remove("disabled");
@@ -25,12 +26,4 @@ const playit = () => {
         playState = false;
         document.getElementById("playStop").innerHTML = "Play Audio";
     }
-}
-const unlockAudioContext = (audioCtx) => {
-    if (audioCtx.state !== "suspended") return;
-    const b = document.body;
-    const events = ["touchstart", "touchend", "mousedown", "keydown"];
-    const unlock = () => audioCtx.resume().then(clean);
-    const clean = () => events.forEach(e => b.removeEventListener(e, unlock));
-    events.forEach(e => b.addEventListener(e, unlock, false));
 }
