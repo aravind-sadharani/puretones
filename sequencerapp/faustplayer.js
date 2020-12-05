@@ -3,6 +3,7 @@ const faust = new Faust2WebAudio.Faust({ debug: true, wasmLocation: "./faustwasm
 window.faust = faust;
 var playState = false;
 const playit = () => {
+    unlockAudioContext(audioCtx);
     if(!playState) {
         document.getElementById("playStop").disabled = true;
         document.getElementById("playStop").classList.add("disabled");
@@ -34,4 +35,3 @@ const unlockAudioContext = (audioCtx) => {
     const clean = () => events.forEach(e => b.removeEventListener(e, unlock));
     events.forEach(e => b.addEventListener(e, unlock, false));
 }
-unlockAudioContext(audioCtx);
