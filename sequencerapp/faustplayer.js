@@ -9,7 +9,7 @@ const playit = () => {
         document.getElementById("playStop").classList.add("disabled");
         faust.ready.then(() => {
             let code = document.getElementById("noteSpec").value;
-            faust.getNode(code, { audioCtx, useWorklet: false, bufferSize: 8192, args: { "-I": "https://faust.grame.fr/tools/editor/libraries/" } }).then(node => {
+            faust.getNode(code, { audioCtx, useWorklet: false, bufferSize: 8192, args: { "-I": "libraries/" } }).then(node => {
                 window.node = node;
                 node.connect(audioCtx.destination);
                 playState = true;
