@@ -3,7 +3,6 @@ const faust = new Faust2WebAudio.Faust({ debug: true, wasmLocation: "./faustwasm
 window.faust = faust;
 var playState = false;
 const playit = () => {
-    unlockAudioContext(audioCtx);
     if(!playState) {
         document.getElementById("playStop").disabled = true;
         document.getElementById("playStop").classList.add("disabled");
@@ -12,6 +11,7 @@ const playit = () => {
             faust.getNode(code, { audioCtx, useWorklet: false, bufferSize: 8192, args: { "-I": "libraries/" } }).then(node => {
                 window.node = node;
                 node.connect(audioCtx.destination);
+                unlockAudioContext(audioCtx);
                 playState = true;
                 document.getElementById("playStop").disabled = false;
                 document.getElementById("playStop").classList.remove("disabled");
