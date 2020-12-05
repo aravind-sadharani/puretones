@@ -142,6 +142,14 @@ a {
   padding: 1vmin 4vmin;
 }
 
+.disabled {
+  background-color: #404047;
+  border-radius: 1vmin;
+  color: #e6e6eb;
+  font-size: 1.1em;
+  padding: 1vmin 4vmin;
+}
+
 .work-item-container {
   margin: 1rem 0;
   display: grid;

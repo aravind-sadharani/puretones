@@ -3,6 +3,8 @@
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script src="./sequencer.js"></script>
+        <script src="./faustwasm/index.min.js"></script>
+        <script src="faustplayer.js"></script>
         <title>PureTones Sequencer</title>
         <link rel="stylesheet" href="./styles.css"></link>
         <link rel="stylesheet" href="/style.css">
@@ -65,6 +67,7 @@
                 <textarea name="NoteSpecification" id="noteSpec" cols="20" rows="10"></textarea>
                 <br />
                 <button class="action" onclick=downloadit()>Download DSP File</button>
+                <button class="action" onclick=playit() id="playStop">Play Audio</button>
             </center>
             <br />
         </section>
