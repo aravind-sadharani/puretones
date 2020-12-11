@@ -2,9 +2,8 @@
 <html>
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <script src="./sequencer.js"></script>
         <script src="./faustwasm/index.min.js"></script>
-        <script src="faustplayer.js"></script>
+        <script src="./sequencer.js"></script>
         <title>PureTones Sequencer</title>
         <link rel="stylesheet" href="./styles.css"></link>
         <link rel="stylesheet" href="/style.css">
@@ -58,16 +57,8 @@
             <center>
                 <textarea name="MotifComposer" id="motifComposer" cols="20" rows="10" placeholder="Type your composition here..."></textarea>
                 <br />
-                <button class="action" onclick=sequenceit()>Generate DSP Code</button>
-            </center>
-            <br />
-            <br />
-            <h2>Your DSP Code</h2>
-            <center>
-                <textarea name="NoteSpecification" id="noteSpec" cols="20" rows="10"></textarea>
-                <br />
-                <button class="action" onclick=downloadit()>Download DSP File</button>
                 <button class="action" onclick=playit() id="playStop">Play Audio</button>
+                <button class="action" onclick=downloadit()>Download DSP File</button>
             </center>
             <br />
         </section>

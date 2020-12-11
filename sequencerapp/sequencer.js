@@ -223,29 +223,70 @@ concert = hgroup("[00]Motif",cgain*notes);
 process = concert <: dm.zita_light;
 `
 
-const sequenceit = () => {
-    let motifStringTokens = tokenize(document.getElementById("motifComposer").value)
-    let noteSpecContainer = document.getElementById("noteSpec")
-
-    const uniquenotes = findunique(motifStringTokens)
-    const plucktimes = getPluckTiming(motifStringTokens)
-    const noteids = motifStringTokens.filter(isnote).map(n => uniquenotes.findIndex(t => isequal(t,n)))
-
-    let noteSpec = uniquenotes.map(printNoteSpec).join("").concat(`\nnoteratio = `).concat(uniquenotes.map(printNoteId).join()).concat(` : ba.selectn(${uniquenotes.length},noteindex);\n`)
-    let pluckTiming = plucktimes.map(printPluckTiming).join()
-    let pluckWaveformLength = pluckTiming.length
-    let noteTiming = noteids.map((id, index) => printNoteTiming(id,plucktimes[index],uniquenotes)).join()
-
-    noteSpecContainer.value = dspTemplateTop.concat(getPitch()).concat(noteSpec).concat("gatewaveform = waveform{").concat(pluckTiming).concat(`};\n\ngate(p) = gatewaveform,int(os.phasor(${(pluckWaveformLength+1)/2},1/(${(pluckWaveformLength+1)/4}*p))) : rdtable;\n`).concat("motif = waveform{").concat(noteTiming).concat(`};\n\nmotifnotes(p) = motif,int(os.phasor(${(pluckWaveformLength+1)/4},1/(${(pluckWaveformLength+1)/4}*p))) : rdtable;\n`).concat(dspTemplateBottom)
-}
+let composition
 
 const downloadit = () => {
-    let noteSpecContainer = document.getElementById("noteSpec")
-
     const a = document.createElement('a')
-    const file = new Blob([noteSpecContainer.value], {type: 'text/plain'})
+    const file = new Blob([composition], {type: 'text/plain'})
     a.href= URL.createObjectURL(file)
-    a.download = 'my-new-motif.dsp'
-    a.click()
+    let filename = getfilename()
+    if(filename) {
+        a.download = filename
+        a.click()
+    }
     URL.revokeObjectURL(a.href)
+}
+
+const getfilename = () => {
+    let filename = prompt("Please enter a name for your Composition", "My New Composition")
+    if(filename === null)
+        return null
+    if(filename === "")
+        return 'My-New-Composition.dsp'
+    else
+        return `${filename.replace(/ /g,'-')}.dsp`
+}
+
+audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+const faust = new Faust2WebAudio.Faust({ debug: true, wasmLocation: "./faustwasm/libfaust-wasm.wasm", dataLocation: "./faustwasm/libfaust-wasm.data" });
+window.faust = faust;
+let playState = false;
+const playit = () => {
+    if(audioCtx.state === "suspended")
+        audioCtx.resume();
+    if(!playState) {
+        let motifStringTokens = tokenize(document.getElementById("motifComposer").value)
+    
+        const uniquenotes = findunique(motifStringTokens)
+        const plucktimes = getPluckTiming(motifStringTokens)
+        const noteids = motifStringTokens.filter(isnote).map(n => uniquenotes.findIndex(t => isequal(t,n)))
+    
+        let noteSpec = uniquenotes.map(printNoteSpec).join("").concat(`\nnoteratio = `).concat(uniquenotes.map(printNoteId).join()).concat(` : ba.selectn(${uniquenotes.length},noteindex);\n`)
+        let pluckTiming = plucktimes.map(printPluckTiming).join()
+        let pluckWaveformLength = pluckTiming.length
+        let noteTiming = noteids.map((id, index) => printNoteTiming(id,plucktimes[index],uniquenotes)).join()
+    
+        composition = dspTemplateTop.concat(getPitch()).concat(noteSpec).concat("gatewaveform = waveform{").concat(pluckTiming).concat(`};\n\ngate(p) = gatewaveform,int(os.phasor(${(pluckWaveformLength+1)/2},1/(${(pluckWaveformLength+1)/4}*p))) : rdtable;\n`).concat("motif = waveform{").concat(noteTiming).concat(`};\n\nmotifnotes(p) = motif,int(os.phasor(${(pluckWaveformLength+1)/4},1/(${(pluckWaveformLength+1)/4}*p))) : rdtable;\n`).concat(dspTemplateBottom)
+    
+        document.getElementById("playStop").disabled = true;
+        document.getElementById("playStop").classList.add("disabled");
+        document.getElementById("playStop").innerHTML = "Compiling...";
+        faust.ready.then(() => {
+            let code = composition;
+            faust.getNode(code, { audioCtx, useWorklet: false, bufferSize: 8192, args: { "-I": "libraries/" } }).then(node => {
+                window.node = node;
+                node.connect(audioCtx.destination);
+                playState = true;
+                document.getElementById("playStop").disabled = false;
+                document.getElementById("playStop").classList.remove("disabled");
+                document.getElementById("playStop").innerHTML = "Stop";
+            });
+        });
+    } else {
+        let dspNode = window.node;
+        dspNode.disconnect(audioCtx.destination);
+        dspNode.destroy();
+        playState = false;
+        document.getElementById("playStop").innerHTML = "Play Audio";
+    }
 }
