@@ -174,7 +174,7 @@ with{
     openStringPick(length,stiffness,pluckPosition,excitation) = strChain
     with{
         dispersionFilters = par(i,2,si.smooth(stiffness)),_;
-        maxStringLength = 6;
+        maxStringLength = 12;
         nti = length*pluckPosition; // length of the upper portion of the string
         itb = length*(1-pluckPosition); // length of the lower portion of the string
         strChain = pm.chain(
@@ -196,7 +196,7 @@ with{
 
 variance = vslider("[00]Variance",2,0,4,0.1)/10000;
 cperiod = 2^(vslider("[01]Motif Tempo",1.0,-2,4,0.1) - 3);
-cgain = 10^(vslider("[02]Motif Gain",-15,-20,20,0.1) - 6 : /(20));
+cgain = 10^(vslider("[02]Motif Gain",-9,-20,20,0.1) - 6 : /(20));
 delta = vslider("[04]Shake Variance", 10,0,120,1);  	
 rate = vslider("[05]Shake Rate",11.5,10,25,0.1);
 c2v(d) = 2^(d/1200)-1;
@@ -208,11 +208,7 @@ ramp(x) = +(x/ma.SR) ~ _;
 lockedramp(x) = ramp(x) - (ramp(x) : ba.latch(gate(cperiod)));
 shake(d1,d2,r,n,p) = 1+((c2v(d1)+c2v(d2))/2+(c2v(d1)-c2v(d2))*phasedcos(l2l(r))/2)*(lockedramp(l2l(r)) < n);
 pluck = en.adsr(0.00001,cperiod*0.7,0.9,cperiod*0.3,gate(cperiod));
-attack = 10^(vslider("[07]Attack",-2,-5,0,0.01));
-hold = vslider("[08]Hold",0.6,0,1,0.01);
-decay = vslider("[09]Decay",0.80,0,1,0.01);
-release = vslider("[10]Release",0.5,0,1,0.01);
-env = en.adsr(attack,cperiod*hold,decay,cperiod*release,gate(cperiod));
+env = en.adsr(0.0001,cperiod*0.6,0.8,cperiod*0.5,gate(cperiod));
 noteindex = cperiod : motifnotes;
 `
 
