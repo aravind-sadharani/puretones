@@ -175,7 +175,7 @@ with{
     openStringPick(length,stiffness,pluckPosition,excitation) = strChain
     with{
         dispersionFilters = par(i,2,si.smooth(stiffness)),_;
-        maxStringLength = 12;
+        maxStringLength = 6;
         nti = length*pluckPosition; // length of the upper portion of the string
         itb = length*(1-pluckPosition); // length of the lower portion of the string
         strChain = pm.chain(
