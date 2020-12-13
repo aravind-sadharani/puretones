@@ -32,6 +32,12 @@
                     <option value="-9">C</option>
                     </select>
                 <span class="right">Cents</span> <input type="number" id="finetune" value=0>
+                <strong>Octave</strong> <span class="right">Select</span>
+                <select name="octave" id="octave">
+                    <option value="1">High</option>
+                    <option value="0" selected>Medium</option>
+                    <option value="-1">Low</option>
+                </select>
             </div>
             <br />
             <br />
@@ -49,9 +55,15 @@
                 <strong>Dha</strong> <span class="right">Cents</span> <input type="number" id="Dha-C" value=0> <span class="right">0.01 ¢</span> <input type="number" id="Dha-F" value=0>
                 <strong>ni</strong> <span class="right">Cents</span> <input type="number" id="ni-C" value=0> <span class="right">0.01 ¢</span> <input type="number" id="ni-F" value=0>
                 <strong>Ni</strong> <span class="right">Cents</span> <input type="number" id="Ni-C" value=0> <span class="right">0.01 ¢</span> <input type="number" id="Ni-F" value=0>
-                <strong>SA</strong> <span class="right">Cents</span> <input type="number" id="SA_C" value=0> <span class="right">0.01 ¢</span> <input type="number" id="SA_F" value=0>
+                <strong>SA</strong> <span class="right">Cents</span> <input type="number" id="SA-C" value=0> <span class="right">0.01 ¢</span> <input type="number" id="SA-F" value=0>
             </div>
             <br />
+            <center>
+                <button class="action" onclick="document.getElementById('fileupload').click()">
+                    <input type="file" id="fileupload" style="display: none;" onchange=uploadsnapshot()>
+                    Upload Snapshot
+                </button>
+            </center>
             <br />
             <h2>Type Your Composition</h2>
             <center>

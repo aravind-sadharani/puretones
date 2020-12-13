@@ -78,7 +78,8 @@ const findunique = (tokens) => {
 const getPitch = () => {
     let cpitch = document.getElementById("cpitch").value
     let finetune = document.getElementById("finetune").value
-    return `\ncpitch = 220*(2^(${cpitch}/12))*(2^(${finetune}/1200));\n\n`
+    let octave = document.getElementById("octave").value
+    return `\ncpitch = 220*(2^(${cpitch}/12))*(2^(${finetune}/1200))*(2^(${octave}));\n\n`
 }
 
 const getFineTune = (noteStr) => {
@@ -108,7 +109,7 @@ const getFineTune = (noteStr) => {
     if(baseStr.includes("Ni"))
         return `${parseInt(document.getElementById("Ni-C").value)+0.01*parseInt(document.getElementById("Ni-F").value)}`
     if(baseStr.includes("SA"))
-        return `${parseInt(document.getElementById("SA_C").value)+0.01*parseInt(document.getElementById("SA_F").value)}`
+        return `${parseInt(document.getElementById("SA-C").value)+0.01*parseInt(document.getElementById("SA-F").value)}`
     return "0"
 }
 
@@ -284,5 +285,38 @@ const playit = () => {
         dspNode.destroy();
         playState = false;
         document.getElementById("playStop").innerHTML = "Play Audio";
+    }
+}
+
+const uploadsnapshot = () => {
+    let uploader = document.getElementById("fileupload")
+    let file = uploader.files[0]
+    let reader = new FileReader()
+    reader.onload = () => {
+        reader.result.split("\n").forEach(p => {
+            let args = p.split(' ')
+            updateNotes(args[1].trim(), args[0].trim())
+        })
+    }
+    reader.readAsText(file)
+    delete reader
+    uploader.value = null
+}
+
+const updateNotes = (id, value) => {
+    let note
+    if(id.includes("/musicscale/Common_Parameters/Pitch"))
+        document.getElementById("cpitch").value = value - 12
+    if(id.includes("/musicscale/Common_Parameters/Fine_Tune"))
+        document.getElementById("finetune").value = value
+    if(id.includes("/musicscale/Common_Parameters/Octave")) 
+        document.getElementById("octave").value = value - 0
+    if(id.includes("/Cent")) {
+        note = id.replace("/musicscale/Common_Parameters/12_Note_Scale/","").replace("/Cent","")
+        document.getElementById(`${note}-C`).value = value
+    }
+    if(id.includes("/0.01_Cent")) {
+        note = id.replace("/musicscale/Common_Parameters/12_Note_Scale/","").replace("/0.01_Cent","")
+        document.getElementById(`${note}-F`).value = value
     }
 }
