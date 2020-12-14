@@ -42,3 +42,49 @@ button {
     cursor: pointer;
     outline: none;
 }
+
+.modal {
+    visibility: hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    z-index: 666;
+    background-color: white;
+    opacity: 0.95;
+}
+  
+.dialog {
+    padding: 3vmin;
+    border: 1px solid black;
+    border-radius: 5px;
+    position: relative;
+    top: 35vh;
+    margin: 0 auto;
+    width: 45vw;
+    min-width: 250px;
+    z-index: 999;
+    text-align: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+  
+.dialog span {
+    grid-column-start: 1;
+    grid-column-end: 3;  
+}
+  
+.dialog input {
+    margin: 2vmin;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    border-radius: 5px;
+    border-color: #c2c2c2;
+    border-width: 1px;
+    padding: 1vmin;
+}
+  
+.dialog button {
+    margin: 1vmin 2vmin;
+}  

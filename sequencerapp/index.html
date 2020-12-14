@@ -70,10 +70,18 @@
                 <textarea name="MotifComposer" id="motifComposer" cols="20" rows="10" placeholder="Type your composition here..."></textarea>
                 <br />
                 <button class="action" onclick=playit() id="playStop">Play Audio</button>
-                <button class="action" onclick=downloadit()>Download DSP File</button>
+                <button class="action" onclick=showsnapshotdialog()>Download DSP File</button>
             </center>
             <br />
         </section>
+        <div class="modal" id="snapshotdialog">
+            <div class="dialog">
+                <span><strong>Please enter a name for your Composition.</strong></span>
+                <input type="text" id="snapshotname" placeholder="My New Composition">
+                <button class="action" onclick="getsnapshot(document.getElementById('snapshotname').value,'dsp')">OK</button>
+                <button class="action" onclick="getsnapshot(null,'dsp')">Cancel</button>
+            </div>
+        </div> 
         <footer>
             <p>Developed by <a href="https://www.sadharani.com">Sadharani</a></p>
         </footer>

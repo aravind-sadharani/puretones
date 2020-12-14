@@ -222,16 +222,23 @@ process = concert <: dm.zita_light;
 
 let composition
 
-const downloadit = () => {
+const showsnapshotdialog = () => {
+    let dialog = document.getElementById("snapshotdialog")
+    getComposition()
+    dialog.style.visibility = "visible"
+}
+
+const getsnapshot = (name, extn) => {
+    let dialog = document.getElementById("snapshotdialog")
     const a = document.createElement('a')
     const file = new Blob([composition], {type: 'text/plain'})
     a.href= URL.createObjectURL(file)
-    let filename = getfilename()
-    if(filename) {
-        a.download = filename
+    if(name !== null) {
+        a.download = name === "" ? `My-New-Composition.${extn}` : `${name.replace(/ /g,'-')}.${extn}`
         a.click()
     }
     URL.revokeObjectURL(a.href)
+    dialog.style.visibility = "hidden"
 }
 
 const getfilename = () => {
@@ -244,6 +251,21 @@ const getfilename = () => {
         return `${filename.replace(/ /g,'-')}.dsp`
 }
 
+const getComposition = () => {
+    let motifStringTokens = tokenize(document.getElementById("motifComposer").value)
+    
+    const uniquenotes = findunique(motifStringTokens)
+    const plucktimes = getPluckTiming(motifStringTokens)
+    const noteids = motifStringTokens.filter(isnote).map(n => uniquenotes.findIndex(t => isequal(t,n)))
+
+    let noteSpec = uniquenotes.map(printNoteSpec).join("").concat(`\nnoteratio = `).concat(uniquenotes.map(printNoteId).join()).concat(` : ba.selectn(${uniquenotes.length},noteindex);\n`)
+    let pluckTiming = plucktimes.map(printPluckTiming).join()
+    let pluckWaveformLength = pluckTiming.length
+    let noteTiming = noteids.map((id, index) => printNoteTiming(id,plucktimes[index],uniquenotes)).join()
+
+    composition = dspTemplateTop.concat(getPitch()).concat(noteSpec).concat("gatewaveform = waveform{").concat(pluckTiming).concat(`};\n\ngate(p) = gatewaveform,int(os.phasor(${(pluckWaveformLength+1)/2},1/(${(pluckWaveformLength+1)/4}*p))) : rdtable;\n`).concat("motif = waveform{").concat(noteTiming).concat(`};\n\nmotifnotes(p) = motif,int(os.phasor(${(pluckWaveformLength+1)/4},1/(${(pluckWaveformLength+1)/4}*p))) : rdtable;\n`).concat(dspTemplateBottom)
+}
+
 audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 const faust = new Faust2WebAudio.Faust({ debug: true, wasmLocation: "./faustwasm/libfaust-wasm.wasm", dataLocation: "./faustwasm/libfaust-wasm.data" });
 window.faust = faust;
@@ -252,19 +274,7 @@ const playit = () => {
     if(audioCtx.state === "suspended")
         audioCtx.resume();
     if(!playState) {
-        let motifStringTokens = tokenize(document.getElementById("motifComposer").value)
-    
-        const uniquenotes = findunique(motifStringTokens)
-        const plucktimes = getPluckTiming(motifStringTokens)
-        const noteids = motifStringTokens.filter(isnote).map(n => uniquenotes.findIndex(t => isequal(t,n)))
-    
-        let noteSpec = uniquenotes.map(printNoteSpec).join("").concat(`\nnoteratio = `).concat(uniquenotes.map(printNoteId).join()).concat(` : ba.selectn(${uniquenotes.length},noteindex);\n`)
-        let pluckTiming = plucktimes.map(printPluckTiming).join()
-        let pluckWaveformLength = pluckTiming.length
-        let noteTiming = noteids.map((id, index) => printNoteTiming(id,plucktimes[index],uniquenotes)).join()
-    
-        composition = dspTemplateTop.concat(getPitch()).concat(noteSpec).concat("gatewaveform = waveform{").concat(pluckTiming).concat(`};\n\ngate(p) = gatewaveform,int(os.phasor(${(pluckWaveformLength+1)/2},1/(${(pluckWaveformLength+1)/4}*p))) : rdtable;\n`).concat("motif = waveform{").concat(noteTiming).concat(`};\n\nmotifnotes(p) = motif,int(os.phasor(${(pluckWaveformLength+1)/4},1/(${(pluckWaveformLength+1)/4}*p))) : rdtable;\n`).concat(dspTemplateBottom)
-    
+        getComposition()
         document.getElementById("playStop").disabled = true;
         document.getElementById("playStop").classList.add("disabled");
         document.getElementById("playStop").innerHTML = "Compiling...";
