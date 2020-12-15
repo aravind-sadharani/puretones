@@ -140,14 +140,13 @@ a {
   color: #e6e6eb;
   font-size: 1.1em;
   padding: 1vmin 4vmin;
+  cursor: pointer;
 }
 
 .disabled {
   background-color: #404047;
-  border-radius: 1vmin;
-  color: #e6e6eb;
-  font-size: 1.1em;
-  padding: 1vmin 4vmin;
+  cursor: default;
+  opacity: 0.7;
 }
 
 .work-item-container {

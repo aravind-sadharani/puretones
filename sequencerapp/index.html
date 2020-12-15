@@ -5,7 +5,7 @@
         <script src="./faustwasm/index.min.js"></script>
         <script src="./sequencer.js"></script>
         <title>PureTones Sequencer</title>
-        <link rel="stylesheet" href="./styles.css"></link>
+        <link rel="stylesheet" href="./styles.css">
         <link rel="stylesheet" href="/style.css">
         <link href="https://fonts.googleapis.com/css?family=Noto+Sans:400,700" rel="stylesheet">
     </head>
@@ -14,7 +14,7 @@
             <a href="/"><h1><img src="/puretones-logo.svg">PureTones Sequencer</h1></a>
         </header>
         <section class="article">
-            <h2>Select Your Pitch</h2>
+            <h3>Common Parameters</h3>
             <div class="grid-container">
                 <strong>Pitch</strong> <span class="right">Key</span>
                 <select name="pitch" id="cpitch">
@@ -40,8 +40,7 @@
                 </select>
             </div>
             <br />
-            <br />
-            <h2>Fine Tune Your Scale</h2>
+            <h3>Note Parameters</h3>
             <div class="grid-container">
                 <strong>Sa</strong> <span class="right">Cents</span> <input type="number" id="Sa-C" value=0> <span class="right">0.01 ¢</span> <input type="number" id="Sa-F" value=0>
                 <strong>re</strong> <span class="right">Cents</span> <input type="number" id="re-C" value=0> <span class="right">0.01 ¢</span> <input type="number" id="re-F" value=0>
@@ -60,17 +59,17 @@
             <br />
             <center>
                 <button class="action" onclick="document.getElementById('fileupload').click()">
-                    <input type="file" id="fileupload" style="display: none;" onchange=uploadsnapshot()>
-                    Upload Snapshot
+                    <input type="file" accept=".pkb" id="fileupload" style="display: none;" onchange=uploadsnapshot()>
+                    Upload Keyboard Tuning
                 </button>
             </center>
             <br />
-            <h2>Type Your Composition</h2>
+            <h3>Composition Editor</h3>
             <center>
                 <textarea name="MotifComposer" id="motifComposer" cols="20" rows="10" placeholder="Type your composition here..."></textarea>
                 <br />
                 <button class="action" onclick=playit() id="playStop">Play Audio</button>
-                <button class="action" onclick=showsnapshotdialog()>Download DSP File</button>
+                <button class="action" onclick=showsnapshotdialog()>Download Faust File</button>
             </center>
             <br />
         </section>
