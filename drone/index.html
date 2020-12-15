@@ -20,14 +20,16 @@ Copyright 2020 - Sadharani Music Works
     <h1>PureTones Drone</h1>
     <p>PureTones Drone is a digital Tanpura with controls for fine tuning the strings and adjusting their harmonic envelope. PureTones Drone has been developed using <a href="https://faust.grame.fr/">Faust</a>, a functional programming language for sound synthesis and audio processing. This enables skilled Indian Classical musicians to fine tune the harmonic envelope to suit whichever Raga they wish to perform or practice.</p>
     <p>Contrary to widely held perceptions, the Tanpura is not only responsible for providing a reference of the fundamental note <strong>Sa</strong>, but it actually provides a tuning system resulting from string overtones which supports the entire Raga being performed. To understand this better, read <a href="/tanpuraworking/">this article</a> which illustrates the role of the Tanpura in Indian Classical music.</p>
-    <h2>Demo of PureTones Drone</h2>
-    <p>Please check out the <a href="/dronewebapp/" target="_blank">PureTones Drone Webapp</a> for a demo of PureTones Drone created using <tt>faust2webaudiowasm</tt> (see <a href="https://faustdoc.grame.fr/manual/tools/">Faust Tools</a> for details). Here is a quick guide to use the webapp.</p>
+    <h2>PureTones Drone Webapp</h2>
+    <p>To listen to the PureTones Drone and to create your own Tanpura tunings, check out the <a href="/dronewebapp/" target="_blank">PureTones Drone Webapp</a>. The webapp has been created using <tt>faust2webaudiowasm</tt> (see <a href="https://faustdoc.grame.fr/manual/tools/">Faust Tools</a> for details). Here is a quick user guide.</p>
     <ol>
-        <li>Select your pitch using the <tt>&plus;</tt> and <tt>&minus;</tt> buttons for setting <tt>Pitch</tt>.</li>
-        <li>Move the <tt>Play</tt> slider to the top to start playing a <tt>String</tt>.</li>
-        <li>Use the <tt>String</tt> tabs to access each of the six strings.</li>
-        <li>Use the <tt>Fine Tune</tt> and <tt>Ultrafine Tune</tt> sliders to finetune the pitch of each string.</li>
-        <li>Use the <tt>Variance</tt> and <tt>Octave</tt> sliders to fine tune the harmonic content produced by each string.</li>
+        <li>Click on <tt>New Session</tt> under <tt>Session Controls</tt>. This starts a Pa-Tanpura in the key of C.</li>
+        <li>Select your pitch using the <tt>Key</tt>, <tt>Octave</tt> and <tt>Cents</tt>.</li>
+        <li>Use <tt>Period</tt> to control the playing tempo and <tt>Level</tt> to control the volume level.</li>
+        <li>There are six tunable strings accessible via the string tabs.</li>
+        <li>Select which note the string should play and use the <tt>Fine Tune</tt> and <tt>Ultrafine Tune</tt> sliders to finetune the pitch of each string.</li>
+        <li>Use the <tt>Variance</tt> and <tt>Timbre</tt> controls to fine tune the harmonic content produced by each string, and <tt>Gain</tt> to adjust the relative gain levels of different strings.</li>
+        <li>When you are satisfied, you can save your tuning to a file by clicking on <tt>Save Session</tt> which can be uploaded later using <tt>Restore Session</tt>.</li>
     </ol>
        
     <p class="notice center">For any suggestions or queries, you can reach us at <a href="mailto:puretones@sadharani.com">puretones@sadharani.com</a>.

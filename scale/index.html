@@ -20,15 +20,19 @@ Copyright 2020 - Sadharani Music Works
     <h1>PureTones Musical Scale</h1>
     <p>PureTones Musical Scale is a 12 note digital musical scale with controls for fine tuning each note. It also provides controls for emulating a <em>Gamaka</em> (bending or shaking of a note as per Indian Classical music). PureTones Musical Scale has been developed using <a href="https://faust.grame.fr/">Faust</a>, a functional programming language for sound synthesis and audio processing. This enables skilled Indian Classical musicians to fine tune the musical scale to go with the <a href="/drone/">PureTones Drone</a> which they have finely tuned.</p>
     <p>Contrary to widely held perceptions, the Tanpura is not only responsible for providing a reference of the fundamental note <strong>Sa</strong>, but it actually provides a tuning system resulting from string overtones which supports the entire Raga being performed. Skilled artists then employ appropriate shades of each note in the Raga they perform to render each note with utmost accuracy and clarity. To understand this better, read <a href="/tanpuraworking/">this article</a> which illustrates the role of the Tanpura in Indian Classical music.</p>
-    <h2>Demo of PureTones Musical Scale</h2>
-    <p>Please check out the <a href="/scalewebapp/" target="_blank">PureTones Musical Scale Webapp</a> for a demo of PureTones Musical Scale created using <tt>faust2webaudiowasm</tt> (see <a href="https://faustdoc.grame.fr/manual/tools/">Faust Tools</a> for details). Here is a quick guide to use the webapp.</p>
+    <h2>PureTones Musical Scale Webapp</h2>
+    <p>To tune a musical scale for a Raga or with respect to a Drone tuning, check out the <a href="/scalewebapp/" target="_blank">PureTones Musical Scale Webapp</a>. The webapp has been built using <tt>faust2webaudiowasm</tt> (see <a href="https://faustdoc.grame.fr/manual/tools/">Faust Tools</a> for details). Here is a quick user guide.</p>
     <ol>
-        <li>Select your pitch using the <tt>&plus;</tt> and <tt>&minus;</tt> buttons for setting <tt>Pitch</tt>.</li>
-        <li>Move the <tt>Play</tt> slider to the top to start playing a <tt>Note</tt>.</li>
+        <li>Click on <tt>New Session</tt> under <tt>Session Controls</tt>. This starts up a music scale in the key of C, as per the <a href="/tuningsystems/">Venkatamakhin-Ramamatya Tuning</a>.</li>
+        <li>Select your pitch using the <tt>Key</tt>, <tt>Octave</tt> and <tt>Cents</tt>.</li>
+        <li>Use <tt>Period</tt> to control the playing tempo and <tt>Level</tt> to control the volume level.</li>
+        <li>There are two tone settings available, <tt>Synth</tt> and <tt>String</tt>. The <tt>String</tt> setting is more resource intensive and only works on high-performance computers.</li>
         <li>Use the <tt>Note</tt> tabs labelled as <tt>Sa</tt>, <tt>re</tt>, <tt>Re</tt>,... to access each of the 12 notes.</li>
-        <li>Use the <tt>Cent</tt> and <tt>0.01 Cent</tt> sliders to finetune the pitch of each note.</li>
-        <li>Move the <tt>Gamaka</tt> slider to the top to start playing the note with a gamaka.</li>
-        <li>Use the other sliders to fine tune the gamaka as you desire.</li>
+        <li>Use the <tt>Fine Tune</tt> and <tt>Ultrafine Tune</tt> sliders to finetune the pitch of each note.</li>
+        <li>Use the <tt>Loop</tt> toggle to play the note repeatedly and the <tt>Variance</tt> controls to adjust the timbre of the note.</li>
+        <li>Use the <tt>Gamaka</tt> controls to manipulate and fine tune the gamaka as you desire.</li>
+        <li>When you are satisfied, you can save your tuning to a file by clicking on <tt>Save Session</tt> which can be uploaded later using <tt>Restore Session</tt>.</li>
+        <li>Also note that a saved keyboard tuning can also be loaded into the <a href="/sequencerapp/">PureTones Sequencer Webapp</a> to compose musical works using the saved tuning.</li>
     </ol>
        
     <p class="notice center">For any suggestions or queries, you can reach us at <a href="mailto:puretones@sadharani.com">puretones@sadharani.com</a>.

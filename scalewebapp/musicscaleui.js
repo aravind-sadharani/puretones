@@ -161,6 +161,7 @@ let defaultParams = `0 /musicscale/Common_Parameters/12_Note_Scale/Dha/0.01_Cent
 0 /musicscale/Zita_Light/Dry/Wet_Mix
 -6.0 /musicscale/Zita_Light/Level`
 let modelState = "tone"
+let notes = {a: "Sa", w: "re", s: "Re", e: "ga", d: "Ga", f: "ma", t: "Ma", g: "Pa", y: "dha", h: "Dha", u: "ni", j: "Ni", k: "SA"}
 
 const reset = () => {
     if(playState)
@@ -209,19 +210,7 @@ const setModel = (model) => {
         playit()
 }
 
-const handlekey = (e) => {
-    let type = e.type
-    let key = getNote(e.key)
-    if(!key)
-        return
-    if(type === "keydown")
-        keyplay(key)
-}
-
-const getNote = (key) => {
-    let notes = {a: "Sa", w: "re", s: "Re", e: "ga", d: "Ga", f: "ma", t: "Ma", g: "Pa", y: "dha", h: "Dha", u: "ni", j: "Ni", k: "SA"}
-    return notes[key]
-}
+const handlekey = (e) => {if(e.type === "keydown" && notes[e.key]) keyplay(notes[e.key])}
 
 const keyplay = (key) => {
     dspNode.setParamValue(`/musicscale/Common_Parameters/12_Note_Scale/${key}/Pluck`,1)
@@ -292,17 +281,15 @@ const getHTMLKeyboard = () => {
         {white: "SA"},
     ]
 
-    let keyb = {Sa: "a", re: "w", Re: "s", ga: "e", Ga: "d", ma:"f", Ma: "t", Pa: "g", dha: "y", Dha: "h", ni: "u", Ni: "j", SA: "k"}
-
     const getHTMLWhiteKey = (group) => (`
-        <div class="key" onmousedown="keyplay('${group.white}')" ontouchstart="keyplay('${group.white}')">${group.white} (${keyb[group.white]})</div>
+        <div class="key" onmousedown="keyplay('${group.white}')" ontouchstart="keyplay('${group.white}')">${group.white}</div>
     `)
 
     const getHTMLBlackKey = (group) => {
         if(!group.black)
             return ""
         else
-            return `<div class="blackkey" onmousedown="keyplay('${group.black}')" ontouchstart="keyplay('${group.black}')">${group.black} (${keyb[group.black]})</div>`
+            return `<div class="blackkey" onmousedown="keyplay('${group.black}')" ontouchstart="keyplay('${group.black}')">${group.black}</div>`
     }
     
     let HTMLKeyBoard = notes.map(group => (`
@@ -312,7 +299,8 @@ const getHTMLKeyboard = () => {
         </li>`)
     ).join('\n')
 
-    return `<ul class="keyboard">
+    return `<h3>Keyboard Controls</h3>
+    <ul class="keyboard">
         ${HTMLKeyBoard}
     </ul><br>`
 }
