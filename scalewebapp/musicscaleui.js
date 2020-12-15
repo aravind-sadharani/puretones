@@ -182,7 +182,6 @@ const playit = () => {
         document.getElementById("savesnapshot").disabled = false
         document.getElementById('savesnapshot').classList.remove("disabled")
         document.addEventListener("keydown",handlekey)
-        document.addEventListener("keyup",handlekey)    
     } else {
         playState = false
         teardownApp('musicscale')
@@ -192,7 +191,6 @@ const playit = () => {
         document.getElementById("savesnapshot").disabled = true
         document.getElementById('savesnapshot').classList.add("disabled")
         document.removeEventListener("keydown",handlekey)
-        document.removeEventListener("keyup",handlekey)    
     }
 }
 
@@ -218,8 +216,6 @@ const handlekey = (e) => {
         return
     if(type === "keydown")
         keyplay(key)
-    if(type === "keyup")
-        keyrelease(key)
 }
 
 const getNote = (key) => {
@@ -227,7 +223,10 @@ const getNote = (key) => {
     return notes[key]
 }
 
-const keyplay = (key) => {dspNode.setParamValue(`/musicscale/Common_Parameters/12_Note_Scale/${key}/Pluck`,1)}
+const keyplay = (key) => {
+    dspNode.setParamValue(`/musicscale/Common_Parameters/12_Note_Scale/${key}/Pluck`,1)
+    setTimeout(() => keyrelease(key),300)
+}
 
 const keyrelease = (key) => {dspNode.setParamValue(`/musicscale/Common_Parameters/12_Note_Scale/${key}/Pluck`,0)}
 
@@ -296,14 +295,14 @@ const getHTMLKeyboard = () => {
     let keyb = {Sa: "a", re: "w", Re: "s", ga: "e", Ga: "d", ma:"f", Ma: "t", Pa: "g", dha: "y", Dha: "h", ni: "u", Ni: "j", SA: "k"}
 
     const getHTMLWhiteKey = (group) => (`
-        <div class="key" onmousedown="keyplay('${group.white}')" onmouseup="keyrelease('${group.white}')" ontouchstart="keyplay('${group.white}')" ontouchend="keyrelease('${group.white}')">${group.white} (${keyb[group.white]})</div>
+        <div class="key" onmousedown="keyplay('${group.white}')" ontouchstart="keyplay('${group.white}')">${group.white} (${keyb[group.white]})</div>
     `)
 
     const getHTMLBlackKey = (group) => {
         if(!group.black)
             return ""
         else
-            return `<div class="blackkey" onmousedown="keyplay('${group.black}')" onmouseup="keyrelease('${group.black}')" ontouchstart="keyplay('${group.black}')" ontouchend="keyrelease('${group.black}')">${group.black} (${keyb[group.black]})</div>`
+            return `<div class="blackkey" onmousedown="keyplay('${group.black}')" ontouchstart="keyplay('${group.black}')">${group.black} (${keyb[group.black]})</div>`
     }
     
     let HTMLKeyBoard = notes.map(group => (`
