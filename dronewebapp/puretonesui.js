@@ -84,8 +84,12 @@ let defaultParams = `0.0 /puretones/Zita_Light/Dry/Wet_Mix
 0.2 /puretones/PureTones_v1.0/0x00/6th_String/Octave_6`
 
 const reset = () => {
-    localStorage.clear()
+    if(playState)
+        playit()
+    if(localStorage.getItem('puretones'))
+        localStorage.removeItem('puretones')
     document.getElementById('playstop').disabled = false
+    document.getElementById('playstop').classList.remove("disabled")
     playit()
 }
 
