@@ -150,10 +150,23 @@ const uploadsnapshot = (keyname) => {
             let args = p.split(' ')
             updateParams(keyname, args[1].trim(), args[0].trim())
         })
+        if(!playState) {
+            document.getElementById('startstop').disabled = false
+            document.getElementById('startstop').classList.remove("disabled")
+            playit()
+        }
     }
-    if(!playState)
-        playit()
     reader.readAsText(file)
     delete reader
     uploader.value = null
+}
+
+const reset = (appname) => {
+    if(playState)
+        playit()
+    if(localStorage.getItem(appname))
+        localStorage.removeItem(appname)
+    document.getElementById('startstop').disabled = false
+    document.getElementById('startstop').classList.remove("disabled")
+    playit()
 }

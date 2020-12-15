@@ -17,11 +17,11 @@
     </header>
     <h3>Session Controls</h3>
     <center>
-        <button class="session" id="startover" onclick=reset()>New Session</button>
+        <button class="session" id="startover" onclick="reset('musicscale')">New Session</button>
         <button class="session disabled" id="startstop" onclick=playit() disabled>Last Session</button>
         <button class="session disabled" id="getsnapshot" onclick=showsnapshotdialog() disabled>Save Session</button>
         <button class="session" id="savesnapshot" onclick="document.getElementById('fileupload').click()">
-            <input type="file" accept=".pkb" id="fileupload" style="display: none;" onchange="uploadsnapshot('puretones')">
+            <input type="file" accept=".pkb" id="fileupload" style="display: none;" onchange="uploadsnapshot('musicscale')">
             Restore Session
         </button>
     </center>

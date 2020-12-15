@@ -83,27 +83,17 @@ let defaultParams = `0.0 /puretones/Zita_Light/Dry/Wet_Mix
 0.4 /puretones/PureTones_v1.0/0x00/6th_String/Octave_5
 0.2 /puretones/PureTones_v1.0/0x00/6th_String/Octave_6`
 
-const reset = () => {
-    if(playState)
-        playit()
-    if(localStorage.getItem('puretones'))
-        localStorage.removeItem('puretones')
-    document.getElementById('playstop').disabled = false
-    document.getElementById('playstop').classList.remove("disabled")
-    playit()
-}
-
 const playit = () => {
     if(!playState) {
         playState = true
         initApp('puretones')
-        document.getElementById("playstop").innerHTML = "Pause Session"
+        document.getElementById("startstop").innerHTML = "Pause Session"
         document.getElementById("getsnapshot").disabled = false
         document.getElementById('getsnapshot').classList.remove("disabled")
     } else {
         playState = false
         teardownApp('puretones')
-        document.getElementById("playstop").innerHTML = "Last Session"
+        document.getElementById("startstop").innerHTML = "Last Session"
         document.getElementById("getsnapshot").disabled = true
         document.getElementById('getsnapshot').classList.add("disabled")
     }
@@ -112,8 +102,8 @@ const playit = () => {
 const loadPureTonesApp = () => {
     let appContainer = document.getElementById("puretones")
     if(localStorage.getItem('puretones')) {
-        document.getElementById('playstop').disabled = false
-        document.getElementById('playstop').classList.remove('disabled')
+        document.getElementById('startstop').disabled = false
+        document.getElementById('startstop').classList.remove('disabled')
     }
 
     appContainer.insertAdjacentHTML('beforeend',getHTMLPitchUI())

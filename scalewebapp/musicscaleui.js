@@ -163,16 +163,6 @@ let defaultParams = `0 /musicscale/Common_Parameters/12_Note_Scale/Dha/0.01_Cent
 let modelState = "tone"
 let notes = {a: "Sa", w: "re", s: "Re", e: "ga", d: "Ga", f: "ma", t: "Ma", g: "Pa", y: "dha", h: "Dha", u: "ni", j: "Ni", k: "SA"}
 
-const reset = () => {
-    if(playState)
-        playit()
-    if(localStorage.getItem('musicscale'))
-        localStorage.removeItem('musicscale')
-    document.getElementById('startstop').disabled = false
-    document.getElementById('startstop').classList.remove("disabled")
-    playit()
-}
-
 const playit = () => {
     if(!playState) {
         playState = true
