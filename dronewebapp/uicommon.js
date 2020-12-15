@@ -151,6 +151,8 @@ const uploadsnapshot = (keyname) => {
             updateParams(keyname, args[1].trim(), args[0].trim())
         })
     }
+    if(!playState)
+        playit()
     reader.readAsText(file)
     delete reader
     uploader.value = null

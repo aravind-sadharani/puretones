@@ -100,16 +100,12 @@ const playit = () => {
         document.getElementById("playstop").innerHTML = "Pause Session"
         document.getElementById("getsnapshot").disabled = false
         document.getElementById('getsnapshot').classList.remove("disabled")
-        document.getElementById("savesnapshot").disabled = false
-        document.getElementById('savesnapshot').classList.remove("disabled")
     } else {
         playState = false
         teardownApp('puretones')
         document.getElementById("playstop").innerHTML = "Last Session"
         document.getElementById("getsnapshot").disabled = true
         document.getElementById('getsnapshot').classList.add("disabled")
-        document.getElementById("savesnapshot").disabled = true
-        document.getElementById('savesnapshot').classList.add("disabled")
     }
 }
 

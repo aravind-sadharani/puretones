@@ -180,8 +180,6 @@ const playit = () => {
         document.getElementById("startstop").innerHTML = "Pause Session"
         document.getElementById("getsnapshot").disabled = false
         document.getElementById('getsnapshot').classList.remove("disabled")
-        document.getElementById("savesnapshot").disabled = false
-        document.getElementById('savesnapshot').classList.remove("disabled")
         document.addEventListener("keydown",handlekey)
     } else {
         playState = false
@@ -189,8 +187,6 @@ const playit = () => {
         document.getElementById("startstop").innerHTML = "Last Session"
         document.getElementById("getsnapshot").disabled = true
         document.getElementById('getsnapshot').classList.add("disabled")
-        document.getElementById("savesnapshot").disabled = true
-        document.getElementById('savesnapshot').classList.add("disabled")
         document.removeEventListener("keydown",handlekey)
     }
 }
