@@ -221,10 +221,12 @@ input:checked + .toggle:before {
 .dialog {
     padding: 3vmin;
     border: 1px solid black;
+    border-radius: 5px;
     position: relative;
     top: 35vh;
-    left: 30vw;
-    width: 40vw;
+    margin: 0 auto;
+    width: 45vw;
+    min-width: 250px;
     z-index: 999;
     text-align: center;
     display: grid;
@@ -240,7 +242,10 @@ input:checked + .toggle:before {
     margin: 2vmin;
     grid-column-start: 1;
     grid-column-end: 3;
-    width: calc(100%-4vmin);
+    border-radius: 5px;
+    border-color: #c2c2c2;
+    border-width: 1px;
+    padding: 1vmin;
 }
 
 .dialog button {
