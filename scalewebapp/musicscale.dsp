@@ -53,7 +53,7 @@ note(freq,ratio,period) = string(freq,tunedratio)*rolloffenv
     benv = 3.5*en.adsr(0.0001,1,0.8,1,b);
     pluck = (period) : env;
   	tunedratio = ratio*ratio10*ratio00*(delta1,delta2,rate,number,period : shake);
-    rolloffenv = en.adsr(0.001,period*0.6,0.8,period*0.5,b+c*gate(period));
+    rolloffenv = en.adsr(0.001,period*0.6,0.8,period*0.5,c*gate(period)) + en.adsr(0.0001,0.2,0.8,0.1,b);
 };
 
 scale(c,e) = tgroup("[05]12 Note Scale", string01+string02+string03+string04+string05+string06+string07+string08+string09+string10+string11+string12+string13)

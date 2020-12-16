@@ -44,7 +44,7 @@ const loadAppState = (keyname, defaultParams) => {
     }
 }
 
-const initApp = (appname) => {
+const initApp = (appname, bufSize) => {
     audioCtx = new (window.AudioContext || window.webkitAudioContext)(({ latencyHint: "playback" }))
     audioCtx.destination.channelInterpretation = "discrete"
     if(audioCtx.state === "suspended")
@@ -52,7 +52,7 @@ const initApp = (appname) => {
 
     if (typeof WebAssembly === "undefined") return alert("WebAssembly is not supported in this browser !")
     if (!window[dspName]) return console.error(dspName + " instance not found.")
-    const bufferSize = 16384
+    const bufferSize = bufSize || 16384
     window[dspName].createDSP(audioCtx, bufferSize)
     .then(dsp => {
         if (!dsp) return console.error(`Error in ${appname} creation.`)

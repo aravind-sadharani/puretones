@@ -164,13 +164,15 @@ let modelState = "tone"
 let notes = {a: "Sa", w: "re", s: "Re", e: "ga", d: "Ga", f: "ma", t: "Ma", g: "Pa", y: "dha", h: "Dha", u: "ni", j: "Ni", k: "SA"}
 
 const playit = () => {
+    let bufSize = document.getElementById('model').value === "tone" ? 1024 : 16384
     if(!playState) {
         playState = true
-        initApp('musicscale')
+        initApp('musicscale',bufSize)
         document.getElementById("startstop").innerHTML = "Pause Session"
         document.getElementById("getsnapshot").disabled = false
         document.getElementById('getsnapshot').classList.remove("disabled")
         document.addEventListener("keydown",handlekey)
+        document.addEventListener("keyup",handlekey)
     } else {
         playState = false
         teardownApp('musicscale')
@@ -178,6 +180,7 @@ const playit = () => {
         document.getElementById("getsnapshot").disabled = true
         document.getElementById('getsnapshot').classList.add("disabled")
         document.removeEventListener("keydown",handlekey)
+        document.removeEventListener("keyup",handlekey)
     }
 }
 
@@ -196,14 +199,23 @@ const setModel = (model) => {
         playit()
 }
 
-const handlekey = (e) => {if(e.type === "keydown" && notes[e.key]) keyplay(notes[e.key])}
-
-const keyplay = (key) => {
-    dspNode.setParamValue(`/musicscale/Common_Parameters/12_Note_Scale/${key}/Pluck`,1)
-    setTimeout(() => keyrelease(key),300)
+const handlekey = (e) => {
+    if(e.type === "keydown" && notes[e.key])
+        keyplay(notes[e.key])
+    if(e.type === "keyup" && notes[e.key])
+        keyrelease(notes[e.key])
 }
 
-const keyrelease = (key) => {dspNode.setParamValue(`/musicscale/Common_Parameters/12_Note_Scale/${key}/Pluck`,0)}
+const keyplay = (key) => {dspNode.setParamValue(`/musicscale/Common_Parameters/12_Note_Scale/${key}/Pluck`,1)}
+
+const keyrelease = (key) => {
+    let persist = document.getElementById('model').value === "string"
+    let release = () => dspNode.setParamValue(`/musicscale/Common_Parameters/12_Note_Scale/${key}/Pluck`,0)
+    if(persist)
+        setTimeout(release,300)
+    else
+        release()
+}
 
 const loadMusicScaleApp = () => {
     let appContainer = document.getElementById("musicscale")
@@ -268,14 +280,14 @@ const getHTMLKeyboard = () => {
     ]
 
     const getHTMLWhiteKey = (group) => (`
-        <div class="key" onmousedown="keyplay('${group.white}')" ontouchstart="keyplay('${group.white}')">${group.white}</div>
+        <div class="key" onmousedown="keyplay('${group.white}')" onmouseup="keyrelease('${group.white}')" ontouchstart="keyplay('${group.white}')" ontouchend="keyrelease('${group.white}')">${group.white}</div>
     `)
 
     const getHTMLBlackKey = (group) => {
         if(!group.black)
             return ""
         else
-            return `<div class="blackkey" onmousedown="keyplay('${group.black}')" ontouchstart="keyplay('${group.black}')">${group.black}</div>`
+            return `<div class="blackkey" onmousedown="keyplay('${group.black}')" onmouseup="keyrelease('${group.black}')" ontouchstart="keyplay('${group.black}')" ontouchend="keyrelease('${group.black}')">${group.black}</div>`
     }
     
     let HTMLKeyBoard = notes.map(group => (`
