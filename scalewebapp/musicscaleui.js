@@ -377,7 +377,7 @@ const getHTMLNoteGamaka = (note) => {
         ${getHTMLSlider('musicscale',"Ending Cents",`/musicscale/Common_Parameters/12_Note_Scale/${note}/Ending_Cent`,0,-220,220,1)}
         ${getHTMLSlider('musicscale',"Ending 0.01 Cents",`/musicscale/Common_Parameters/12_Note_Scale/${note}/Ending_0.01_Cent`,0,-100,100,1)}
         ${getHTMLSlider('musicscale',"Rate",`/musicscale/Common_Parameters/12_Note_Scale/${note}/Rate`,10,-20,20,0.1)}
-        ${getHTMLSlider('musicscale',"Number",`/musicscale/Common_Parameters/12_Note_Scale/${note}/Number`,3.5,0,10,0.01)}
+        ${getHTMLSlider('musicscale',"Number",`/musicscale/Common_Parameters/12_Note_Scale/${note}/Number`,3.5,0,10,0.1)}
     </div>
     `
 }
