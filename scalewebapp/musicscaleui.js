@@ -164,7 +164,7 @@ let modelState = "tone"
 let notes = {a: "Sa", w: "re", s: "Re", e: "ga", d: "Ga", f: "ma", t: "Ma", g: "Pa", y: "dha", h: "Dha", u: "ni", j: "Ni", k: "SA"}
 
 const playit = () => {
-    let bufSize = document.getElementById('model').value === "tone" ? 1024 : 16384
+    let bufSize = 512*(2**(document.getElementById('bufSize').value))
     if(!playState) {
         playState = true
         initApp('musicscale',bufSize)
@@ -199,6 +199,16 @@ const setModel = (model) => {
         playit()
 }
 
+const updateBufSize = (bufSize) => {
+    let oldPlayState = playState
+    if(oldPlayState)
+        playit()
+    document.getElementById("bufSize").value = bufSize
+    document.getElementById("bufSize/slider").value = bufSize
+    if(oldPlayState)
+        playit()
+}
+
 const handlekey = (e) => {
     if(e.type === "keydown" && notes[e.key])
         keyplay(notes[e.key])
@@ -209,7 +219,7 @@ const handlekey = (e) => {
 const keyplay = (key) => {dspNode.setParamValue(`/musicscale/Common_Parameters/12_Note_Scale/${key}/Pluck`,1)}
 
 const keyrelease = (key) => {
-    let persist = document.getElementById('model').value === "string"
+    let persist = document.getElementById('bufSize').value > 3
     let release = () => dspNode.setParamValue(`/musicscale/Common_Parameters/12_Note_Scale/${key}/Pluck`,0)
     if(persist)
         setTimeout(release,300)
@@ -231,6 +241,8 @@ const loadMusicScaleApp = () => {
     appContainer.insertAdjacentHTML('beforeend',getHTMLSlider('musicscale',"Period","/musicscale/Common_Parameters/Period",2,0,3,0.1))
     appContainer.insertAdjacentHTML('beforeend',getHTMLSlider('musicscale',"Level","/musicscale/Zita_Light/Level",-6,-30,30,1))
 
+    appContainer.insertAdjacentHTML('beforeend',getHTMLDSPUI())
+
     appContainer.insertAdjacentHTML('beforeend',getHTMLNoteTabs())
 
     clickNote("Sa button")
@@ -238,11 +250,6 @@ const loadMusicScaleApp = () => {
 
 const getHTMLPitchUI = () => (`
     <h3>Common Parameters</h3>
-    <span>Tone</span>
-    <select class="field" name="model" id="model" oninput=setModel(this.value)>
-        <option value="tone" selected>Synth</model>
-        <option value="string">String</model>
-    </select><br>
     <span>Key</span>
     <select class="field" name="pitch" id="/musicscale/Common_Parameters/Pitch" oninput=updateParams('musicscale',this.id,this.value)>
         <option value=14>B</option>
@@ -265,6 +272,19 @@ const getHTMLPitchUI = () => (`
         <option value=-1>Low</option>
         <option value=-2>Lowest</option>
     </select><br>
+`)
+
+const getHTMLDSPUI = () => (`
+    <h3>Audio Parameters</h3>
+    <span>Tone</span>
+    <select class="field" name="model" id="model" oninput=setModel(this.value)>
+        <option value="tone" selected>Synth</model>
+        <option value="string">String</model>
+    </select><br>
+    <span>Latency</span>
+    <input class="field" type="number" id="bufSize" min=1 max=5 value=1 step=1 oninput=updateBufSize(this.value)>
+    <input type="range" id="bufSize/slider" class="slider" min=1 max=5 value=1 step=1 oninput=updateBufSize(this.value)>
+    <br>
 `)
 
 const getHTMLKeyboard = () => {
