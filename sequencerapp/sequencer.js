@@ -1,3 +1,8 @@
+audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+const faust = new Faust2WebAudio.Faust({ debug: false, wasmLocation: "./faustwasm/libfaust-wasm.wasm", dataLocation: "./faustwasm/libfaust-wasm.data" });
+window.faust = faust;
+let playState = false;
+
 const tokenize = str => str.replace(/[\u2018\u2019]/g, "'").replace(/[\u201C\u201D]/g, '"').replace(/(\n|\t)/g,' ').split(' ').map(s => s.trim()).filter(s => s.length)
 
 const baseValue = (noteStr) => {
@@ -79,7 +84,7 @@ const getPitch = () => {
     let cpitch = document.getElementById("cpitch").value
     let finetune = document.getElementById("finetune").value
     let octave = document.getElementById("octave").value
-    return `\ncpitch = 220*(2^(${cpitch}/12))*(2^(${finetune}/1200))*(2^(${octave}));\n\n`
+    return `cpitch = 220*(2^(${cpitch}/12))*(2^(${finetune}/1200))*(2^(${octave}));\n`
 }
 
 const getFineTune = (noteStr) => {
@@ -166,7 +171,7 @@ const getPluckLength = (timeStr) => 8*jatiValue(timeStr)*parseInt(repeatValue(ti
 
 const printPluckTiming = (plucklength) => "1,1,".repeat(plucklength-1).concat("1,0")
 
-const printNoteTiming = (id, repeats, uniquenotes) => `${id},`.repeat(repeats-1).concat(`${id}`)
+const printNoteTiming = (id, repeats) => `${id},`.repeat(repeats-1).concat(`${id}`)
 
 const dspTemplateTop = `import("stdfaust.lib");
 
@@ -258,18 +263,26 @@ const getComposition = () => {
     const plucktimes = getPluckTiming(motifStringTokens)
     const noteids = motifStringTokens.filter(isnote).map(n => uniquenotes.findIndex(t => isequal(t,n)))
 
-    let noteSpec = uniquenotes.map(printNoteSpec).join("").concat(`\nnoteratio = `).concat(uniquenotes.map(printNoteId).join()).concat(` : ba.selectn(${uniquenotes.length},noteindex);\n`)
-    let pluckTiming = plucktimes.map(printPluckTiming).join()
+    let noteSpec = `${uniquenotes.map(printNoteSpec).join("")}
+noteratio = ${uniquenotes.map(printNoteId).join()} : ba.selectn(${uniquenotes.length},noteindex);`
+    
+    let restTiming = ",0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0"
+    let pluckTiming = `${plucktimes.map(printPluckTiming).join()}${restTiming}${restTiming}`
     let pluckWaveformLength = pluckTiming.length
-    let noteTiming = noteids.map((id, index) => printNoteTiming(id,plucktimes[index],uniquenotes)).join()
+    let noteTiming = `${noteids.map((id, index) => printNoteTiming(id,plucktimes[index])).join()}${restTiming}`
 
-    composition = dspTemplateTop.concat(getPitch()).concat(noteSpec).concat("gatewaveform = waveform{").concat(pluckTiming).concat(`};\n\ngate(p) = gatewaveform,int(os.phasor(${(pluckWaveformLength+1)/2},1/(${(pluckWaveformLength+1)/4}*p))) : rdtable;\n`).concat("motif = waveform{").concat(noteTiming).concat(`};\n\nmotifnotes(p) = motif,int(os.phasor(${(pluckWaveformLength+1)/4},1/(${(pluckWaveformLength+1)/4}*p))) : rdtable;\n`).concat(dspTemplateBottom)
+    composition = `${dspTemplateTop}
+${getPitch()}
+${noteSpec}
+gatewaveform = waveform{${pluckTiming}};
+
+gate(p) = gatewaveform,int(os.phasor(${(pluckWaveformLength+1)/2},1/(${(pluckWaveformLength+1)/4}*p))) : rdtable;
+motif = waveform{${noteTiming}};
+
+motifnotes(p) = motif,int(os.phasor(${(pluckWaveformLength+1)/4},1/(${(pluckWaveformLength+1)/4}*p))) : rdtable;
+${dspTemplateBottom}`
 }
 
-audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-const faust = new Faust2WebAudio.Faust({ debug: true, wasmLocation: "./faustwasm/libfaust-wasm.wasm", dataLocation: "./faustwasm/libfaust-wasm.data" });
-window.faust = faust;
-let playState = false;
 const playit = () => {
     if(audioCtx.state === "suspended")
         audioCtx.resume();
@@ -280,7 +293,7 @@ const playit = () => {
         document.getElementById("playStop").innerHTML = "Compiling...";
         faust.ready.then(() => {
             let code = composition;
-            faust.getNode(code, { audioCtx, useWorklet: false, bufferSize: 8192, args: { "-I": "libraries/" } }).then(node => {
+            faust.getNode(code, { audioCtx, useWorklet: false, bufferSize: 16384, args: { "-I": "libraries/" } }).then(node => {
                 window.node = node;
                 node.connect(audioCtx.destination);
                 playState = true;
