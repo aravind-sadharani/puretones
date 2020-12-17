@@ -88,3 +88,22 @@ button {
 .dialog button {
     margin: 1vmin 2vmin;
 }  
+
+.invalid {
+    border-color: red;
+    border-width: 2px;
+}
+
+.errornotice {
+    margin: 0 auto 1em;
+    background-color: #ffead0;
+    border-radius: 5px;
+    width: 80%;
+    max-width: calc(576px - 1em);
+    padding: 1em 1em;
+}
+
+.errorhidden {
+    visibility: hidden;
+    margin: -1.7em auto;
+}

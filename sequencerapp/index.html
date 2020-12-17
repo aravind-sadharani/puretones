@@ -65,11 +65,12 @@
             </center>
             <br />
             <h3>Composition Editor</h3>
+            <p class="errornotice errorhidden" id="syntaxError"><strong>Syntax Error: </strong>Please enter a valid composition!</p>
             <center>
                 <textarea name="MotifComposer" id="motifComposer" cols="20" rows="10" placeholder="Type your composition here..."></textarea>
                 <br />
                 <button class="action" onclick=playit() id="playStop">Play Audio</button>
-                <button class="action" onclick=showsnapshotdialog()>Download Faust File</button>
+                <button class="action disabled" onclick=showsnapshotdialog() id="download" disabled>Download Faust File</button>
             </center>
             <br />
         </section>

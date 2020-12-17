@@ -297,9 +297,19 @@ const playit = () => {
                 window.node = node;
                 node.connect(audioCtx.destination);
                 playState = true;
+                document.getElementById("motifComposer").classList.remove("invalid");
+                document.getElementById("syntaxError").classList.add("errorhidden");
                 document.getElementById("playStop").disabled = false;
                 document.getElementById("playStop").classList.remove("disabled");
                 document.getElementById("playStop").innerHTML = "Stop";
+                document.getElementById("download").disabled = false;
+                document.getElementById("download").classList.remove("disabled");
+            }, reason => {
+                document.getElementById("motifComposer").classList.add("invalid");
+                document.getElementById("syntaxError").classList.remove("errorhidden");
+                document.getElementById("playStop").disabled = false;
+                document.getElementById("playStop").classList.remove("disabled");
+                document.getElementById("playStop").innerHTML = "Try Again";
             });
         });
     } else {
@@ -308,6 +318,8 @@ const playit = () => {
         dspNode.destroy();
         playState = false;
         document.getElementById("playStop").innerHTML = "Play Audio";
+        document.getElementById("download").disabled = true;
+        document.getElementById("download").classList.add("disabled");
     }
 }
 
