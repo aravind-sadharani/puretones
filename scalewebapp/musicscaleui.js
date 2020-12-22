@@ -200,6 +200,8 @@ const setModel = (model) => {
 }
 
 const updateBufSize = (bufSize) => {
+    let bufSlider = document.getElementById('bufSize')
+    bufSlider.disabled = true
     let oldPlayState = playState
     if(oldPlayState)
         playit()
@@ -207,6 +209,7 @@ const updateBufSize = (bufSize) => {
     document.getElementById("bufSize/slider").value = bufSize
     if(oldPlayState)
         playit()
+    bufSlider.disabled = false
 }
 
 const handlekey = (e) => {
@@ -277,13 +280,13 @@ const getHTMLPitchUI = () => (`
 const getHTMLDSPUI = () => (`
     <h3>Audio Parameters</h3>
     <span>Tone</span>
-    <select class="field" name="model" id="model" oninput=setModel(this.value)>
+    <select class="field" name="model" id="model" onchange=setModel(this.value)>
         <option value="tone" selected>Synth</model>
         <option value="string">String</model>
     </select><br>
     <span>Latency</span>
-    <input class="field" type="number" id="bufSize" min=1 max=5 value=1 step=1 oninput=updateBufSize(this.value)>
-    <input type="range" id="bufSize/slider" class="slider" min=1 max=5 value=1 step=1 oninput=updateBufSize(this.value)>
+    <input class="field" type="number" id="bufSize" min=1 max=5 value=1 step=1 onchange=updateBufSize(this.value)>
+    <input type="range" id="bufSize/slider" class="slider" min=1 max=5 value=1 step=1 onchange=updateBufSize(this.value)>
     <br>
 `)
 
