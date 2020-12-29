@@ -139,11 +139,11 @@ const jatiValue = (timeStr) => {
 }
 
 const repeatValue = (timeStr) => {
-    if(timeStr.length > 1)
-        return timeStr[1]
-    if(jatiValue(timeStr) === 1)
-        return timeStr[0]
-    return "1"
+    let parsedTimeStr = jatiValue(timeStr) === 1 ? timeStr : timeStr.substring(1,timeStr.length)
+    if(parsedTimeStr === "")
+        return 1
+    let intTimeStr = parseInt(parsedTimeStr)
+    return (isNaN(intTimeStr) ? 1 : intTimeStr)
 }
 
 const getPluckTiming = (tokens) => {
@@ -167,7 +167,7 @@ const getPluckTiming = (tokens) => {
     return timing
 }
 
-const getPluckLength = (timeStr) => 8*jatiValue(timeStr)*parseInt(repeatValue(timeStr))
+const getPluckLength = (timeStr) => 8*jatiValue(timeStr)*repeatValue(timeStr)
 
 const printPluckTiming = (plucklength) => "1,1,".repeat(plucklength-1).concat("1,0")
 
