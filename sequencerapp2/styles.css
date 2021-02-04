@@ -1,0 +1,109 @@
+textarea {
+    width: 80%;
+    max-width: 600px;
+    border-radius: 5px;
+    border-color: #c2c2c2;
+    font-family: monospace;
+    padding: 0.5em;
+}
+
+.grid-container {
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr repeat(4,2fr);
+    width: 80%;
+    max-width: 600px;
+    text-align: left;
+    grid-column-gap: 5px;
+    color: #424242;
+}
+
+.grid-container input {
+    width: 80%;
+    margin: 0 0 3px auto;
+    border-radius: 5px;
+    border-color: #c2c2c2;
+    border-width: 1px;
+}
+
+.grid-container select {
+    width: 85%;
+    margin: 0 0 3px auto;
+    border-radius: 5px;
+    border-color: #c2c2c2;
+}
+
+.right {
+    text-align: right;
+}
+
+button {
+    font-weight: 700;
+    cursor: pointer;
+    outline: none;
+}
+
+.modal {
+    visibility: hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    z-index: 666;
+    background-color: white;
+    opacity: 0.95;
+}
+  
+.dialog {
+    padding: 3vmin;
+    border: 1px solid black;
+    border-radius: 5px;
+    position: relative;
+    top: 35vh;
+    margin: 0 auto;
+    width: 45vw;
+    min-width: 250px;
+    z-index: 999;
+    text-align: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+  
+.dialog span {
+    grid-column-start: 1;
+    grid-column-end: 3;  
+}
+  
+.dialog input {
+    margin: 2vmin;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    border-radius: 5px;
+    border-color: #c2c2c2;
+    border-width: 1px;
+    padding: 1vmin;
+}
+  
+.dialog button {
+    margin: 1vmin 2vmin;
+}  
+
+.invalid {
+    border-color: red;
+    border-width: 2px;
+}
+
+.errornotice {
+    margin: 0 auto 1em;
+    background-color: #ffead0;
+    border-radius: 5px;
+    width: 80%;
+    max-width: calc(576px - 1em);
+    padding: 1em 1em;
+}
+
+.errorhidden {
+    visibility: hidden;
+    margin: -1.7em auto;
+}
