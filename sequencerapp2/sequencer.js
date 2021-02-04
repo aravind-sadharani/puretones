@@ -118,14 +118,14 @@ const getFineTune = (noteStr) => {
     return "0"
 }
 
-const printNoteSpec = (noteStr, id) => `ratio_${id} = (${baseValue(noteStr)}) * (${octaveValue(noteStr)}) * (2^(${getFineTune(noteStr)}/1200))${printGamaka(noteStr)}  //${noteStr}\n`
+const printNoteSpec = (voiceName, noteStr, id) => `${voiceName}ratio_${id} = (${baseValue(noteStr)}) * (${octaveValue(noteStr)}) * (2^(${getFineTune(noteStr)}/1200))${printGamaka(voiceName, noteStr)}  //${noteStr}\n`
 
-const printGamaka = (noteStr) => {
+const printGamaka = (voiceName, noteStr) => {
     let params = gamakaParams(noteStr)
-    return (params === "none" ? `${(gamakaValue(noteStr) ? " * (delta,(-1)*delta,rate,number,8*cperiod : shake);" : ";")}` : ` * (${params},8*cperiod : shake);`)
+    return (params === "none" ? `${(gamakaValue(noteStr) ? ` * (delta,(-1)*delta,rate,number,8*cperiod : ${voiceName}shake);` : ";")}` : ` * (${params},8*cperiod : ${voiceName}shake);`)
 }
 
-const printNoteId = (noteStr, id) => `ratio_${id}`
+const printNoteId = (voiceName, id) => `${voiceName}ratio_${id}`
 
 const jatiValue = (timeStr) => {
     let jatiStr = timeStr[0]
@@ -252,8 +252,8 @@ const getVoice = (voiceName,tokens,pitchid) => {
     const plucktimes = getPluckTiming(tokens)
     const noteids = tokens.filter(isnote).map(n => uniquenotes.findIndex(t => isequal(t,n)))
 
-    let notespec = `${uniquenotes.map((str,id) => voiceName+printNoteSpec(str,id)).join("")}
-${voiceName}noteratio = ${uniquenotes.map((str,id) => voiceName+printNoteId(str,id)).join()} : ba.selectn(${uniquenotes.length},${voiceName}noteindex);`
+    let notespec = `${uniquenotes.map((str,id) => printNoteSpec(voiceName,str,id)).join("")}
+${voiceName}noteratio = ${uniquenotes.map((str,id) => printNoteId(voiceName,id)).join()} : ba.selectn(${uniquenotes.length},${voiceName}noteindex);`
 
     let pluckTiming = `${plucktimes.map(printPluckTiming).join()}`
     let pluckWaveformLength = pluckTiming.length
