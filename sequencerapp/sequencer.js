@@ -1,4 +1,4 @@
-audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+let audioCtx;
 const faust = new Faust2WebAudio.Faust({ debug: false, wasmLocation: "./faustwasm/libfaust-wasm.wasm", dataLocation: "./faustwasm/libfaust-wasm.data" });
 window.faust = faust;
 let playState = false;
@@ -284,6 +284,8 @@ ${dspTemplateBottom}`
 }
 
 const playit = () => {
+    if(!audioCtx)
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
     if(audioCtx.state === "suspended")
         audioCtx.resume();
     if(!playState) {
