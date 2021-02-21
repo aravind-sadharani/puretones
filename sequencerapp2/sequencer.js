@@ -1,4 +1,4 @@
-audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+let audioCtx;
 const faust = new Faust2WebAudio.Faust({ debug: false, wasmLocation: "./faustwasm/libfaust-wasm.wasm", dataLocation: "./faustwasm/libfaust-wasm.data" });
 window.faust = faust;
 let playState = false;
@@ -33,6 +33,8 @@ const baseValue = (noteStr) => {
         return "243/128"
     if(baseStr.includes("SA"))
         return "2"    
+    if(baseStr.includes("Q"))
+        return "3"    
     return "-1"
 }
 
@@ -169,7 +171,7 @@ const getPluckTiming = (tokens) => {
 
 const getPluckLength = (timeStr) => 8*jatiValue(timeStr)*repeatValue(timeStr)
 
-const printPluckTiming = (plucklength) => "1,1,".repeat(plucklength-1).concat("1,0")
+const printPluckTiming = (id, repeats) => (id.includes("Q") ? "0,0,".repeat(repeats-1).concat("0,0") : "1,1,".repeat(repeats-1).concat("1,0"))
 
 const printNoteTiming = (id, repeats) => `${id},`.repeat(repeats-1).concat(`${id}`)
 
@@ -255,7 +257,7 @@ const getVoice = (voiceName,tokens,pitchid) => {
     let notespec = `${uniquenotes.map((str,id) => printNoteSpec(voiceName,str,id)).join("")}
 ${voiceName}noteratio = ${uniquenotes.map((str,id) => printNoteId(voiceName,id)).join()} : ba.selectn(${uniquenotes.length},${voiceName}noteindex);`
 
-    let pluckTiming = `${plucktimes.map(printPluckTiming).join()}`
+    let pluckTiming = `${noteids.map((id, index) => printPluckTiming(uniquenotes[id],plucktimes[index])).join()}`
     let pluckWaveformLength = pluckTiming.length
     let noteTiming = `${noteids.map((id, index) => printNoteTiming(id,plucktimes[index])).join()}`
 
@@ -294,6 +296,8 @@ ${dspTemplateBottom}`
 }
 
 const playit = () => {
+    if(!audioCtx)
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
     if(audioCtx.state === "suspended")
         audioCtx.resume();
     if(!playState) {

@@ -32,7 +32,9 @@ const baseValue = (noteStr) => {
     if(baseStr.includes("Ni"))
         return "243/128"
     if(baseStr.includes("SA"))
-        return "2"    
+        return "2"
+    if(baseStr.includes("Q"))
+        return "3"    
     return "-1"
 }
 
@@ -169,7 +171,7 @@ const getPluckTiming = (tokens) => {
 
 const getPluckLength = (timeStr) => 8*jatiValue(timeStr)*repeatValue(timeStr)
 
-const printPluckTiming = (plucklength) => "1,1,".repeat(plucklength-1).concat("1,0")
+const printPluckTiming = (id, repeats) => (id.includes("Q") ? "0,0,".repeat(repeats-1).concat("0,0") : "1,1,".repeat(repeats-1).concat("1,0"))
 
 const printNoteTiming = (id, repeats) => `${id},`.repeat(repeats-1).concat(`${id}`)
 
@@ -267,7 +269,7 @@ const getComposition = () => {
 noteratio = ${uniquenotes.map(printNoteId).join()} : ba.selectn(${uniquenotes.length},noteindex);`
     
     let restTiming = ",0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0"
-    let pluckTiming = `${plucktimes.map(printPluckTiming).join()}${restTiming}${restTiming}`
+    let pluckTiming = `${noteids.map((id, index) => printPluckTiming(uniquenotes[id],plucktimes[index])).join()}${restTiming}${restTiming}`
     let pluckWaveformLength = pluckTiming.length
     let noteTiming = `${noteids.map((id, index) => printNoteTiming(id,plucktimes[index])).join()}${restTiming}`
 
