@@ -175,34 +175,160 @@ const printPluckTiming = (id, repeats) => (id.includes("Q") ? "0,0,".repeat(repe
 
 const printNoteTiming = (id, repeats) => `${id},`.repeat(repeats-1).concat(`${id}`)
 
+const dspToneTemplates = [
+    `Tone(f,r) = StringModel(pm.f2l(f*r*(1+variance)),0.63,10*StringPluck,min(0.95,0.5*(r^0.75)),0,60/(r^2)) + StringModel(pm.f2l(f*r*(1-variance)),0.63,10*StringPluck,min(0.95,0.5*(r^0.75)),0,60/(r^2)) : *(StringEnv);
+
+    variance = vslider("[00]Variance",2,0,4,0.1)/10000;
+    StringPluck = en.adsr(0.00001,cperiod*0.7,0.9,cperiod*0.3,gate(cperiod));
+    StringEnv = en.adsr(0.0001,cperiod*0.6,0.8,cperiod*0.5,gate(cperiod));
+    
+    StringModel(length,pluckPosition,excitation,brightness,damping,stiffness) = 0.1*pm.endChain(egChain)
+    with{
+        openStringPick(length,stiffness,pluckPosition,excitation) = strChain
+        with{
+            dispersionFilters = par(i,2,si.smooth(stiffness)),_;
+            maxStringLength = 6;
+            nti = length*pluckPosition; // length of the upper portion of the string
+            itb = length*(1-pluckPosition); // length of the lower portion of the string
+            strChain = pm.chain(
+                pm.stringSegment(maxStringLength,nti) :
+                pm.in(excitation) :
+                pm.out :
+                dispersionFilters :
+                pm.stringSegment(maxStringLength,itb)
+            );
+        };
+        lengthTuning = 14*pm.speedOfSound/ma.SR;
+        stringL = length-lengthTuning;
+        egChain = pm.chain(
+            pm.lStringRigidTermination :
+            openStringPick(stringL,stiffness/1000,pluckPosition,excitation) :
+            pm.rTermination(pm.basicBlock,(-1)*pm.bridgeFilter(brightness,damping))
+        );
+    };`,
+    `Tone(f,r) = StringModel(pm.f2l(f*r*(1+variance)),StringPluck) + StringModel(pm.f2l(f*r*(1-variance)),StringPluck) : *(StringEnv);
+
+    variance = vslider("[00]Variance",2,0,4,0.1)/10000;
+    StringPluck = en.adsr(0.00001,cperiod*0.7,0.9,cperiod*0.3,gate(cperiod));
+    StringEnv = en.adsr(0.0001,cperiod*0.6,0.8,cperiod*0.5,gate(cperiod));
+    
+    StringModel(length,excitation) = 2*pm.endChain(egChain)
+    with{
+        brightness = 0.6/((length)^(1/3));
+        stiffness = 25*((length)^(1/3));
+        pluckPosition = 0.61;
+        StringBody(stringL,excitation) = reflectance,transmittance,_
+        with{
+            c = (0.375*(stringL^(1/4)) - 0.0825);
+            transmittance = _ <: *(1-c),1*c*fi.resonbp(pm.l2f(stringL),2,1) :> _;
+            reflectance = _;
+        };
+        StringBridge(brightness) = pm.rTermination(pm.basicBlock,reflectance) : _,transmittance,_
+        with{
+            reflectance = (-1)*pm.bridgeFilter(brightness,0);
+            transmittance = _;
+        };
+        openStringPick(length,stiffness,pluckPosition,excitation) = strChain
+        with{
+            dispersionFilters = par(i,2,si.smooth(stiffness)),_;
+            maxStringLength = 6;
+            nti = length*pluckPosition; // length of the upper portion of the string
+            itb = length*(1-pluckPosition); // length of the lower portion of the string
+            strChain = pm.chain(
+                pm.stringSegment(maxStringLength,nti) :
+                pm.in(excitation) :
+                dispersionFilters :
+                pm.stringSegment(maxStringLength,itb)
+            );
+        };
+        lengthTuning = 13*pm.speedOfSound/ma.SR;
+        stringL = length-lengthTuning;
+        egChain = pm.chain(
+            pm.lStringRigidTermination :
+            openStringPick(stringL,stiffness/1000,pluckPosition,excitation) :
+            StringBridge(brightness) : 
+            StringBody(length,excitation) :
+            pm.out
+        );
+    };`,
+    `Tone(f,r) = (sqrt(pm.f2l(f*r)/6))*ViolinModel(pm.f2l(f*r),0.2*ViolinBow,0.2*ViolinBow,0.79) : *(ViolinEnv);
+
+    ViolinBow = en.adsr(0.1,cperiod*0.7,0.9,cperiod*0.3,gate(cperiod));
+    ViolinEnv = en.adsr(0.1,cperiod*0.6,0.8,cperiod*0.5,gate(cperiod));
+    
+    violinBowedString(length,bowPressure,bowVelocity,bowPosition) = strChain
+          with{
+          maxStringLength = 6;
+          nti = length*bowPosition; // length of the upper portion of the string
+            itb = length*(1-bowPosition); // length of the lower portion of the string
+          strChain = pm.chain(
+            pm.stringSegment(maxStringLength,nti) : 
+            pm.violinBow(bowPressure,bowVelocity) :  
+            pm.stringSegment(maxStringLength,itb)
+          );
+          };
+        violinBridge = pm.rTermination(pm.basicBlock,reflectance) : _,transmittance,_
+        with{
+            reflectance = (-1)*pm.bridgeFilter(0.2,0.9);
+            transmittance = _;
+        };
+        violinBody(stringL) = reflectance,transmittance,_
+        with{
+            transmittance = _ <: fi.resonbp(pm.l2f(stringL/4),2,1) + fi.resonbp(pm.l2f(stringL/2),2,1) :> _ ;
+            reflectance = _;
+        };
+        ViolinModel(length,bowPressure,bowVelocity,bowPosition) = 15*pm.endChain(egChain)
+        with{
+          lengthTuning = 11*pm.speedOfSound/ma.SR;
+          stringL = length-lengthTuning;
+          egChain = pm.chain(
+            pm.lStringRigidTermination :
+            violinBowedString(stringL,bowPressure,bowVelocity,bowPosition) :
+                violinBridge :
+                violinBody(stringL) :
+                pm.out
+          );
+        };`,
+    `Tone(f,r) = ReedModel(pm.f2l(f*r),0.56*(1+ReedBlow),-0.104) : *(ReedEnv);
+
+    ReedBlow = 3*en.adsr(0.001,cperiod*0.7,0.9,cperiod*0.3,gate(cperiod));
+    ReedEnv = en.adsr(0.1,cperiod*0.6,0.8,cperiod*0.5,gate(cperiod));
+    
+    reedTable(offset,slope) = reedTable : min(1) : max(-1)
+        with {
+            reedTable = *(slope) + offset;
+        };
+        clarinetReed(stiffness) = reedTable(0.7,stiffness);
+        ReedMouthPiece(reedStiffness,pressure) = pm.lTermination(reedInteraction,pm.in(pressure))
+        with{
+            reedInteraction = *(-1) <: *(clarinetReed(reedStiffness));
+        };
+        wBell(length) = pm.rTermination(pm.basicBlock,bellFilter)
+        with {
+          opening = (length^(1/3))/(length^(1/3)+1);
+          bellFilter = si.smooth(opening);
+        };
+        ReedModel(tubeLength,pressure,reedStiffness) = 1.5*pm.endChain(modelChain)
+        with{
+            lengthTuning = 7*pm.speedOfSound/ma.SR;
+            maxTubeLength = 3;
+            tunedLength = tubeLength/2-lengthTuning;
+            modelChain =
+                pm.chain(
+                    ReedMouthPiece(reedStiffness,pressure) :
+                    pm.openTube(maxTubeLength,tunedLength) :
+                    wBell(tubeLength/2) : pm.out
+                );
+        };`
+]
+
+const getTone = () => {
+    let tone = document.getElementById("tone").value
+    return dspToneTemplates[parseInt(tone)]
+}
+
 const dspTemplateTop = `import("stdfaust.lib");
 
-StringModel(length,pluckPosition,excitation,brightness,damping,stiffness) = 0.1*pm.endChain(egChain)
-with{
-    openStringPick(length,stiffness,pluckPosition,excitation) = strChain
-    with{
-        dispersionFilters = par(i,2,si.smooth(stiffness)),_;
-        maxStringLength = 6;
-        nti = length*pluckPosition; // length of the upper portion of the string
-        itb = length*(1-pluckPosition); // length of the lower portion of the string
-        strChain = pm.chain(
-            pm.stringSegment(maxStringLength,nti) :
-            pm.in(excitation) :
-            pm.out :
-            dispersionFilters :
-            pm.stringSegment(maxStringLength,itb)
-        );
-    };
-    lengthTuning = 14*pm.speedOfSound/ma.SR;
-    stringL = length-lengthTuning;
-    egChain = pm.chain(
-        pm.lStringRigidTermination :
-        openStringPick(stringL,stiffness/1000,pluckPosition,excitation) :
-        pm.rTermination(pm.basicBlock,(-1)*pm.bridgeFilter(brightness,damping))
-    );
-};
-
-variance = vslider("[00]Variance",2,0,4,0.1)/10000;
 cperiod = 2^(vslider("[01]Motif Tempo",1.0,-2,4,0.1) - 3);
 cgain = 10^(vslider("[02]Motif Gain",-9,-20,20,0.1) - 6 : /(20));
 delta = vslider("[04]Shake Variance", 10,0,120,1);  	
@@ -215,15 +341,13 @@ phasedcos(x) = phasor(x) - (phasor(x) : ba.latch(gate(cperiod))) : *(2*ma.PI) : 
 ramp(x) = +(x/ma.SR) ~ _;
 lockedramp(x) = ramp(x) - (ramp(x) : ba.latch(gate(cperiod)));
 shake(d1,d2,r,n,p) = 1+((c2v(d1)+c2v(d2))/2+(c2v(d1)-c2v(d2))*phasedcos(l2l(r))/2)*(lockedramp(l2l(r)) < n);
-pluck = en.adsr(0.00001,cperiod*0.7,0.9,cperiod*0.3,gate(cperiod));
-env = en.adsr(0.0001,cperiod*0.6,0.8,cperiod*0.5,gate(cperiod));
 noteindex = cperiod : motifnotes;
 `
 
 const dspTemplateBottom = `
-notes = StringModel(pm.f2l(cpitch*noteratio*(1+variance)),0.63,10*pluck,min(0.95,0.5*(noteratio^0.75)),0,60/(noteratio^2)) + StringModel(pm.f2l(cpitch*noteratio*(1-variance)),0.63,10*pluck,min(0.95,0.5*(noteratio^0.75)),0,60/(noteratio^2)) : *(env) : @(ma.SR*0.1);
+notes = Tone(cpitch,noteratio) : @(ma.SR*0.1);
 
-concert = hgroup("[00]Motif",cgain*notes);
+concert = hgroup("[00]Motif",cgain*(notes));
 process = concert <: dm.zita_light;
 `
 
@@ -274,6 +398,7 @@ noteratio = ${uniquenotes.map(printNoteId).join()} : ba.selectn(${uniquenotes.le
     let noteTiming = `${noteids.map((id, index) => printNoteTiming(id,plucktimes[index])).join()}${restTiming}`
 
     composition = `${dspTemplateTop}
+${getTone()}
 ${getPitch()}
 ${noteSpec}
 gatewaveform = waveform{${pluckTiming}};
