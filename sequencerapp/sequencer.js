@@ -210,7 +210,7 @@ const dspToneTemplates = [
 
     variance = vslider("[00]Variance",2,0,4,0.1)/10000;
     StringPluck = en.adsr(0.00001,cperiod*0.7,0.9,cperiod*0.3,gate(cperiod));
-    StringEnv = en.adsr(0.0001,cperiod*0.6,0.8,cperiod*0.5,gate(cperiod));
+    StringEnv = en.adsr(0.0001,cperiod*0.7,0.9,cperiod*0.4,gate(cperiod));
     
     StringModel(length,excitation) = 2*pm.endChain(egChain)
     with{
