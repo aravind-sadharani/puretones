@@ -308,11 +308,11 @@ const dspToneTemplates = [
           opening = (length^(1/3))/(length^(1/3)+1);
           bellFilter = si.smooth(opening);
         };
-        ReedModel(tubeLength,pressure,reedStiffness) = 1.5*pm.endChain(modelChain)
+        ReedModel(tubeLength,pressure,reedStiffness) = 0.8*pm.endChain(modelChain)
         with{
             lengthTuning = 7*pm.speedOfSound/ma.SR;
             maxTubeLength = 3;
-            tunedLength = tubeLength/2-lengthTuning;
+            tunedLength = (tubeLength/2-lengthTuning)*(2^(-9/1200));
             modelChain =
                 pm.chain(
                     ReedMouthPiece(reedStiffness,pressure) :
