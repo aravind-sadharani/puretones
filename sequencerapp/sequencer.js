@@ -312,7 +312,7 @@ const dspToneTemplates = [
         with{
             lengthTuning = 7*pm.speedOfSound/ma.SR;
             maxTubeLength = 3;
-            tunedLength = (tubeLength/2-lengthTuning)*(2^(-9/1200));
+            tunedLength = tubeLength/2-lengthTuning;
             modelChain =
                 pm.chain(
                     ReedMouthPiece(reedStiffness,pressure) :
