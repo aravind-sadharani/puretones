@@ -253,8 +253,8 @@ const dspToneTemplates = [
     };`,
     `Tone(f,r) = (sqrt(pm.f2l(f*r)/6))*ViolinModel(pm.f2l(f*r),0.2*ViolinBow,0.2*ViolinBow,0.79) : *(ViolinEnv);
 
-    ViolinBow = en.adsr(0.1,cperiod*0.7,0.9,cperiod*0.3,gate(cperiod));
-    ViolinEnv = en.adsr(0.1,cperiod*0.6,0.8,cperiod*0.5,gate(cperiod));
+    ViolinBow = en.adsr(0.1,cperiod*0.7,0.6,cperiod*0.3,gate(cperiod))*(1+0.5*os.osc(1/(8*cperiod)));
+    ViolinEnv = en.adsr(0.1,cperiod*0.6,0.6,cperiod*0.5,gate(cperiod));
     
     violinBowedString(length,bowPressure,bowVelocity,bowPosition) = strChain
           with{
@@ -277,12 +277,12 @@ const dspToneTemplates = [
             transmittance = _ <: fi.resonbp(pm.l2f(stringL/4),2,1) + fi.resonbp(pm.l2f(stringL/2),2,1) :> _ ;
             reflectance = _;
         };
-        ViolinModel(length,bowPressure,bowVelocity,bowPosition) = 15*pm.endChain(egChain)
+        ViolinModel(length,bowPressure,bowVelocity,bowPosition) = 6*pm.endChain(egChain)
         with{
           lengthTuning = 11*pm.speedOfSound/ma.SR;
           stringL = length-lengthTuning;
           egChain = pm.chain(
-            pm.lStringRigidTermination :
+            pm.lTermination((-1)*pm.bridgeFilter(0.3,0.1),pm.basicBlock) :
             violinBowedString(stringL,bowPressure,bowVelocity,bowPosition) :
                 violinBridge :
                 violinBody(stringL) :
