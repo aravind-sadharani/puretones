@@ -253,7 +253,7 @@ const dspToneTemplates = [
     };`,
     `Tone(f,r) = (sqrt(pm.f2l(f*r)/6))*ViolinModel(pm.f2l(f*r),0.2*ViolinBow,0.2*ViolinBow,0.79) : *(ViolinEnv);
 
-    ViolinBow = en.adsr(0.1,cperiod*0.7,0.6,cperiod*0.3,gate(cperiod))*(1+0.5*os.osc(1/(8*cperiod)));
+    ViolinBow = en.adsr(0.1,cperiod*0.7,0.6,cperiod*0.3,gate(cperiod))*(1+0.35*os.osc(1/(16*cperiod)));
     ViolinEnv = en.adsr(0.1,cperiod*0.6,0.6,cperiod*0.5,gate(cperiod));
     
     violinBowedString(length,bowPressure,bowVelocity,bowPosition) = strChain
@@ -274,10 +274,10 @@ const dspToneTemplates = [
         };
         violinBody(stringL) = reflectance,transmittance,_
         with{
-            transmittance = _ <: fi.resonbp(pm.l2f(stringL/4),2,1) + fi.resonbp(pm.l2f(stringL/2),2,1) :> _ ;
+            transmittance = _ <: 0.5*fi.resonbp(pm.l2f(stringL/4),2,1) + 1.5*fi.resonbp(pm.l2f(stringL/2),2,1) :> _ ;
             reflectance = _;
         };
-        ViolinModel(length,bowPressure,bowVelocity,bowPosition) = 6*pm.endChain(egChain)
+        ViolinModel(length,bowPressure,bowVelocity,bowPosition) = 8*pm.endChain(egChain)
         with{
           lengthTuning = 11*pm.speedOfSound/ma.SR;
           stringL = length-lengthTuning;
@@ -291,7 +291,7 @@ const dspToneTemplates = [
         };`,
     `Tone(f,r) = ReedModel(pm.f2l(f*r),0.56*(1+ReedBlow),-0.104) : *(ReedEnv);
 
-    ReedBlow = 3*en.adsr(0.001,cperiod*0.7,0.9,cperiod*0.3,gate(cperiod));
+    ReedBlow = 3*en.adsr(0.01,cperiod*0.7,0.9,cperiod*0.3,gate(cperiod))*(1+0.35*os.osc(1/(16*cperiod)));
     ReedEnv = en.adsr(0.1,cperiod*0.6,0.8,cperiod*0.5,gate(cperiod));
     
     reedTable(offset,slope) = reedTable : min(1) : max(-1)
