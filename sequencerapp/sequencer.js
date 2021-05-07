@@ -291,7 +291,7 @@ const dspToneTemplates = [
         };`,
     `Tone(f,r) = ReedModel(pm.f2l(f*r),0.56*(1+ReedBlow),-0.104) : *(ReedEnv);
 
-    ReedBlow = 3*en.adsr(0.01,cperiod*0.7,0.9,cperiod*0.3,gate(cperiod))*(1+0.35*os.osc(1/(16*cperiod)));
+    ReedBlow = 3*en.adsr(0.01,cperiod*0.7,0.9,cperiod*0.3,gate(cperiod))*(1+0.25*os.osc(1/(16*cperiod)));
     ReedEnv = en.adsr(0.1,cperiod*0.6,0.8,cperiod*0.5,gate(cperiod));
     
     reedTable(offset,slope) = reedTable : min(1) : max(-1)
