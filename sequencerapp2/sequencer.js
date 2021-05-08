@@ -300,7 +300,6 @@ ${voicesForComposition}
 concert = hgroup("[00]Motif",cgain*(${concertForComposition}));
 ${dspTemplateBottom}`
 
-    console.log(composition)
     return true
 }
 
