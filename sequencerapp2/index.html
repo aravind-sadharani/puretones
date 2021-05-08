@@ -68,38 +68,83 @@
             </center>
             <br />
             <h3>Composition Editor</h3>
-            <p class="errornotice errorhidden" id="syntaxError"><strong>Syntax Error: </strong>Please enter a valid composition!</p>
-            <h3>Voice 1</h3>
+            <p class="errornotice errorhidden" id="syntaxError"><strong>Syntax Error: </strong>Please enable at least one voice and enter a valid composition!</p>
             <div class="grid-container">
-                <strong>Octave</strong> <span class="right">Select</span>
-                <select name="octave" id="octave">
-                    <option value="1">High</option>
-                    <option value="0" selected>Medium</option>
-                    <option value="-1">Low</option>
-                </select>
+                <strong>Voice 1</strong><span class="right"> </span><span class="right"> </span><span class="right"> </span><button class="voiceconfig" id="voice_1/toggle" onclick="toggleVoice(event, 'voice_1')">Enable</button>
+                <div class="voice-container" id="voice_1/config">
+                    <strong>Octave</strong>
+                    <span class="right"> </span><span class="right"> </span>
+                    <span class="right">Select</span>
+                    <select name="octave" id="octave_1">
+                        <option value="1">High</option>
+                        <option value="0" selected>Medium</option>
+                        <option value="-1">Low</option>
+                    </select>
+                    <strong>Tone</strong>
+                    <span class="right"> </span><span class="right"> </span>
+                    <span class="right">Select</span>
+                    <select name="tone1" id="tone_1">
+                        <option value="0" selected>String 1</option>
+                        <option value="1">String 2</option>
+                        <option value="2">Bow</option>
+                        <option value="3">Reed</option>
+                    </select>
+                    <br />
+                    <textarea name="MotifComposer" id="motifComposer_1" cols="20" rows="10" placeholder="Type your composition here..."></textarea>
+                </div>
+                <br /><span class="right"> </span><span class="right"> </span><span class="right"> </span><span class="right"> </span>
+                <strong>Voice 2</strong><span class="right"> </span><span class="right"> </span><span class="right"> </span><button class="voiceconfig" id="voice_2/toggle" onclick="toggleVoice(event, 'voice_2')">Enable</button>
+                <div class="voice-container" id="voice_2/config">
+                    <strong>Octave</strong>
+                    <span class="right"> </span><span class="right"> </span>
+                    <span class="right">Select</span>
+                    <select name="octave2" id="octave_2">
+                        <option value="1">High</option>
+                        <option value="0" selected>Medium</option>
+                        <option value="-1">Low</option>
+                    </select>
+                    <strong>Tone</strong>
+                    <span class="right"> </span><span class="right"> </span>
+                    <span class="right">Select</span>
+                    <select name="tone2" id="tone_2">
+                        <option value="0" selected>String 1</option>
+                        <option value="1">String 2</option>
+                        <option value="2">Bow</option>
+                        <option value="3">Reed</option>
+                    </select>
+                    <br/>
+                    <textarea name="MotifComposer2" id="motifComposer_2" cols="20" rows="10" placeholder="Type your composition here..."></textarea>
+                </div>
+                <br /><span class="right"> </span><span class="right"> </span><span class="right"> </span><span class="right"> </span>
+                <strong>Voice 3</strong><span class="right"> </span><span class="right"> </span><span class="right"> </span><button class="voiceconfig" id="voice_3/toggle" onclick="toggleVoice(event, 'voice_3')">Enable</button>
+                <div class="voice-container" id="voice_3/config">
+                    <strong>Octave</strong>
+                    <span class="right"> </span><span class="right"> </span>
+                    <span class="right">Select</span>
+                    <select name="octave3" id="octave_3">
+                        <option value="1">High</option>
+                        <option value="0" selected>Medium</option>
+                        <option value="-1">Low</option>
+                    </select>
+                    <strong>Tone</strong>
+                    <span class="right"> </span><span class="right"> </span>
+                    <span class="right">Select</span>
+                    <select name="tone3" id="tone_3">
+                        <option value="0" selected>String 1</option>
+                        <option value="1">String 2</option>
+                        <option value="2">Bow</option>
+                        <option value="3">Reed</option>
+                    </select>
+                    <br/>
+                    <textarea name="MotifComposer3" id="motifComposer_3" cols="20" rows="10" placeholder="Type your composition here..."></textarea>
+                </div>
             </div>
             <br />
             <center>
-                <textarea name="MotifComposer" id="motifComposer" cols="20" rows="10" placeholder="Type your composition here..."></textarea>
-                <br />
-            </center>
-            <h3>Voice 2</h3>
-            <div class="grid-container">
-                <strong>Octave</strong> <span class="right">Select</span>
-                <select name="octave" id="octave2">
-                    <option value="1">High</option>
-                    <option value="0" selected>Medium</option>
-                    <option value="-1">Low</option>
-                </select>
-            </div>
-            <br />
-            <center>
-                <textarea name="MotifComposer2" id="motifComposer2" cols="20" rows="10" placeholder="Type your composition here..."></textarea>
-                <br />
                 <button class="action" onclick=playit() id="playStop">Play Audio</button>
                 <button class="action disabled" onclick=showsnapshotdialog() id="download" disabled>Download Faust File</button>
-
-            <br />
+                <br />
+            </center>
         </section>
         <div class="modal" id="snapshotdialog">
             <div class="dialog">

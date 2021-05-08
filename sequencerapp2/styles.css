@@ -1,10 +1,47 @@
 textarea {
-    width: 80%;
-    max-width: 600px;
+    grid-column: 1 / span 5;
     border-radius: 5px;
     border-color: #c2c2c2;
     font-family: monospace;
     padding: 0.5em;
+}
+
+.voice-container {
+    grid-column: 1 / span 5;
+    grid-template-columns: 1fr repeat(4,2fr);
+    grid-column-gap: 5px;
+    display: none;
+    border-top-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    padding: 12px;
+    border: 1px solid #e6e6eb;
+}
+
+.voice-container select {
+    width: 85%;
+    margin: 0 0 3px auto;
+    border-radius: 5px;
+    border-color: #c2c2c2;
+}
+
+.voiceconfig {
+    border-width: 1px;
+    border-color: #333366;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    background-color: white;
+    font-weight: normal;
+}
+
+.voiceconfig.active {
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+    background-color: #333366;
+    color: white;
+    font-weight: bold;
 }
 
 .grid-container {
@@ -16,6 +53,10 @@ textarea {
     text-align: left;
     grid-column-gap: 5px;
     color: #424242;
+}
+
+.double {
+    grid-column: 1 / span 2;
 }
 
 .grid-container input {
@@ -31,6 +72,11 @@ textarea {
     margin: 0 0 3px auto;
     border-radius: 5px;
     border-color: #c2c2c2;
+}
+
+.grid-container button {
+    width: 85%;
+    margin: 0 0 0 auto;
 }
 
 .right {
