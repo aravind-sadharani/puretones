@@ -188,10 +188,6 @@ phasor(f) = (+(f/ma.SR) ~ ma.decimal);
 ramp(x) = +(x/ma.SR) ~ _;
 `
 
-const dspTemplateBottom = `
-process = concert <: dm.zita_light;
-`
-
 let composition
 
 const showsnapshotdialog = () => {
@@ -275,12 +271,12 @@ const getComposition = () => {
     })
 
     voicesForComposition = voiceActiveState.map((state,index) => {
+        let id = (index+1).toString()
+        let toneName = toneNames[tonesOfVoices[index]]
         if(state) {
-            let id = (index+1).toString()
-            let toneName = toneNames[tonesOfVoices[index]]
             return getVoice(`_voice_${id}`,motifStringTokens[index],`_${id}`,toneName)
         } else {
-            return ""
+            return `_voice_${id}notes = 0;\n`
         }
     }).join("")
 
@@ -291,15 +287,14 @@ const getComposition = () => {
             return ""
         }
     }).join("")
-
-    concertForComposition = voiceActiveState.map((state,index) => (state ? `_voice_${(index+1).toString()}notes` : "")).filter(voice => voice !== "").join("+")
    
     composition = `${dspTemplateTop}
 ${tonesForComposition}
 ${voicesForComposition}
-concert = hgroup("[00]Motif",cgain*(${concertForComposition}));
-${dspTemplateBottom}`
-
+mix(a,b) = 0.65*a+0.35*b,0.35*a+0.65*b;
+concert = hgroup("[00]Motif",1.5*cgain*(0.7*_voice_1notes + 0.8*_voice_2notes),2*cgain*(0.7*_voice_1notes + 0.8*_voice_3notes));
+process = concert : mix : dm.zita_light;
+`
     return true
 }
 
@@ -435,7 +430,7 @@ with {
     StringPluck = en.adsr(0.00001,cperiod*0.7,0.9,cperiod*0.3,g);
     StringEnv = en.adsr(0.0001,cperiod*0.7,0.9,cperiod*0.4,g);
     
-    StringModel(length,excitation) = 2*pm.endChain(egChain)
+    StringModel(length,excitation) = 1.2*pm.endChain(egChain)
     with{
         brightness = 0.6/((length)^(1/3));
         stiffness = 25*((length)^(1/3));
@@ -475,7 +470,7 @@ with {
         );
     };
 };`,
-    `ViolinTone(f,r,g) = (sqrt(pm.f2l(f*r)/6))*ViolinModel(pm.f2l(f*r),0.2*ViolinBow,0.2*ViolinBow,0.79) : *(ViolinEnv)
+    `ViolinTone(f,r,g) = ((pm.f2l(f*r)/6))*ViolinModel(pm.f2l(f*r),0.2*ViolinBow,0.2*ViolinBow,0.79) : *(ViolinEnv)
 with {
 
     ViolinBow = en.adsr(0.1,cperiod*0.7,0.6,cperiod*0.3,g)*(1+0.35*os.osc(1/(16*cperiod)));
@@ -502,7 +497,7 @@ with {
             transmittance = _ <: 0.5*fi.resonbp(pm.l2f(stringL/4),2,1) + 1.5*fi.resonbp(pm.l2f(stringL/2),2,1) :> _ ;
             reflectance = _;
         };
-        ViolinModel(length,bowPressure,bowVelocity,bowPosition) = 8*pm.endChain(egChain)
+        ViolinModel(length,bowPressure,bowVelocity,bowPosition) = 20*pm.endChain(egChain)
         with{
           lengthTuning = 11*pm.speedOfSound/ma.SR;
           stringL = length-lengthTuning;
