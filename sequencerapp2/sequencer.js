@@ -430,7 +430,7 @@ with {
     StringPluck = en.adsr(0.00001,cperiod*0.7,0.9,cperiod*0.3,g);
     StringEnv = en.adsr(0.0001,cperiod*0.7,0.9,cperiod*0.4,g);
     
-    StringModel(length,excitation) = 1.2*pm.endChain(egChain)
+    StringModel(length,excitation) = 2*pm.endChain(egChain)
     with{
         brightness = 0.6/((length)^(1/3));
         stiffness = 25*((length)^(1/3));
@@ -497,7 +497,7 @@ with {
             transmittance = _ <: 0.5*fi.resonbp(pm.l2f(stringL/4),2,1) + 1.5*fi.resonbp(pm.l2f(stringL/2),2,1) :> _ ;
             reflectance = _;
         };
-        ViolinModel(length,bowPressure,bowVelocity,bowPosition) = 20*pm.endChain(egChain)
+        ViolinModel(length,bowPressure,bowVelocity,bowPosition) = 15*pm.endChain(egChain)
         with{
           lengthTuning = 11*pm.speedOfSound/ma.SR;
           stringL = length-lengthTuning;
@@ -530,7 +530,7 @@ with {
           opening = (length^(1/3))/(length^(1/3)+1);
           bellFilter = si.smooth(opening);
         };
-        ReedModel(tubeLength,pressure,reedStiffness) = 0.8*pm.endChain(modelChain)
+        ReedModel(tubeLength,pressure,reedStiffness) = 0.7*pm.endChain(modelChain)
         with{
             lengthTuning = 7*pm.speedOfSound/ma.SR;
             maxTubeLength = 3;
