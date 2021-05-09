@@ -291,8 +291,8 @@ const getComposition = () => {
     composition = `${dspTemplateTop}
 ${tonesForComposition}
 ${voicesForComposition}
-mix(a,b) = 0.65*a+0.35*b,0.35*a+0.65*b;
-concert = hgroup("[00]Motif",1.5*cgain*(0.7*_voice_1notes + 0.8*_voice_2notes),2*cgain*(0.7*_voice_1notes + 0.8*_voice_3notes));
+mix(a,b) = 0.7*a+0.3*b,0.3*a+0.7*b;
+concert = hgroup("[00]Motif",1.5*cgain*(0.7*_voice_1notes + 0.9*_voice_2notes),2*cgain*(0.7*_voice_1notes + 0.9*_voice_3notes));
 process = concert : mix : dm.zita_light;
 `
     return true
@@ -530,7 +530,7 @@ with {
           opening = (length^(1/3))/(length^(1/3)+1);
           bellFilter = si.smooth(opening);
         };
-        ReedModel(tubeLength,pressure,reedStiffness) = 0.7*pm.endChain(modelChain)
+        ReedModel(tubeLength,pressure,reedStiffness) = 0.75*pm.endChain(modelChain)
         with{
             lengthTuning = 7*pm.speedOfSound/ma.SR;
             maxTubeLength = 3;
