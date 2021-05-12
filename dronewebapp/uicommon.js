@@ -148,7 +148,8 @@ const uploadsnapshot = (keyname) => {
     reader.onload = () => {
         reader.result.split("\n").forEach(p => {
             let args = p.split(' ')
-            updateParams(keyname, args[1].trim(), args[0].trim())
+            if(args.length === 2) 
+                updateParams(keyname, args[1].trim(), args[0].trim())
         })
         if(!playState) {
             document.getElementById('startstop').disabled = false
