@@ -198,8 +198,8 @@ const showsnapshotdialog = () => {
 
 const getsnapshot = (name, extn) => {
     let dialog = document.getElementById("snapshotdialog")
-    const a = document.createElement('a')
-    const file = new Blob([composition], {type: 'text/plain'})
+    let a = document.createElement('a')
+    let file = new Blob([composition], {type: 'text/plain'})
     a.href= URL.createObjectURL(file)
     if(name !== null) {
         a.download = name === "" ? `My-New-Composition.${extn}` : `${name.replace(/ /g,'-')}.${extn}`
@@ -221,9 +221,9 @@ const getfilename = () => {
 }
 
 const getVoice = (voiceName,tokens,pitchid,toneName) => {
-    const uniquenotes = findunique(tokens)
-    const plucktimes = getPluckTiming(tokens)
-    const noteids = tokens.filter(isnote).map(n => uniquenotes.findIndex(t => isequal(t,n)))
+    let uniquenotes = findunique(tokens)
+    let plucktimes = getPluckTiming(tokens)
+    let noteids = tokens.filter(isnote).map(n => uniquenotes.findIndex(t => isequal(t,n)))
 
     let notespec = `${uniquenotes.map((str,id) => printNoteSpec(voiceName,str,id)).join("")}
 ${voiceName}noteratio = ${uniquenotes.map((str,id) => printNoteId(voiceName,id)).join()} : ba.selectn(${uniquenotes.length},${voiceName}noteindex);`
