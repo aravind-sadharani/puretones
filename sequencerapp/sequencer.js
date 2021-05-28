@@ -206,6 +206,7 @@ const getsnapshot = (name, extn) => {
         a.click()
     }
     URL.revokeObjectURL(a.href)
+    delete file
     dialog.style.visibility = "hidden"
 }
 
@@ -352,7 +353,8 @@ const uploadsnapshot = () => {
     reader.onload = () => {
         reader.result.split("\n").forEach(p => {
             let args = p.split(' ')
-            updateNotes(args[1].trim(), args[0].trim())
+            if(args.length === 2)
+                updateNotes(args[1].trim(), args[0].trim())
         })
     }
     reader.readAsText(file)
