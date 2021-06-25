@@ -146,11 +146,7 @@ const uploadsnapshot = (keyname) => {
     let file = uploader.files[0]
     let reader = new FileReader()
     reader.onload = () => {
-        reader.result.split("\n").forEach(p => {
-            let args = p.split(' ')
-            if(args.length === 2) 
-                updateParams(keyname, args[1].trim(), args[0].trim())
-        })
+        loadTuning(reader.result,keyname)
         if(!playState) {
             document.getElementById('startstop').disabled = false
             document.getElementById('startstop').classList.remove("disabled")
@@ -170,4 +166,86 @@ const reset = (appname) => {
     document.getElementById('startstop').disabled = false
     document.getElementById('startstop').classList.remove("disabled")
     playit()
+}
+
+const checkURLParams = (keyname) => {
+    let urlParamString = window.location.search
+    if(urlParamString !== "") {
+        let urlParams = new URLSearchParams(urlParamString)
+        let raga = urlParams.get('raga')
+        if(raga) {
+            let ragaReq = new XMLHttpRequest()
+            ragaReq.onload = () => {
+                if(ragaReq.status === 404) {
+                    console.log(`Did not find tuning for ${raga}.`)
+                    window.history.replaceState(null,"",`./${urlParamString.replace(`&raga=${raga}`,"").replace(`raga=${raga}&`,"")}`)
+                } else if(ragaReq.status === 200) {
+                    loadTuning(ragaReq.response,keyname)
+                } else {
+                    console.log(`Error ${ragaReq.status}: ${ragaReq.statusText}`)
+                }
+                checkURLKeyOffset(urlParams,keyname)
+                if(!playState) {
+                    document.getElementById('startstop').disabled = false
+                    document.getElementById('startstop').classList.remove("disabled")
+                    playit()
+                }
+            }
+            let extn = keyname === 'puretones' ? 'prt' : 'pkb'
+            ragaReq.open("GET", `../tunings/${raga}.${extn}`)
+            ragaReq.send()
+        } else {
+            checkURLKeyOffset(urlParams,keyname)
+            if(!playState) {
+                document.getElementById('startstop').disabled = false
+                document.getElementById('startstop').classList.remove("disabled")
+                playit()
+            }
+        }
+    }
+}
+
+const checkURLKeyOffset = (urlParams,keyname) => {
+    let key = urlParams.get('key')
+    if(key) {
+        if(keyname === 'puretones'){
+            updateParams(keyname,"/puretones/PureTones_v1.0/0x00/Common_Frequency",pitchValue[key]+12)
+            updateParams(keyname,"/puretones/PureTones_v1.0/0x00/Octave_Selector",0)
+        }
+        else if(keyname === 'musicscale') {
+            updateParams(keyname,"/musicscale/Common_Parameters/Pitch",pitchValue[key]+12)
+            updateParams(keyname,"/musicscale/Common_Parameters/Octave",0)
+        }
+    }
+
+    let offset = urlParams.get('offset')
+    if(offset) {
+        if(keyname === 'puretones')
+            updateParams(keyname,"/puretones/PureTones_v1.0/0x00/Fine_Tune",offset)
+        else if(keyname === 'musicscale')
+            updateParams(keyname,"/musicscale/Common_Parameters/Fine_Tune",offset)
+    }
+}
+
+const pitchValue = {
+    "B" : 2,
+    "A#" : 1,
+    "A" : 0,
+    "G#" : -1,
+    "G" : -2,
+    "F#" : -3,
+    "F" : -4,
+    "E" : -5,
+    "D#" : -6,
+    "D" : -7,
+    "C#" : -8,
+    "C" : -9
+}
+
+const loadTuning = (tuning,keyname) => {
+    tuning.split("\n").forEach(p => {
+        let args = p.split(' ')
+        if(args.length === 2) 
+            updateParams(keyname, args[1].trim(), args[0].trim())
+    })
 }
