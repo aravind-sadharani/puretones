@@ -1,5 +1,5 @@
 let audioCtx;
-const faust = new Faust2WebAudio.Faust({ debug: false, wasmLocation: "./faustwasm/libfaust-wasm.wasm", dataLocation: "./faustwasm/libfaust-wasm.data" });
+const faust = new Faust2WebAudio.Faust({ debug: false, wasmLocation: "/sequencerapp/faustwasm/libfaust-wasm.wasm", dataLocation: "/sequencerapp/faustwasm/libfaust-wasm.data" });
 window.faust = faust;
 let playState = false;
 
@@ -320,8 +320,7 @@ const playit = () => {
         document.getElementById("playStop").classList.add("disabled");
         document.getElementById("playStop").innerHTML = "Compiling...";
         faust.ready.then(() => {
-            let code = composition;
-            faust.getNode(code, { audioCtx, useWorklet: false, bufferSize: 16384, args: { "-I": "libraries/" } }).then(node => {
+            faust.getNode(composition, { audioCtx, useWorklet: false, bufferSize: 16384, args: { "-I": "libraries/" } }).then(node => {
                 window.node = node;
                 node.connect(audioCtx.destination);
                 playState = true;
@@ -344,6 +343,52 @@ const playit = () => {
         document.getElementById("download").disabled = true;
         document.getElementById("download").classList.add("disabled");
     }
+}
+
+const playmotif = (id) => {
+    if(!audioCtx)
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    if(audioCtx.state === "suspended")
+        audioCtx.resume();
+    if(!playState) {
+        getMotif(id)
+        document.getElementById(`playStop_${id}`).disabled = true;
+        document.getElementById(`playStop_${id}`).classList.add("disabled");
+        document.getElementById(`playStop_${id}`).innerHTML = "Compiling...";
+        faust.ready.then(() => {
+            faust.getNode(composition, { audioCtx, useWorklet: false, bufferSize: 16384, args: { "-I": "libraries/" } }).then(node => {
+                window.node = node;
+                node.connect(audioCtx.destination);
+                playState = true;
+                document.getElementById(`playStop_${id}`).disabled = false;
+                document.getElementById(`playStop_${id}`).classList.remove("disabled");
+                document.getElementById(`playStop_${id}`).innerHTML = "Stop";
+            }, reason => {
+                console.log("Error in predefined composition!")
+            });
+        });
+    } else {
+        let dspNode = window.node;
+        dspNode.disconnect(audioCtx.destination);
+        dspNode.destroy();
+        playState = false;
+        document.getElementById(`playStop_${id}`).innerHTML = "Play";
+    }
+}
+
+const getMotif = (id) => {
+    let motifStringTokens = tokenize(document.getElementById(`motif_${id}`).value)
+
+    let voicesForComposition = getVoice(`_motif_${id}`,motifStringTokens,`_${id}`,"String1")
+
+    let tonesForComposition = dspToneTemplates[0]
+   
+    composition = `${dspTemplateTop}
+${tonesForComposition}
+${voicesForComposition}
+concert = hgroup("[00]Motif",cgain*_motif_${id}notes);
+process = concert <: dm.zita_light;
+`
 }
 
 const uploadsnapshot = () => {

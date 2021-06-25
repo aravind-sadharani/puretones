@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="../sequencerapp/faustwasm/index.min.js"></script>
+        <script src="../sequencerapp/sequencer.js"></script>
+        <title>PureTones Sequencer</title>
+        <link rel="stylesheet" href="../sequencerapp/styles.css">
+        <link rel="stylesheet" href="/style.css">
+        <link rel="stylesheet" href="./extrastyles.css">
+        <link href="https://fonts.googleapis.com/css?family=Noto+Sans:400,700" rel="stylesheet">
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-S2EKVG3NEN"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-S2EKVG3NEN');
+        </script>
+    </head>
+    <body onpopstate="checkURLParams()" onload="checkURLParams()">
+        <header>
+            <a href="/"><h1><img src="/puretones-logo.svg">Multiple Motifs</h1></a>
+        </header>
+        <section class="article">
+            <h3>Common Parameters</h3>
+            <div class="grid-container" class="outofsight">
+                <strong>Pitch</strong> <span class="right">Key</span>
+                <select name="pitch" id="cpitch">
+                    <option value="2">B</option>
+                    <option value="1">A#</option>
+                    <option value="0">A</option>
+                    <option value="-1" selected>G#</option>
+                    <option value="-2">G</option>
+                    <option value="-3">F#</option>
+                    <option value="-4">F</option>
+                    <option value="-5">E</option>
+                    <option value="-6">D#</option>
+                    <option value="-7">D</option>
+                    <option value="-8">C#</option>
+                    <option value="-9">C</option>
+                    </select>
+                <span class="right">Cents</span> <input type="number" id="finetune" value=0>
+            </div>
+        </section>
+        <section class="article outofsight">
+            <h3>Note Parameters</h3>
+            <div class="grid-container">
+                <strong>Sa</strong> <span class="right">Cents</span> <input type="number" id="Sa-C" value=0> <span class="right">0.01 ¢</span> <input type="number" id="Sa-F" value=0>
+                <strong>re</strong> <span class="right">Cents</span> <input type="number" id="re-C" value=0> <span class="right">0.01 ¢</span> <input type="number" id="re-F" value=0>
+                <strong>Re</strong> <span class="right">Cents</span> <input type="number" id="Re-C" value=0> <span class="right">0.01 ¢</span> <input type="number" id="Re-F" value=0>
+                <strong>ga</strong> <span class="right">Cents</span> <input type="number" id="ga-C" value=0> <span class="right">0.01 ¢</span> <input type="number" id="ga-F" value=0>
+                <strong>Ga</strong> <span class="right">Cents</span> <input type="number" id="Ga-C" value=0> <span class="right">0.01 ¢</span> <input type="number" id="Ga-F" value=0>
+                <strong>ma</strong> <span class="right">Cents</span> <input type="number" id="ma-C" value=0> <span class="right">0.01 ¢</span> <input type="number" id="ma-F" value=0>
+                <strong>Ma</strong> <span class="right">Cents</span> <input type="number" id="Ma-C" value=0> <span class="right">0.01 ¢</span> <input type="number" id="Ma-F" value=0>
+                <strong>Pa</strong> <span class="right">Cents</span> <input type="number" id="Pa-C" value=0> <span class="right">0.01 ¢</span> <input type="number" id="Pa-F" value=0>
+                <strong>dha</strong> <span class="right">Cents</span> <input type="number" id="dha-C" value=0> <span class="right">0.01 ¢</span> <input type="number" id="dha-F" value=0>
+                <strong>Dha</strong> <span class="right">Cents</span> <input type="number" id="Dha-C" value=0> <span class="right">0.01 ¢</span> <input type="number" id="Dha-F" value=0>
+                <strong>ni</strong> <span class="right">Cents</span> <input type="number" id="ni-C" value=0> <span class="right">0.01 ¢</span> <input type="number" id="ni-F" value=0>
+                <strong>Ni</strong> <span class="right">Cents</span> <input type="number" id="Ni-C" value=0> <span class="right">0.01 ¢</span> <input type="number" id="Ni-F" value=0>
+                <strong>SA</strong> <span class="right">Cents</span> <input type="number" id="SA-C" value=0> <span class="right">0.01 ¢</span> <input type="number" id="SA-F" value=0>
+            </div>
+        </section>
+        <br />
+        <section class="article">
+            <h3>Motif 1</h3>
+            <div class="grid-container">
+                <input type="hidden" name="octave1" id="octave_1" value="0">
+                <textarea name="Motif_1" id="motif_1" cols="20" rows="1" readonly>Sa ga ma dha ni SA 2</textarea>
+            </div>
+            <br />
+            <center>
+                <button class="action" onclick=playmotif(1) id="playStop_1">Play</button>
+                <br />
+            </center>
+        </section>
+        <section class="article">
+            <h3>Motif 2</h3>
+            <div class="grid-container">
+                <input type="hidden" name="octave2" id="octave_2" value="0">
+                <textarea name="Motif_2" id="motif_2" cols="20" rows="1" readonly>SA ni dha ma ga Sa 2</textarea>
+            </div>
+            <br />
+            <center>
+                <button class="action" onclick=playmotif(2) id="playStop_2">Play</button>
+                <br />
+            </center>
+        </section>
+        <section class="article">
+            <h3>Motif 3</h3>
+            <div class="grid-container">
+                <input type="hidden" name="octave3" id="octave_3" value="0">
+                <textarea name="Motif_3" id="motif_3" cols="20" rows="3" readonly>ma 2 dha 2 ni(G)(-182.4,0,-6,.45) 2 SA(G)(-203.91,0,-6,.45) 2
+ni(G)(-12,12,-2,2.5) 2 ma dha ga(G)(-12,12,-2,2.5) 2 Sa(G)(315.64,0,-12,.45) 2</textarea>
+            </div>
+            <br />
+            <center>
+                <button class="action" onclick=playmotif(3) id="playStop_3">Play</button>
+                <br />
+            </center>
+        </section>
+        <section class="article">
+            <h3>Motif 4</h3>
+            <div class="grid-container">
+                <input type="hidden" name="octave4" id="octave_4" value="0">
+                <textarea name="Motif_4" id="motif_4" cols="20" rows="3" readonly>ni' ; Sa ; dha'(G)(182.4,0,12,.45) ; dha'(G)(182.4,0,12,.45) ; ni'(G)(203.91,0,12,.45) ; ni'(G)(203.91,0,12,.45) ; Sa . ma(G)(-498.04,0,-4,.45) ga ; Sa</textarea>
+            </div>
+            <br />
+            <center>
+                <button class="action" onclick=playmotif(4) id="playStop_4">Play</button>
+                <br />
+            </center>
+        </section>
+        <footer>
+            <p>Developed by <a href="https://www.sadharani.com">Sadharani</a></p>
+        </footer>
+    </body>
+</html>
