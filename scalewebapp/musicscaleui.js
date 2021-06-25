@@ -249,6 +249,8 @@ const loadMusicScaleApp = () => {
     appContainer.insertAdjacentHTML('beforeend',getHTMLNoteTabs())
 
     clickNote("Sa button")
+
+    checkURLParams('musicscale')
 }
 
 const getHTMLPitchUI = () => (`

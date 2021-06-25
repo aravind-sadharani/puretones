@@ -116,6 +116,7 @@ const loadPureTonesApp = () => {
 
     clickString("1st String button")
 
+    checkURLParams('puretones')
 }
 
 const getHTMLPitchUI = () => (`
