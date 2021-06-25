@@ -208,10 +208,14 @@ const checkURLParams = (keyname) => {
 const checkURLKeyOffset = (urlParams,keyname) => {
     let key = urlParams.get('key')
     if(key) {
-        if(keyname === 'puretones')
+        if(keyname === 'puretones'){
             updateParams(keyname,"/puretones/PureTones_v1.0/0x00/Common_Frequency",pitchValue[key]+12)
-        else if(keyname === 'musicscale')
+            updateParams(keyname,"/puretones/PureTones_v1.0/0x00/Octave_Selector",0)
+        }
+        else if(keyname === 'musicscale') {
             updateParams(keyname,"/musicscale/Common_Parameters/Pitch",pitchValue[key]+12)
+            updateParams(keyname,"/musicscale/Common_Parameters/Octave",0)
+        }
     }
 
     let offset = urlParams.get('offset')
