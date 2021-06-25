@@ -351,11 +351,8 @@ const uploadsnapshot = () => {
     let file = uploader.files[0]
     let reader = new FileReader()
     reader.onload = () => {
-        reader.result.split("\n").forEach(p => {
-            let args = p.split(' ')
-            if(args.length === 2)
-                updateNotes(args[1].trim(), args[0].trim())
-        })
+        loadTuning(reader.result)
+        window.history.pushState(null,"",".")
     }
     reader.readAsText(file)
     delete reader
@@ -546,3 +543,62 @@ with {
         };
     };`
 ]
+
+const checkURLParams = () => {
+    let urlParamString = window.location.search
+    if(urlParamString !== "") {
+        let urlParams = new URLSearchParams(urlParamString)
+        let raga = urlParams.get('raga')
+        if(raga) {
+            let ragaReq = new XMLHttpRequest()
+            ragaReq.onload = () => {
+                if(ragaReq.status === 404) {
+                    console.log(`Did not find tuning for ${raga}.`)
+                    window.history.replaceState(null,"",`./${urlParamString.replace(`&raga=${raga}`,"").replace(`raga=${raga}&`,"")}`)
+                } else if(ragaReq.status === 200) {
+                    loadTuning(ragaReq.response)
+                } else {
+                    console.log(`Error ${ragaReq.status}: ${ragaReq.statusText}`)
+                }
+                checkURLKeyOffset(urlParams)
+            }
+            ragaReq.open("GET", `../tunings/${raga}.pkb`)
+            ragaReq.send()
+        } else {
+            checkURLKeyOffset(urlParams)
+        }
+    }
+}
+
+const checkURLKeyOffset = (urlParams) => {
+    let key = urlParams.get('key')
+    if(key)
+        document.getElementById("cpitch").value = pitchValue[key]
+
+    let offset = urlParams.get('offset')
+    if(offset)
+        document.getElementById("finetune").value = offset
+}
+
+const pitchValue = {
+    "B" : 2,
+    "A#" : 1,
+    "A" : 0,
+    "G#" : -1,
+    "G" : -2,
+    "F#" : -3,
+    "F" : -4,
+    "E" : -5,
+    "D#" : -6,
+    "D" : -7,
+    "C#" : -8,
+    "C" : -9
+}
+
+const loadTuning = (tuning) => {
+    tuning.split("\n").forEach(p => {
+        let args = p.split(' ')
+        if(args.length === 2)
+            updateNotes(args[1].trim(), args[0].trim())
+    })
+}
