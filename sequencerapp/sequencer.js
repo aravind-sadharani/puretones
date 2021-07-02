@@ -173,7 +173,7 @@ const getPluckLength = (timeStr) => 8*jatiValue(timeStr)*repeatValue(timeStr)
 
 const printPluckTiming = (id, repeats) => (id.includes("Q") ? "0,0,".repeat(repeats-1).concat("0,0") : "1,1,".repeat(repeats-1).concat("1,0"))
 
-const printNoteTiming = (id, repeats) => `${id},`.repeat(repeats-1).concat(`${id}`)
+const printNoteTiming = (id, repeats) => `${id},`.repeat(2*repeats-1).concat(`${id}`)
 
 const dspTemplateTop = `import("stdfaust.lib");
 
@@ -184,8 +184,8 @@ rate = vslider("[05]Shake Rate",11.5,10,25,0.1);
 c2v(d) = 2^(d/1200)-1;
 l2l(r) = 2^(r/10);
 number = vslider("[06]Shake Number",3.4,1,10,0.1);
-phasor(f) = (+(f/ma.SR) ~ ma.decimal);
-ramp(x) = +(x/ma.SR) ~ _;
+phasor(f) = ba.period(ma.SR/f) : *(f/ma.SR);
+ramp(x) = ba.time : *(x);
 `
 
 let composition
@@ -235,7 +235,7 @@ ${voiceName}noteratio = ${uniquenotes.map((str,id) => printNoteId(voiceName,id))
     let dspVoiceTop = `
 ${voiceName}phasedcos(x) = phasor(x) - (phasor(x) : ba.latch(${voiceName}gate(cperiod))) : *(2*ma.PI) : cos;
 ${voiceName}lockedramp(x) = ramp(x) - (ramp(x) : ba.latch(${voiceName}gate(cperiod)));
-${voiceName}shake(d1,d2,r,n,p) = 1+((c2v(d1)+c2v(d2))/2+(c2v(d1)-c2v(d2))*${voiceName}phasedcos(l2l(r))/2)*(${voiceName}lockedramp(l2l(r)) < n);
+${voiceName}shake(d1,d2,r,n,p) = 1+((c2v(d1)+c2v(d2))/2+(c2v(d1)-c2v(d2))*${voiceName}phasedcos(l2l(r))/2)*(${voiceName}lockedramp(l2l(r)) < n*ma.SR);
 ${voiceName}noteindex = cperiod : ${voiceName}motifnotes;
 `
 
@@ -244,10 +244,10 @@ ${getPitch(voiceName,pitchid)}
 ${notespec}
 ${voiceName}gatewaveform = waveform{${pluckTiming}};
 
-${voiceName}gate(p) = ${voiceName}gatewaveform,int(os.phasor(${(pluckWaveformLength+1)/2},1/(${(pluckWaveformLength+1)/4}*p))) : rdtable;
+${voiceName}gate(p) = ${voiceName}gatewaveform,int(2*ba.period(${(pluckWaveformLength+1)/4}*p*ma.SR)/(p*ma.SR)) : rdtable;
 ${voiceName}motif = waveform{${noteTiming}};
 
-${voiceName}motifnotes(p) = ${voiceName}motif,int(os.phasor(${(pluckWaveformLength+1)/4},1/(${(pluckWaveformLength+1)/4}*p))) : rdtable;
+${voiceName}motifnotes(p) = ${voiceName}motif,int(2*ba.period(${(pluckWaveformLength+1)/4}*p*ma.SR)/(p*ma.SR)) : rdtable;
 ${voiceName}notes = ${toneName}Tone(${voiceName}cpitch,${voiceName}noteratio,${voiceName}gate(cperiod)) : @(ma.SR*0.1);
 `
     return voiceComposition
