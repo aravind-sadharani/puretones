@@ -293,7 +293,7 @@ const getComposition = () => {
 ${tonesForComposition}
 ${voicesForComposition}
 mix(a,b) = 0.7*a+0.3*b,0.3*a+0.7*b;
-concert = hgroup("[00]Motif",1.5*cgain*(0.7*_voice_1notes + 0.9*_voice_2notes),2*cgain*(0.7*_voice_1notes + 0.9*_voice_3notes));
+concert = hgroup("[00]Motif",2*cgain*(0.7*_voice_1notes + 0.9*_voice_2notes),2*cgain*(0.7*_voice_1notes + 0.9*_voice_3notes));
 process = concert : mix : dm.zita_light;
 `
     return true
